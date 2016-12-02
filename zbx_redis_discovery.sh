@@ -15,19 +15,19 @@ for s in $LIST; do
         do
             INSTANCE=$(redis-cli -h $IP -p $PORT -a ${PASSWORDS[$i]} info | grep config_file | rev | cut -d "/" -f1 | rev | tr -d [:space:] | tr -d ".conf" | tr [:lower:] [:upper:])
             if [ $? -eq 0 ]; then
-                stdbuf -oL redis-cli -h $IP -p $PORT -a ${PASSWORDS[$i]} info all &> /tmp/redis-$INSTANCE-$PORT
+                stdbuf -oL redis-cli -h $IP -p $PORT -a ${PASSWORDS[$i]} info all &> /tmp/redis-$IP-$PORT
                 break
             fi
         done
     else
         INSTANCE=$(redis-cli -h $IP -p $PORT  info | grep config_file | rev | cut -d "/" -f1 | rev | tr -d [:space:] | tr -d ".conf" | tr [:lower:] [:upper:])
-        stdbuf -oL redis-cli -h $IP -p $PORT  info all &> /tmp/redis-$INSTANCE-$PORT
+        stdbuf -oL redis-cli -h $IP -p $PORT  info all &> /tmp/redis-$IP-$PORT
     fi
 
     echo -n '{'
-    echo -n '"#INSTANCE":"'$INSTANCE'",'
+    echo -n '"#PORT":"'$PORT'",'
     echo -n '"#HOST":"'$IP'",'
-    echo -n '"#PORT":"'$PORT'"'
+    echo -n '"#INSTANCE":"'$INSTANCE'"'
     echo -n '},'
 
 done | sed -e 's:\},$:\}:'
