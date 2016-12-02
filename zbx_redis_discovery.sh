@@ -20,14 +20,15 @@ for s in $LIST; do
             fi
         done
     else
-        echo "here"
         INSTANCE=$(redis-cli -h $IP -p $PORT  info | grep config_file | rev | cut -d "/" -f1 | rev | tr -d [:space:] | tr -d ".conf" | tr [:lower:] [:upper:])
         stdbuf -oL redis-cli -h $IP -p $PORT  info all &> /tmp/redis-$INSTANCE-$PORT
     fi
 
-    echo -n '{"{#INSTANCE}":"'$INSTANCE'"},'
-    echo -n '{"{#HOST}":"'$IP'"},'
-    echo -n '{"{#PORT}":"'$PORT'"},'
+    echo -n '{'
+    echo -n '"#INSTANCE":"'$INSTANCE'",'
+    echo -n '"#HOST":"'$IP'",'
+    echo -n '"#PORT":"'$PORT'"'
+    echo -n '},'
 
 done | sed -e 's:\},$:\}:'
 echo -n ']}'
