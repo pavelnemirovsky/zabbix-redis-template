@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
     <version>3.2</version>
-    <date>2016-12-06T13:19:31Z</date>
+    <date>2016-12-06T21:18:45Z</date>
     <groups>
         <group>
             <name>Templates</name>
@@ -54,13 +54,59 @@
                     <description/>
                     <item_prototypes>
                         <item_prototype>
-                            <name>Redis: &quot;{#INSTANCE}&quot; - &quot;max_clients&quot;</name>
+                            <name>Redis: &quot;{#INSTANCE}&quot; - General: Redis is running</name>
+                            <type>0</type>
+                            <snmp_community/>
+                            <multiplier>0</multiplier>
+                            <snmp_oid/>
+                            <key>proc.num[redis-server,,,{#HOST}:{#PORT}]</key>
+                            <delay>300</delay>
+                            <history>14</history>
+                            <trends>1825</trends>
+                            <status>0</status>
+                            <value_type>0</value_type>
+                            <allowed_hosts/>
+                            <units/>
+                            <delta>0</delta>
+                            <snmpv3_contextname/>
+                            <snmpv3_securityname/>
+                            <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                            <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                            <snmpv3_authpassphrase/>
+                            <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                            <snmpv3_privpassphrase/>
+                            <formula>1</formula>
+                            <delay_flex/>
+                            <params/>
+                            <ipmi_sensor/>
+                            <data_type>0</data_type>
+                            <authtype>0</authtype>
+                            <username/>
+                            <password/>
+                            <publickey/>
+                            <privatekey/>
+                            <port/>
+                            <description/>
+                            <inventory_link>0</inventory_link>
+                            <applications/>
+                            <valuemap>
+                                <name>Service state</name>
+                            </valuemap>
+                            <logtimefmt/>
+                            <application_prototypes>
+                                <application_prototype>
+                                    <name>Redis: {#INSTANCE} - General</name>
+                                </application_prototype>
+                            </application_prototypes>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>Redis: &quot;{#INSTANCE}&quot; - Clients: Max Allowed Clients</name>
                             <type>0</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
                             <key>redis.maxclients[{#HOST},{#PORT}]</key>
-                            <delay>30</delay>
+                            <delay>300</delay>
                             <history>90</history>
                             <trends>365</trends>
                             <status>0</status>
@@ -98,13 +144,13 @@
                             </application_prototypes>
                         </item_prototype>
                         <item_prototype>
-                            <name>Redis: &quot;{#INSTANCE}&quot; - &quot;slow_log_count&quot;</name>
+                            <name>Redis: &quot;{#INSTANCE}&quot; - Slow Logs Events Count</name>
                             <type>0</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
                             <key>redis.slowlog.count[{#HOST}, {#PORT}]</key>
-                            <delay>30</delay>
+                            <delay>60</delay>
                             <history>90</history>
                             <trends>365</trends>
                             <status>0</status>
@@ -142,14 +188,14 @@
                             </application_prototypes>
                         </item_prototype>
                         <item_prototype>
-                            <name>Redis: &quot;{#INSTANCE}&quot; - &quot;slow_log_count_raw&quot;</name>
+                            <name>Redis: &quot;{#INSTANCE}&quot; - Slow Logs Events Details</name>
                             <type>0</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
                             <key>redis.slowlog.get[{#HOST}, {#PORT}]</key>
                             <delay>30</delay>
-                            <history>90</history>
+                            <history>300</history>
                             <trends>0</trends>
                             <status>0</status>
                             <value_type>1</value_type>
@@ -186,7 +232,7 @@
                             </application_prototypes>
                         </item_prototype>
                         <item_prototype>
-                            <name>Redis: &quot;{#INSTANCE}&quot; Clients: Blocked Clients</name>
+                            <name>Redis: &quot;{#INSTANCE}&quot; - Clients: Blocked Clients</name>
                             <type>0</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
@@ -230,7 +276,7 @@
                             </application_prototypes>
                         </item_prototype>
                         <item_prototype>
-                            <name>Redis: &quot;{#INSTANCE}&quot; Keys: Changes Since Last Save</name>
+                            <name>Redis: &quot;{#INSTANCE}&quot; - Keys: Changes Since Last Save</name>
                             <type>0</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
@@ -274,7 +320,7 @@
                             </application_prototypes>
                         </item_prototype>
                         <item_prototype>
-                            <name>Redis: &quot;{#INSTANCE}&quot; Clients: Client Biggest Input Buffer</name>
+                            <name>Redis: &quot;{#INSTANCE}&quot; - Clients: Client Biggest Input Buffer</name>
                             <type>0</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
@@ -318,7 +364,7 @@
                             </application_prototypes>
                         </item_prototype>
                         <item_prototype>
-                            <name>Redis: &quot;{#INSTANCE}&quot; Clients: Client Longest Output List</name>
+                            <name>Redis: &quot;{#INSTANCE}&quot; - Clients: Client Longest Output List</name>
                             <type>0</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
@@ -12506,7 +12552,7 @@
                             </application_prototypes>
                         </item_prototype>
                         <item_prototype>
-                            <name>Redis: &quot;{#INSTANCE}&quot; Clients: Connected Clients</name>
+                            <name>Redis: &quot;{#INSTANCE}&quot; - Clients: Connected Clients</name>
                             <type>0</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
@@ -12550,7 +12596,7 @@
                             </application_prototypes>
                         </item_prototype>
                         <item_prototype>
-                            <name>Redis: &quot;{#INSTANCE}&quot; Clients: Connected Slaves</name>
+                            <name>Redis: &quot;{#INSTANCE}&quot; - Clients: Connected Slaves</name>
                             <type>0</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
@@ -12594,7 +12640,7 @@
                             </application_prototypes>
                         </item_prototype>
                         <item_prototype>
-                            <name>Redis: &quot;{#INSTANCE}&quot; Keys: Total Expired</name>
+                            <name>Redis: &quot;{#INSTANCE}&quot; - Keys: Total Expired</name>
                             <type>0</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
@@ -12638,7 +12684,7 @@
                             </application_prototypes>
                         </item_prototype>
                         <item_prototype>
-                            <name>Redis: &quot;{#INSTANCE}&quot; Keys: Total</name>
+                            <name>Redis: &quot;{#INSTANCE}&quot; - Keys: Total</name>
                             <type>0</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
@@ -12682,7 +12728,7 @@
                             </application_prototypes>
                         </item_prototype>
                         <item_prototype>
-                            <name>Redis: &quot;{#INSTANCE}&quot; Keys: Evicted Keys</name>
+                            <name>Redis: &quot;{#INSTANCE}&quot; - Keys: Evicted Keys</name>
                             <type>0</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
@@ -12726,7 +12772,7 @@
                             </application_prototypes>
                         </item_prototype>
                         <item_prototype>
-                            <name>Redis: &quot;{#INSTANCE}&quot; Keys: Expired Keys</name>
+                            <name>Redis: &quot;{#INSTANCE}&quot; - Keys: Expired Keys</name>
                             <type>0</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
@@ -12770,7 +12816,7 @@
                             </application_prototypes>
                         </item_prototype>
                         <item_prototype>
-                            <name>Redis: &quot;{#INSTANCE}&quot; Keys: Keyspace Hits</name>
+                            <name>Redis: &quot;{#INSTANCE}&quot; - Keys: Keyspace Hits</name>
                             <type>0</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
@@ -12814,7 +12860,7 @@
                             </application_prototypes>
                         </item_prototype>
                         <item_prototype>
-                            <name>Redis: &quot;{#INSTANCE}&quot; Keys: Keyspace Misses</name>
+                            <name>Redis: &quot;{#INSTANCE}&quot; - Keys: Keyspace Misses</name>
                             <type>0</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
@@ -12858,7 +12904,7 @@
                             </application_prototypes>
                         </item_prototype>
                         <item_prototype>
-                            <name>Redis: &quot;{#INSTANCE}&quot; Slave: Redis Server Master host</name>
+                            <name>Redis: &quot;{#INSTANCE}&quot; - Slave: Redis Server Master host</name>
                             <type>0</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
@@ -12902,7 +12948,7 @@
                             </application_prototypes>
                         </item_prototype>
                         <item_prototype>
-                            <name>Redis: &quot;{#INSTANCE}&quot; Slave: Redis Server Master last io seconds ago</name>
+                            <name>Redis: &quot;{#INSTANCE}&quot; - Slave: Redis Server Master last io seconds ago</name>
                             <type>0</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
@@ -12946,7 +12992,7 @@
                             </application_prototypes>
                         </item_prototype>
                         <item_prototype>
-                            <name>Redis: &quot;{#INSTANCE}&quot; Slave: Redis Server Master status</name>
+                            <name>Redis: &quot;{#INSTANCE}&quot; - Slave: Redis Server Master status</name>
                             <type>0</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
@@ -12990,7 +13036,7 @@
                             </application_prototypes>
                         </item_prototype>
                         <item_prototype>
-                            <name>Redis: &quot;{#INSTANCE}&quot; Slave: Redis Server Master port</name>
+                            <name>Redis: &quot;{#INSTANCE}&quot; - Slave: Redis Server Master port</name>
                             <type>0</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
@@ -13034,7 +13080,7 @@
                             </application_prototypes>
                         </item_prototype>
                         <item_prototype>
-                            <name>Redis: &quot;{#INSTANCE}&quot; Memory: $1</name>
+                            <name>Redis: &quot;{#INSTANCE}&quot; - Memory: $1</name>
                             <type>0</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
@@ -13078,7 +13124,7 @@
                             </application_prototypes>
                         </item_prototype>
                         <item_prototype>
-                            <name>Redis: &quot;{#INSTANCE}&quot; rdb_bgsave_in_progress</name>
+                            <name>Redis: &quot;{#INSTANCE}&quot; - Disk Flush: RDB BGSAVE In Progress</name>
                             <type>0</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
@@ -13122,7 +13168,7 @@
                             </application_prototypes>
                         </item_prototype>
                         <item_prototype>
-                            <name>Redis: &quot;{#INSTANCE}&quot; Keys: redis_version</name>
+                            <name>Redis: &quot;{#INSTANCE}&quot; - Keys: redis_version</name>
                             <type>0</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
@@ -13166,7 +13212,7 @@
                             </application_prototypes>
                         </item_prototype>
                         <item_prototype>
-                            <name>Redis: &quot;{#INSTANCE}&quot; General: Redis Server Role</name>
+                            <name>Redis: &quot;{#INSTANCE}&quot; - General: Redis Server Role</name>
                             <type>0</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
@@ -13210,7 +13256,7 @@
                             </application_prototypes>
                         </item_prototype>
                         <item_prototype>
-                            <name>Redis: &quot;{#INSTANCE}&quot; Master: Redis Server Slave0 information</name>
+                            <name>Redis: &quot;{#INSTANCE}&quot; - Master: Redis Server Slave0 information</name>
                             <type>0</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
@@ -13254,7 +13300,7 @@
                             </application_prototypes>
                         </item_prototype>
                         <item_prototype>
-                            <name>Redis: &quot;{#INSTANCE}&quot; Master: Redis Server Slave0 IP</name>
+                            <name>Redis: &quot;{#INSTANCE}&quot; - Master: Redis Server Slave0 IP</name>
                             <type>0</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
@@ -13298,7 +13344,7 @@
                             </application_prototypes>
                         </item_prototype>
                         <item_prototype>
-                            <name>Redis: &quot;{#INSTANCE}&quot; Master: Redis Server Slave0 Port</name>
+                            <name>Redis: &quot;{#INSTANCE}&quot; - Master: Redis Server Slave0 Port</name>
                             <type>0</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
@@ -13342,7 +13388,7 @@
                             </application_prototypes>
                         </item_prototype>
                         <item_prototype>
-                            <name>Redis: &quot;{#INSTANCE}&quot; Master: Redis Server Slave0 Status</name>
+                            <name>Redis: &quot;{#INSTANCE}&quot; - Master: Redis Server Slave0 Status</name>
                             <type>0</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
@@ -13386,7 +13432,7 @@
                             </application_prototypes>
                         </item_prototype>
                         <item_prototype>
-                            <name>Redis: &quot;{#INSTANCE}&quot; Master: Redis Server Slave1 information</name>
+                            <name>Redis: &quot;{#INSTANCE}&quot; - Master: Redis Server Slave1 information</name>
                             <type>0</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
@@ -13430,7 +13476,7 @@
                             </application_prototypes>
                         </item_prototype>
                         <item_prototype>
-                            <name>Redis: &quot;{#INSTANCE}&quot; Master: Redis Server Slave2 information</name>
+                            <name>Redis: &quot;{#INSTANCE}&quot; - Master: Redis Server Slave2 information</name>
                             <type>0</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
@@ -13474,7 +13520,7 @@
                             </application_prototypes>
                         </item_prototype>
                         <item_prototype>
-                            <name>Redis: &quot;{#INSTANCE}&quot; General: Commands/sec</name>
+                            <name>Redis: &quot;{#INSTANCE}&quot; - General: Commands/sec</name>
                             <type>0</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
@@ -13518,7 +13564,7 @@
                             </application_prototypes>
                         </item_prototype>
                         <item_prototype>
-                            <name>Redis: &quot;{#INSTANCE}&quot; Clients: Connections/sec</name>
+                            <name>Redis: &quot;{#INSTANCE}&quot; - Clients: Connections/sec</name>
                             <type>0</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
@@ -13562,7 +13608,7 @@
                             </application_prototypes>
                         </item_prototype>
                         <item_prototype>
-                            <name>Redis: &quot;{#INSTANCE}&quot; CPU: Used CPU Sys</name>
+                            <name>Redis: &quot;{#INSTANCE}&quot; - CPU: Used CPU Sys</name>
                             <type>0</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
@@ -13606,7 +13652,7 @@
                             </application_prototypes>
                         </item_prototype>
                         <item_prototype>
-                            <name>Redis: &quot;{#INSTANCE}&quot; Clients: Used CPU Sys Childrens</name>
+                            <name>Redis: &quot;{#INSTANCE}&quot; - Clients: Used CPU Sys Childrens</name>
                             <type>0</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
@@ -13650,7 +13696,7 @@
                             </application_prototypes>
                         </item_prototype>
                         <item_prototype>
-                            <name>Redis: &quot;{#INSTANCE}&quot; CPU: Used CPU User</name>
+                            <name>Redis: &quot;{#INSTANCE}&quot; - CPU: Used CPU User</name>
                             <type>0</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
@@ -13694,7 +13740,7 @@
                             </application_prototypes>
                         </item_prototype>
                         <item_prototype>
-                            <name>Redis: &quot;{#INSTANCE}&quot; Clients: Used CPU User Childrens</name>
+                            <name>Redis: &quot;{#INSTANCE}&quot; - Clients: Used CPU User Childrens</name>
                             <type>0</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
@@ -13738,7 +13784,7 @@
                             </application_prototypes>
                         </item_prototype>
                         <item_prototype>
-                            <name>Redis: &quot;{#INSTANCE}&quot; Memory: $1</name>
+                            <name>Redis: &quot;{#INSTANCE}&quot; - Memory: $1</name>
                             <type>0</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
@@ -13782,7 +13828,7 @@
                             </application_prototypes>
                         </item_prototype>
                         <item_prototype>
-                            <name>Redis: &quot;{#INSTANCE}&quot; Memory: $1</name>
+                            <name>Redis: &quot;{#INSTANCE}&quot; - Memory: $1</name>
                             <type>0</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
@@ -13826,7 +13872,7 @@
                             </application_prototypes>
                         </item_prototype>
                         <item_prototype>
-                            <name>Redis: &quot;{#INSTANCE}&quot; DB Size on DISK</name>
+                            <name>Redis: &quot;{#INSTANCE}&quot; - DB Size on DISK</name>
                             <type>0</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
@@ -13873,7 +13919,7 @@
                     <trigger_prototypes/>
                     <graph_prototypes>
                         <graph_prototype>
-                            <name>Redis: &quot;{#INSTANCE}&quot; - Commands Drill Down Overview</name>
+                            <name>Redis: &quot;{#INSTANCE}&quot; - Commands Drill Down Overview (Popular commands)</name>
                             <width>900</width>
                             <height>200</height>
                             <yaxismin>0.0000</yaxismin>
@@ -13899,7 +13945,7 @@
                                     <type>0</type>
                                     <item>
                                         <host>Template_App_Redis</host>
-                                        <key>redis.stat[cmdstat_auth_calls,{#HOST},{#PORT}]</key>
+                                        <key>redis.stat[cmdstat_del_calls,{#HOST},{#PORT}]</key>
                                     </item>
                                 </graph_item>
                                 <graph_item>
@@ -13911,7 +13957,7 @@
                                     <type>0</type>
                                     <item>
                                         <host>Template_App_Redis</host>
-                                        <key>redis.stat[cmdstat_bgrewriteaof_calls,{#HOST},{#PORT}]</key>
+                                        <key>redis.stat[cmdstat_exists_calls,{#HOST},{#PORT}]</key>
                                     </item>
                                 </graph_item>
                                 <graph_item>
@@ -13923,7 +13969,7 @@
                                     <type>0</type>
                                     <item>
                                         <host>Template_App_Redis</host>
-                                        <key>redis.stat[cmdstat_bgsave_calls,{#HOST},{#PORT}]</key>
+                                        <key>redis.stat[cmdstat_expire_calls,{#HOST},{#PORT}]</key>
                                     </item>
                                 </graph_item>
                                 <graph_item>
@@ -13935,7 +13981,7 @@
                                     <type>0</type>
                                     <item>
                                         <host>Template_App_Redis</host>
-                                        <key>redis.stat[cmdstat_bitcount_calls,{#HOST},{#PORT}]</key>
+                                        <key>redis.stat[cmdstat_getbit_calls,{#HOST},{#PORT}]</key>
                                     </item>
                                 </graph_item>
                                 <graph_item>
@@ -13947,7 +13993,7 @@
                                     <type>0</type>
                                     <item>
                                         <host>Template_App_Redis</host>
-                                        <key>redis.stat[cmdstat_bitop_calls,{#HOST},{#PORT}]</key>
+                                        <key>redis.stat[cmdstat_getrange_calls,{#HOST},{#PORT}]</key>
                                     </item>
                                 </graph_item>
                                 <graph_item>
@@ -13959,7 +14005,7 @@
                                     <type>0</type>
                                     <item>
                                         <host>Template_App_Redis</host>
-                                        <key>redis.stat[cmdstat_blpop_calls,{#HOST},{#PORT}]</key>
+                                        <key>redis.stat[cmdstat_getset_calls,{#HOST},{#PORT}]</key>
                                     </item>
                                 </graph_item>
                                 <graph_item>
@@ -13971,7 +14017,7 @@
                                     <type>0</type>
                                     <item>
                                         <host>Template_App_Redis</host>
-                                        <key>redis.stat[cmdstat_brpoplpush_calls,{#HOST},{#PORT}]</key>
+                                        <key>redis.stat[cmdstat_get_calls,{#HOST},{#PORT}]</key>
                                     </item>
                                 </graph_item>
                                 <graph_item>
@@ -13983,7 +14029,7 @@
                                     <type>0</type>
                                     <item>
                                         <host>Template_App_Redis</host>
-                                        <key>redis.stat[cmdstat_brpop_calls,{#HOST},{#PORT}]</key>
+                                        <key>redis.stat[cmdstat_hdel_calls,{#HOST},{#PORT}]</key>
                                     </item>
                                 </graph_item>
                                 <graph_item>
@@ -13995,7 +14041,7 @@
                                     <type>0</type>
                                     <item>
                                         <host>Template_App_Redis</host>
-                                        <key>redis.stat[cmdstat_client_calls,{#HOST},{#PORT}]</key>
+                                        <key>redis.stat[cmdstat_hgetall_calls,{#HOST},{#PORT}]</key>
                                     </item>
                                 </graph_item>
                                 <graph_item>
@@ -14007,7 +14053,7 @@
                                     <type>0</type>
                                     <item>
                                         <host>Template_App_Redis</host>
-                                        <key>redis.stat[cmdstat_config_calls,{#HOST},{#PORT}]</key>
+                                        <key>redis.stat[cmdstat_hget_calls,{#HOST},{#PORT}]</key>
                                     </item>
                                 </graph_item>
                                 <graph_item>
@@ -14019,7 +14065,7 @@
                                     <type>0</type>
                                     <item>
                                         <host>Template_App_Redis</host>
-                                        <key>redis.stat[cmdstat_dbsize_calls,{#HOST},{#PORT}]</key>
+                                        <key>redis.stat[cmdstat_hincrbyfloat_calls,{#HOST},{#PORT}]</key>
                                     </item>
                                 </graph_item>
                                 <graph_item>
@@ -14031,7 +14077,7 @@
                                     <type>0</type>
                                     <item>
                                         <host>Template_App_Redis</host>
-                                        <key>redis.stat[cmdstat_debug_calls,{#HOST},{#PORT}]</key>
+                                        <key>redis.stat[cmdstat_hincrby_calls,{#HOST},{#PORT}]</key>
                                     </item>
                                 </graph_item>
                                 <graph_item>
@@ -14043,7 +14089,7 @@
                                     <type>0</type>
                                     <item>
                                         <host>Template_App_Redis</host>
-                                        <key>redis.stat[cmdstat_decrby_calls,{#HOST},{#PORT}]</key>
+                                        <key>redis.stat[cmdstat_hkeys_calls,{#HOST},{#PORT}]</key>
                                     </item>
                                 </graph_item>
                                 <graph_item>
@@ -14055,7 +14101,7 @@
                                     <type>0</type>
                                     <item>
                                         <host>Template_App_Redis</host>
-                                        <key>redis.stat[cmdstat_decr_calls,{#HOST},{#PORT}]</key>
+                                        <key>redis.stat[cmdstat_hlen_calls,{#HOST},{#PORT}]</key>
                                     </item>
                                 </graph_item>
                                 <graph_item>
@@ -14067,7 +14113,7 @@
                                     <type>0</type>
                                     <item>
                                         <host>Template_App_Redis</host>
-                                        <key>redis.stat[cmdstat_del_calls,{#HOST},{#PORT}]</key>
+                                        <key>redis.stat[cmdstat_hmget_calls,{#HOST},{#PORT}]</key>
                                     </item>
                                 </graph_item>
                                 <graph_item>
@@ -14079,7 +14125,7 @@
                                     <type>0</type>
                                     <item>
                                         <host>Template_App_Redis</host>
-                                        <key>redis.stat[cmdstat_discard_calls,{#HOST},{#PORT}]</key>
+                                        <key>redis.stat[cmdstat_hmset_calls,{#HOST},{#PORT}]</key>
                                     </item>
                                 </graph_item>
                                 <graph_item>
@@ -14091,7 +14137,7 @@
                                     <type>0</type>
                                     <item>
                                         <host>Template_App_Redis</host>
-                                        <key>redis.stat[cmdstat_dump_calls,{#HOST},{#PORT}]</key>
+                                        <key>redis.stat[cmdstat_hsetnx_calls,{#HOST},{#PORT}]</key>
                                     </item>
                                 </graph_item>
                                 <graph_item>
@@ -14103,7 +14149,7 @@
                                     <type>0</type>
                                     <item>
                                         <host>Template_App_Redis</host>
-                                        <key>redis.stat[cmdstat_echo_calls,{#HOST},{#PORT}]</key>
+                                        <key>redis.stat[cmdstat_hset_calls,{#HOST},{#PORT}]</key>
                                     </item>
                                 </graph_item>
                                 <graph_item>
@@ -14115,7 +14161,7 @@
                                     <type>0</type>
                                     <item>
                                         <host>Template_App_Redis</host>
-                                        <key>redis.stat[cmdstat_evalsha_calls,{#HOST},{#PORT}]</key>
+                                        <key>redis.stat[cmdstat_incrbyfloat_calls,{#HOST},{#PORT}]</key>
                                     </item>
                                 </graph_item>
                                 <graph_item>
@@ -14127,7 +14173,7 @@
                                     <type>0</type>
                                     <item>
                                         <host>Template_App_Redis</host>
-                                        <key>redis.stat[cmdstat_eval_calls,{#HOST},{#PORT}]</key>
+                                        <key>redis.stat[cmdstat_incrby_calls,{#HOST},{#PORT}]</key>
                                     </item>
                                 </graph_item>
                                 <graph_item>
@@ -14139,7 +14185,7 @@
                                     <type>0</type>
                                     <item>
                                         <host>Template_App_Redis</host>
-                                        <key>redis.stat[cmdstat_exec_calls,{#HOST},{#PORT}]</key>
+                                        <key>redis.stat[cmdstat_incr_calls,{#HOST},{#PORT}]</key>
                                     </item>
                                 </graph_item>
                                 <graph_item>
@@ -14151,7 +14197,7 @@
                                     <type>0</type>
                                     <item>
                                         <host>Template_App_Redis</host>
-                                        <key>redis.stat[cmdstat_exists_calls,{#HOST},{#PORT}]</key>
+                                        <key>redis.stat[cmdstat_info_calls,{#HOST},{#PORT}]</key>
                                     </item>
                                 </graph_item>
                                 <graph_item>
@@ -14163,7 +14209,7 @@
                                     <type>0</type>
                                     <item>
                                         <host>Template_App_Redis</host>
-                                        <key>redis.stat[cmdstat_expireat_calls,{#HOST},{#PORT}]</key>
+                                        <key>redis.stat[cmdstat_mget_calls,{#HOST},{#PORT}]</key>
                                     </item>
                                 </graph_item>
                                 <graph_item>
@@ -14175,895 +14221,7 @@
                                     <type>0</type>
                                     <item>
                                         <host>Template_App_Redis</host>
-                                        <key>redis.stat[cmdstat_expire_calls,{#HOST},{#PORT}]</key>
-                                    </item>
-                                </graph_item>
-                                <graph_item>
-                                    <sortorder>24</sortorder>
-                                    <drawtype>0</drawtype>
-                                    <color>FC6EA3</color>
-                                    <yaxisside>0</yaxisside>
-                                    <calc_fnc>2</calc_fnc>
-                                    <type>0</type>
-                                    <item>
-                                        <host>Template_App_Redis</host>
-                                        <key>redis.stat[cmdstat_flushall_calls,{#HOST},{#PORT}]</key>
-                                    </item>
-                                </graph_item>
-                                <graph_item>
-                                    <sortorder>25</sortorder>
-                                    <drawtype>0</drawtype>
-                                    <color>6C59DC</color>
-                                    <yaxisside>0</yaxisside>
-                                    <calc_fnc>2</calc_fnc>
-                                    <type>0</type>
-                                    <item>
-                                        <host>Template_App_Redis</host>
-                                        <key>redis.stat[cmdstat_flushdb_calls,{#HOST},{#PORT}]</key>
-                                    </item>
-                                </graph_item>
-                                <graph_item>
-                                    <sortorder>26</sortorder>
-                                    <drawtype>0</drawtype>
-                                    <color>AC8C14</color>
-                                    <yaxisside>0</yaxisside>
-                                    <calc_fnc>2</calc_fnc>
-                                    <type>0</type>
-                                    <item>
-                                        <host>Template_App_Redis</host>
-                                        <key>redis.stat[cmdstat_getbit_calls,{#HOST},{#PORT}]</key>
-                                    </item>
-                                </graph_item>
-                                <graph_item>
-                                    <sortorder>27</sortorder>
-                                    <drawtype>0</drawtype>
-                                    <color>611F27</color>
-                                    <yaxisside>0</yaxisside>
-                                    <calc_fnc>2</calc_fnc>
-                                    <type>0</type>
-                                    <item>
-                                        <host>Template_App_Redis</host>
-                                        <key>redis.stat[cmdstat_getrange_calls,{#HOST},{#PORT}]</key>
-                                    </item>
-                                </graph_item>
-                                <graph_item>
-                                    <sortorder>28</sortorder>
-                                    <drawtype>0</drawtype>
-                                    <color>F230E0</color>
-                                    <yaxisside>0</yaxisside>
-                                    <calc_fnc>2</calc_fnc>
-                                    <type>0</type>
-                                    <item>
-                                        <host>Template_App_Redis</host>
-                                        <key>redis.stat[cmdstat_getset_calls,{#HOST},{#PORT}]</key>
-                                    </item>
-                                </graph_item>
-                                <graph_item>
-                                    <sortorder>29</sortorder>
-                                    <drawtype>0</drawtype>
-                                    <color>5CCD18</color>
-                                    <yaxisside>0</yaxisside>
-                                    <calc_fnc>2</calc_fnc>
-                                    <type>0</type>
-                                    <item>
-                                        <host>Template_App_Redis</host>
-                                        <key>redis.stat[cmdstat_get_calls,{#HOST},{#PORT}]</key>
-                                    </item>
-                                </graph_item>
-                                <graph_item>
-                                    <sortorder>30</sortorder>
-                                    <drawtype>0</drawtype>
-                                    <color>BB2A02</color>
-                                    <yaxisside>0</yaxisside>
-                                    <calc_fnc>2</calc_fnc>
-                                    <type>0</type>
-                                    <item>
-                                        <host>Template_App_Redis</host>
-                                        <key>redis.stat[cmdstat_hdel_calls,{#HOST},{#PORT}]</key>
-                                    </item>
-                                </graph_item>
-                                <graph_item>
-                                    <sortorder>31</sortorder>
-                                    <drawtype>0</drawtype>
-                                    <color>5A2B57</color>
-                                    <yaxisside>0</yaxisside>
-                                    <calc_fnc>2</calc_fnc>
-                                    <type>0</type>
-                                    <item>
-                                        <host>Template_App_Redis</host>
-                                        <key>redis.stat[cmdstat_hexists_calls,{#HOST},{#PORT}]</key>
-                                    </item>
-                                </graph_item>
-                                <graph_item>
-                                    <sortorder>32</sortorder>
-                                    <drawtype>0</drawtype>
-                                    <color>89ABF8</color>
-                                    <yaxisside>0</yaxisside>
-                                    <calc_fnc>2</calc_fnc>
-                                    <type>0</type>
-                                    <item>
-                                        <host>Template_App_Redis</host>
-                                        <key>redis.stat[cmdstat_hgetall_calls,{#HOST},{#PORT}]</key>
-                                    </item>
-                                </graph_item>
-                                <graph_item>
-                                    <sortorder>33</sortorder>
-                                    <drawtype>0</drawtype>
-                                    <color>7EC25C</color>
-                                    <yaxisside>0</yaxisside>
-                                    <calc_fnc>2</calc_fnc>
-                                    <type>0</type>
-                                    <item>
-                                        <host>Template_App_Redis</host>
-                                        <key>redis.stat[cmdstat_hget_calls,{#HOST},{#PORT}]</key>
-                                    </item>
-                                </graph_item>
-                                <graph_item>
-                                    <sortorder>34</sortorder>
-                                    <drawtype>0</drawtype>
-                                    <color>274482</color>
-                                    <yaxisside>0</yaxisside>
-                                    <calc_fnc>2</calc_fnc>
-                                    <type>0</type>
-                                    <item>
-                                        <host>Template_App_Redis</host>
-                                        <key>redis.stat[cmdstat_hincrbyfloat_calls,{#HOST},{#PORT}]</key>
-                                    </item>
-                                </graph_item>
-                                <graph_item>
-                                    <sortorder>35</sortorder>
-                                    <drawtype>0</drawtype>
-                                    <color>2B5429</color>
-                                    <yaxisside>0</yaxisside>
-                                    <calc_fnc>2</calc_fnc>
-                                    <type>0</type>
-                                    <item>
-                                        <host>Template_App_Redis</host>
-                                        <key>redis.stat[cmdstat_hincrby_calls,{#HOST},{#PORT}]</key>
-                                    </item>
-                                </graph_item>
-                                <graph_item>
-                                    <sortorder>36</sortorder>
-                                    <drawtype>0</drawtype>
-                                    <color>8048B4</color>
-                                    <yaxisside>0</yaxisside>
-                                    <calc_fnc>2</calc_fnc>
-                                    <type>0</type>
-                                    <item>
-                                        <host>Template_App_Redis</host>
-                                        <key>redis.stat[cmdstat_hkeys_calls,{#HOST},{#PORT}]</key>
-                                    </item>
-                                </graph_item>
-                                <graph_item>
-                                    <sortorder>37</sortorder>
-                                    <drawtype>0</drawtype>
-                                    <color>FD5434</color>
-                                    <yaxisside>0</yaxisside>
-                                    <calc_fnc>2</calc_fnc>
-                                    <type>0</type>
-                                    <item>
-                                        <host>Template_App_Redis</host>
-                                        <key>redis.stat[cmdstat_hlen_calls,{#HOST},{#PORT}]</key>
-                                    </item>
-                                </graph_item>
-                                <graph_item>
-                                    <sortorder>38</sortorder>
-                                    <drawtype>0</drawtype>
-                                    <color>790E1F</color>
-                                    <yaxisside>0</yaxisside>
-                                    <calc_fnc>2</calc_fnc>
-                                    <type>0</type>
-                                    <item>
-                                        <host>Template_App_Redis</host>
-                                        <key>redis.stat[cmdstat_hmget_calls,{#HOST},{#PORT}]</key>
-                                    </item>
-                                </graph_item>
-                                <graph_item>
-                                    <sortorder>39</sortorder>
-                                    <drawtype>0</drawtype>
-                                    <color>87AC4D</color>
-                                    <yaxisside>0</yaxisside>
-                                    <calc_fnc>2</calc_fnc>
-                                    <type>0</type>
-                                    <item>
-                                        <host>Template_App_Redis</host>
-                                        <key>redis.stat[cmdstat_hmset_calls,{#HOST},{#PORT}]</key>
-                                    </item>
-                                </graph_item>
-                                <graph_item>
-                                    <sortorder>40</sortorder>
-                                    <drawtype>0</drawtype>
-                                    <color>E89DF4</color>
-                                    <yaxisside>0</yaxisside>
-                                    <calc_fnc>2</calc_fnc>
-                                    <type>0</type>
-                                    <item>
-                                        <host>Template_App_Redis</host>
-                                        <key>redis.stat[cmdstat_hsetnx_calls,{#HOST},{#PORT}]</key>
-                                    </item>
-                                </graph_item>
-                                <graph_item>
-                                    <sortorder>41</sortorder>
-                                    <drawtype>0</drawtype>
-                                    <color>1A7C11</color>
-                                    <yaxisside>0</yaxisside>
-                                    <calc_fnc>2</calc_fnc>
-                                    <type>0</type>
-                                    <item>
-                                        <host>Template_App_Redis</host>
-                                        <key>redis.stat[cmdstat_hset_calls,{#HOST},{#PORT}]</key>
-                                    </item>
-                                </graph_item>
-                                <graph_item>
-                                    <sortorder>42</sortorder>
-                                    <drawtype>0</drawtype>
-                                    <color>F63100</color>
-                                    <yaxisside>0</yaxisside>
-                                    <calc_fnc>2</calc_fnc>
-                                    <type>0</type>
-                                    <item>
-                                        <host>Template_App_Redis</host>
-                                        <key>redis.stat[cmdstat_hvals_calls,{#HOST},{#PORT}]</key>
-                                    </item>
-                                </graph_item>
-                                <graph_item>
-                                    <sortorder>43</sortorder>
-                                    <drawtype>0</drawtype>
-                                    <color>2774A4</color>
-                                    <yaxisside>0</yaxisside>
-                                    <calc_fnc>2</calc_fnc>
-                                    <type>0</type>
-                                    <item>
-                                        <host>Template_App_Redis</host>
-                                        <key>redis.stat[cmdstat_incrbyfloat_calls,{#HOST},{#PORT}]</key>
-                                    </item>
-                                </graph_item>
-                                <graph_item>
-                                    <sortorder>44</sortorder>
-                                    <drawtype>0</drawtype>
-                                    <color>A54F10</color>
-                                    <yaxisside>0</yaxisside>
-                                    <calc_fnc>2</calc_fnc>
-                                    <type>0</type>
-                                    <item>
-                                        <host>Template_App_Redis</host>
-                                        <key>redis.stat[cmdstat_incrby_calls,{#HOST},{#PORT}]</key>
-                                    </item>
-                                </graph_item>
-                                <graph_item>
-                                    <sortorder>45</sortorder>
-                                    <drawtype>0</drawtype>
-                                    <color>FC6EA3</color>
-                                    <yaxisside>0</yaxisside>
-                                    <calc_fnc>2</calc_fnc>
-                                    <type>0</type>
-                                    <item>
-                                        <host>Template_App_Redis</host>
-                                        <key>redis.stat[cmdstat_incr_calls,{#HOST},{#PORT}]</key>
-                                    </item>
-                                </graph_item>
-                                <graph_item>
-                                    <sortorder>46</sortorder>
-                                    <drawtype>0</drawtype>
-                                    <color>6C59DC</color>
-                                    <yaxisside>0</yaxisside>
-                                    <calc_fnc>2</calc_fnc>
-                                    <type>0</type>
-                                    <item>
-                                        <host>Template_App_Redis</host>
-                                        <key>redis.stat[cmdstat_info_calls,{#HOST},{#PORT}]</key>
-                                    </item>
-                                </graph_item>
-                                <graph_item>
-                                    <sortorder>47</sortorder>
-                                    <drawtype>0</drawtype>
-                                    <color>AC8C14</color>
-                                    <yaxisside>0</yaxisside>
-                                    <calc_fnc>2</calc_fnc>
-                                    <type>0</type>
-                                    <item>
-                                        <host>Template_App_Redis</host>
-                                        <key>redis.stat[cmdstat_keys_calls,{#HOST},{#PORT}]</key>
-                                    </item>
-                                </graph_item>
-                                <graph_item>
-                                    <sortorder>48</sortorder>
-                                    <drawtype>0</drawtype>
-                                    <color>611F27</color>
-                                    <yaxisside>0</yaxisside>
-                                    <calc_fnc>2</calc_fnc>
-                                    <type>0</type>
-                                    <item>
-                                        <host>Template_App_Redis</host>
-                                        <key>redis.stat[cmdstat_lastsave_calls,{#HOST},{#PORT}]</key>
-                                    </item>
-                                </graph_item>
-                                <graph_item>
-                                    <sortorder>49</sortorder>
-                                    <drawtype>0</drawtype>
-                                    <color>F230E0</color>
-                                    <yaxisside>0</yaxisside>
-                                    <calc_fnc>2</calc_fnc>
-                                    <type>0</type>
-                                    <item>
-                                        <host>Template_App_Redis</host>
-                                        <key>redis.stat[cmdstat_lindex_calls,{#HOST},{#PORT}]</key>
-                                    </item>
-                                </graph_item>
-                                <graph_item>
-                                    <sortorder>50</sortorder>
-                                    <drawtype>0</drawtype>
-                                    <color>5CCD18</color>
-                                    <yaxisside>0</yaxisside>
-                                    <calc_fnc>2</calc_fnc>
-                                    <type>0</type>
-                                    <item>
-                                        <host>Template_App_Redis</host>
-                                        <key>redis.stat[cmdstat_linsert_calls,{#HOST},{#PORT}]</key>
-                                    </item>
-                                </graph_item>
-                                <graph_item>
-                                    <sortorder>51</sortorder>
-                                    <drawtype>0</drawtype>
-                                    <color>BB2A02</color>
-                                    <yaxisside>0</yaxisside>
-                                    <calc_fnc>2</calc_fnc>
-                                    <type>0</type>
-                                    <item>
-                                        <host>Template_App_Redis</host>
-                                        <key>redis.stat[cmdstat_llen_calls,{#HOST},{#PORT}]</key>
-                                    </item>
-                                </graph_item>
-                                <graph_item>
-                                    <sortorder>52</sortorder>
-                                    <drawtype>0</drawtype>
-                                    <color>5A2B57</color>
-                                    <yaxisside>0</yaxisside>
-                                    <calc_fnc>2</calc_fnc>
-                                    <type>0</type>
-                                    <item>
-                                        <host>Template_App_Redis</host>
-                                        <key>redis.stat[cmdstat_lpop_calls,{#HOST},{#PORT}]</key>
-                                    </item>
-                                </graph_item>
-                                <graph_item>
-                                    <sortorder>53</sortorder>
-                                    <drawtype>0</drawtype>
-                                    <color>89ABF8</color>
-                                    <yaxisside>0</yaxisside>
-                                    <calc_fnc>2</calc_fnc>
-                                    <type>0</type>
-                                    <item>
-                                        <host>Template_App_Redis</host>
-                                        <key>redis.stat[cmdstat_lpushx_calls,{#HOST},{#PORT}]</key>
-                                    </item>
-                                </graph_item>
-                                <graph_item>
-                                    <sortorder>54</sortorder>
-                                    <drawtype>0</drawtype>
-                                    <color>7EC25C</color>
-                                    <yaxisside>0</yaxisside>
-                                    <calc_fnc>2</calc_fnc>
-                                    <type>0</type>
-                                    <item>
-                                        <host>Template_App_Redis</host>
-                                        <key>redis.stat[cmdstat_lpush_calls,{#HOST},{#PORT}]</key>
-                                    </item>
-                                </graph_item>
-                                <graph_item>
-                                    <sortorder>55</sortorder>
-                                    <drawtype>0</drawtype>
-                                    <color>274482</color>
-                                    <yaxisside>0</yaxisside>
-                                    <calc_fnc>2</calc_fnc>
-                                    <type>0</type>
-                                    <item>
-                                        <host>Template_App_Redis</host>
-                                        <key>redis.stat[cmdstat_lrange_calls,{#HOST},{#PORT}]</key>
-                                    </item>
-                                </graph_item>
-                                <graph_item>
-                                    <sortorder>56</sortorder>
-                                    <drawtype>0</drawtype>
-                                    <color>2B5429</color>
-                                    <yaxisside>0</yaxisside>
-                                    <calc_fnc>2</calc_fnc>
-                                    <type>0</type>
-                                    <item>
-                                        <host>Template_App_Redis</host>
-                                        <key>redis.stat[cmdstat_lrem_calls,{#HOST},{#PORT}]</key>
-                                    </item>
-                                </graph_item>
-                                <graph_item>
-                                    <sortorder>57</sortorder>
-                                    <drawtype>0</drawtype>
-                                    <color>8048B4</color>
-                                    <yaxisside>0</yaxisside>
-                                    <calc_fnc>2</calc_fnc>
-                                    <type>0</type>
-                                    <item>
-                                        <host>Template_App_Redis</host>
-                                        <key>redis.stat[cmdstat_lset_calls,{#HOST},{#PORT}]</key>
-                                    </item>
-                                </graph_item>
-                                <graph_item>
-                                    <sortorder>58</sortorder>
-                                    <drawtype>0</drawtype>
-                                    <color>FD5434</color>
-                                    <yaxisside>0</yaxisside>
-                                    <calc_fnc>2</calc_fnc>
-                                    <type>0</type>
-                                    <item>
-                                        <host>Template_App_Redis</host>
-                                        <key>redis.stat[cmdstat_ltrim_calls,{#HOST},{#PORT}]</key>
-                                    </item>
-                                </graph_item>
-                                <graph_item>
-                                    <sortorder>59</sortorder>
-                                    <drawtype>0</drawtype>
-                                    <color>790E1F</color>
-                                    <yaxisside>0</yaxisside>
-                                    <calc_fnc>2</calc_fnc>
-                                    <type>0</type>
-                                    <item>
-                                        <host>Template_App_Redis</host>
-                                        <key>redis.stat[cmdstat_mget_calls,{#HOST},{#PORT}]</key>
-                                    </item>
-                                </graph_item>
-                                <graph_item>
-                                    <sortorder>60</sortorder>
-                                    <drawtype>0</drawtype>
-                                    <color>87AC4D</color>
-                                    <yaxisside>0</yaxisside>
-                                    <calc_fnc>2</calc_fnc>
-                                    <type>0</type>
-                                    <item>
-                                        <host>Template_App_Redis</host>
-                                        <key>redis.stat[cmdstat_migrate_calls,{#HOST},{#PORT}]</key>
-                                    </item>
-                                </graph_item>
-                                <graph_item>
-                                    <sortorder>61</sortorder>
-                                    <drawtype>0</drawtype>
-                                    <color>E89DF4</color>
-                                    <yaxisside>0</yaxisside>
-                                    <calc_fnc>2</calc_fnc>
-                                    <type>0</type>
-                                    <item>
-                                        <host>Template_App_Redis</host>
-                                        <key>redis.stat[cmdstat_monitor_calls,{#HOST},{#PORT}]</key>
-                                    </item>
-                                </graph_item>
-                                <graph_item>
-                                    <sortorder>62</sortorder>
-                                    <drawtype>0</drawtype>
-                                    <color>1A7C11</color>
-                                    <yaxisside>0</yaxisside>
-                                    <calc_fnc>2</calc_fnc>
-                                    <type>0</type>
-                                    <item>
-                                        <host>Template_App_Redis</host>
-                                        <key>redis.stat[cmdstat_move_calls,{#HOST},{#PORT}]</key>
-                                    </item>
-                                </graph_item>
-                                <graph_item>
-                                    <sortorder>63</sortorder>
-                                    <drawtype>0</drawtype>
-                                    <color>F63100</color>
-                                    <yaxisside>0</yaxisside>
-                                    <calc_fnc>2</calc_fnc>
-                                    <type>0</type>
-                                    <item>
-                                        <host>Template_App_Redis</host>
-                                        <key>redis.stat[cmdstat_msetnx_calls,{#HOST},{#PORT}]</key>
-                                    </item>
-                                </graph_item>
-                                <graph_item>
-                                    <sortorder>64</sortorder>
-                                    <drawtype>0</drawtype>
-                                    <color>2774A4</color>
-                                    <yaxisside>0</yaxisside>
-                                    <calc_fnc>2</calc_fnc>
-                                    <type>0</type>
-                                    <item>
-                                        <host>Template_App_Redis</host>
-                                        <key>redis.stat[cmdstat_mset_calls,{#HOST},{#PORT}]</key>
-                                    </item>
-                                </graph_item>
-                                <graph_item>
-                                    <sortorder>65</sortorder>
-                                    <drawtype>0</drawtype>
-                                    <color>A54F10</color>
-                                    <yaxisside>0</yaxisside>
-                                    <calc_fnc>2</calc_fnc>
-                                    <type>0</type>
-                                    <item>
-                                        <host>Template_App_Redis</host>
-                                        <key>redis.stat[cmdstat_multi_calls,{#HOST},{#PORT}]</key>
-                                    </item>
-                                </graph_item>
-                                <graph_item>
-                                    <sortorder>66</sortorder>
-                                    <drawtype>0</drawtype>
-                                    <color>FC6EA3</color>
-                                    <yaxisside>0</yaxisside>
-                                    <calc_fnc>2</calc_fnc>
-                                    <type>0</type>
-                                    <item>
-                                        <host>Template_App_Redis</host>
-                                        <key>redis.stat[cmdstat_object_calls,{#HOST},{#PORT}]</key>
-                                    </item>
-                                </graph_item>
-                                <graph_item>
-                                    <sortorder>67</sortorder>
-                                    <drawtype>0</drawtype>
-                                    <color>6C59DC</color>
-                                    <yaxisside>0</yaxisside>
-                                    <calc_fnc>2</calc_fnc>
-                                    <type>0</type>
-                                    <item>
-                                        <host>Template_App_Redis</host>
-                                        <key>redis.stat[cmdstat_persist_calls,{#HOST},{#PORT}]</key>
-                                    </item>
-                                </graph_item>
-                                <graph_item>
-                                    <sortorder>68</sortorder>
-                                    <drawtype>0</drawtype>
-                                    <color>AC8C14</color>
-                                    <yaxisside>0</yaxisside>
-                                    <calc_fnc>2</calc_fnc>
-                                    <type>0</type>
-                                    <item>
-                                        <host>Template_App_Redis</host>
-                                        <key>redis.stat[cmdstat_pexpireat_calls,{#HOST},{#PORT}]</key>
-                                    </item>
-                                </graph_item>
-                                <graph_item>
-                                    <sortorder>69</sortorder>
-                                    <drawtype>0</drawtype>
-                                    <color>611F27</color>
-                                    <yaxisside>0</yaxisside>
-                                    <calc_fnc>2</calc_fnc>
-                                    <type>0</type>
-                                    <item>
-                                        <host>Template_App_Redis</host>
-                                        <key>redis.stat[cmdstat_pexpire_calls,{#HOST},{#PORT}]</key>
-                                    </item>
-                                </graph_item>
-                                <graph_item>
-                                    <sortorder>70</sortorder>
-                                    <drawtype>0</drawtype>
-                                    <color>F230E0</color>
-                                    <yaxisside>0</yaxisside>
-                                    <calc_fnc>2</calc_fnc>
-                                    <type>0</type>
-                                    <item>
-                                        <host>Template_App_Redis</host>
-                                        <key>redis.stat[cmdstat_ping_calls,{#HOST},{#PORT}]</key>
-                                    </item>
-                                </graph_item>
-                                <graph_item>
-                                    <sortorder>71</sortorder>
-                                    <drawtype>0</drawtype>
-                                    <color>5CCD18</color>
-                                    <yaxisside>0</yaxisside>
-                                    <calc_fnc>2</calc_fnc>
-                                    <type>0</type>
-                                    <item>
-                                        <host>Template_App_Redis</host>
-                                        <key>redis.stat[cmdstat_psetex_calls,{#HOST},{#PORT}]</key>
-                                    </item>
-                                </graph_item>
-                                <graph_item>
-                                    <sortorder>72</sortorder>
-                                    <drawtype>0</drawtype>
-                                    <color>BB2A02</color>
-                                    <yaxisside>0</yaxisside>
-                                    <calc_fnc>2</calc_fnc>
-                                    <type>0</type>
-                                    <item>
-                                        <host>Template_App_Redis</host>
-                                        <key>redis.stat[cmdstat_psubscribe_calls,{#HOST},{#PORT}]</key>
-                                    </item>
-                                </graph_item>
-                                <graph_item>
-                                    <sortorder>73</sortorder>
-                                    <drawtype>0</drawtype>
-                                    <color>5A2B57</color>
-                                    <yaxisside>0</yaxisside>
-                                    <calc_fnc>2</calc_fnc>
-                                    <type>0</type>
-                                    <item>
-                                        <host>Template_App_Redis</host>
-                                        <key>redis.stat[cmdstat_pttl_calls,{#HOST},{#PORT}]</key>
-                                    </item>
-                                </graph_item>
-                                <graph_item>
-                                    <sortorder>74</sortorder>
-                                    <drawtype>0</drawtype>
-                                    <color>89ABF8</color>
-                                    <yaxisside>0</yaxisside>
-                                    <calc_fnc>2</calc_fnc>
-                                    <type>0</type>
-                                    <item>
-                                        <host>Template_App_Redis</host>
-                                        <key>redis.stat[cmdstat_publish_calls,{#HOST},{#PORT}]</key>
-                                    </item>
-                                </graph_item>
-                                <graph_item>
-                                    <sortorder>75</sortorder>
-                                    <drawtype>0</drawtype>
-                                    <color>7EC25C</color>
-                                    <yaxisside>0</yaxisside>
-                                    <calc_fnc>2</calc_fnc>
-                                    <type>0</type>
-                                    <item>
-                                        <host>Template_App_Redis</host>
-                                        <key>redis.stat[cmdstat_punsubscribe_calls,{#HOST},{#PORT}]</key>
-                                    </item>
-                                </graph_item>
-                                <graph_item>
-                                    <sortorder>76</sortorder>
-                                    <drawtype>0</drawtype>
-                                    <color>274482</color>
-                                    <yaxisside>0</yaxisside>
-                                    <calc_fnc>2</calc_fnc>
-                                    <type>0</type>
-                                    <item>
-                                        <host>Template_App_Redis</host>
-                                        <key>redis.stat[cmdstat_quit_calls,{#HOST},{#PORT}]</key>
-                                    </item>
-                                </graph_item>
-                                <graph_item>
-                                    <sortorder>77</sortorder>
-                                    <drawtype>0</drawtype>
-                                    <color>2B5429</color>
-                                    <yaxisside>0</yaxisside>
-                                    <calc_fnc>2</calc_fnc>
-                                    <type>0</type>
-                                    <item>
-                                        <host>Template_App_Redis</host>
-                                        <key>redis.stat[cmdstat_randomkey_calls,{#HOST},{#PORT}]</key>
-                                    </item>
-                                </graph_item>
-                                <graph_item>
-                                    <sortorder>78</sortorder>
-                                    <drawtype>0</drawtype>
-                                    <color>8048B4</color>
-                                    <yaxisside>0</yaxisside>
-                                    <calc_fnc>2</calc_fnc>
-                                    <type>0</type>
-                                    <item>
-                                        <host>Template_App_Redis</host>
-                                        <key>redis.stat[cmdstat_renamenx_calls,{#HOST},{#PORT}]</key>
-                                    </item>
-                                </graph_item>
-                                <graph_item>
-                                    <sortorder>79</sortorder>
-                                    <drawtype>0</drawtype>
-                                    <color>FD5434</color>
-                                    <yaxisside>0</yaxisside>
-                                    <calc_fnc>2</calc_fnc>
-                                    <type>0</type>
-                                    <item>
-                                        <host>Template_App_Redis</host>
-                                        <key>redis.stat[cmdstat_rename_calls,{#HOST},{#PORT}]</key>
-                                    </item>
-                                </graph_item>
-                                <graph_item>
-                                    <sortorder>80</sortorder>
-                                    <drawtype>0</drawtype>
-                                    <color>790E1F</color>
-                                    <yaxisside>0</yaxisside>
-                                    <calc_fnc>2</calc_fnc>
-                                    <type>0</type>
-                                    <item>
-                                        <host>Template_App_Redis</host>
-                                        <key>redis.stat[cmdstat_replconf_calls,{#HOST},{#PORT}]</key>
-                                    </item>
-                                </graph_item>
-                                <graph_item>
-                                    <sortorder>81</sortorder>
-                                    <drawtype>0</drawtype>
-                                    <color>87AC4D</color>
-                                    <yaxisside>0</yaxisside>
-                                    <calc_fnc>2</calc_fnc>
-                                    <type>0</type>
-                                    <item>
-                                        <host>Template_App_Redis</host>
-                                        <key>redis.stat[cmdstat_restore_calls,{#HOST},{#PORT}]</key>
-                                    </item>
-                                </graph_item>
-                                <graph_item>
-                                    <sortorder>82</sortorder>
-                                    <drawtype>0</drawtype>
-                                    <color>E89DF4</color>
-                                    <yaxisside>0</yaxisside>
-                                    <calc_fnc>2</calc_fnc>
-                                    <type>0</type>
-                                    <item>
-                                        <host>Template_App_Redis</host>
-                                        <key>redis.stat[cmdstat_rpoplpush_calls,{#HOST},{#PORT}]</key>
-                                    </item>
-                                </graph_item>
-                                <graph_item>
-                                    <sortorder>83</sortorder>
-                                    <drawtype>0</drawtype>
-                                    <color>1A7C11</color>
-                                    <yaxisside>0</yaxisside>
-                                    <calc_fnc>2</calc_fnc>
-                                    <type>0</type>
-                                    <item>
-                                        <host>Template_App_Redis</host>
-                                        <key>redis.stat[cmdstat_rpop_calls,{#HOST},{#PORT}]</key>
-                                    </item>
-                                </graph_item>
-                                <graph_item>
-                                    <sortorder>84</sortorder>
-                                    <drawtype>0</drawtype>
-                                    <color>F63100</color>
-                                    <yaxisside>0</yaxisside>
-                                    <calc_fnc>2</calc_fnc>
-                                    <type>0</type>
-                                    <item>
-                                        <host>Template_App_Redis</host>
-                                        <key>redis.stat[cmdstat_rpushx_calls,{#HOST},{#PORT}]</key>
-                                    </item>
-                                </graph_item>
-                                <graph_item>
-                                    <sortorder>85</sortorder>
-                                    <drawtype>0</drawtype>
-                                    <color>2774A4</color>
-                                    <yaxisside>0</yaxisside>
-                                    <calc_fnc>2</calc_fnc>
-                                    <type>0</type>
-                                    <item>
-                                        <host>Template_App_Redis</host>
-                                        <key>redis.stat[cmdstat_rpush_calls,{#HOST},{#PORT}]</key>
-                                    </item>
-                                </graph_item>
-                                <graph_item>
-                                    <sortorder>86</sortorder>
-                                    <drawtype>0</drawtype>
-                                    <color>A54F10</color>
-                                    <yaxisside>0</yaxisside>
-                                    <calc_fnc>2</calc_fnc>
-                                    <type>0</type>
-                                    <item>
-                                        <host>Template_App_Redis</host>
-                                        <key>redis.stat[cmdstat_sadd_calls,{#HOST},{#PORT}]</key>
-                                    </item>
-                                </graph_item>
-                                <graph_item>
-                                    <sortorder>87</sortorder>
-                                    <drawtype>0</drawtype>
-                                    <color>FC6EA3</color>
-                                    <yaxisside>0</yaxisside>
-                                    <calc_fnc>2</calc_fnc>
-                                    <type>0</type>
-                                    <item>
-                                        <host>Template_App_Redis</host>
-                                        <key>redis.stat[cmdstat_save_calls,{#HOST},{#PORT}]</key>
-                                    </item>
-                                </graph_item>
-                                <graph_item>
-                                    <sortorder>88</sortorder>
-                                    <drawtype>0</drawtype>
-                                    <color>6C59DC</color>
-                                    <yaxisside>0</yaxisside>
-                                    <calc_fnc>2</calc_fnc>
-                                    <type>0</type>
-                                    <item>
-                                        <host>Template_App_Redis</host>
-                                        <key>redis.stat[cmdstat_scard_calls,{#HOST},{#PORT}]</key>
-                                    </item>
-                                </graph_item>
-                                <graph_item>
-                                    <sortorder>89</sortorder>
-                                    <drawtype>0</drawtype>
-                                    <color>AC8C14</color>
-                                    <yaxisside>0</yaxisside>
-                                    <calc_fnc>2</calc_fnc>
-                                    <type>0</type>
-                                    <item>
-                                        <host>Template_App_Redis</host>
-                                        <key>redis.stat[cmdstat_script_calls,{#HOST},{#PORT}]</key>
-                                    </item>
-                                </graph_item>
-                                <graph_item>
-                                    <sortorder>90</sortorder>
-                                    <drawtype>0</drawtype>
-                                    <color>611F27</color>
-                                    <yaxisside>0</yaxisside>
-                                    <calc_fnc>2</calc_fnc>
-                                    <type>0</type>
-                                    <item>
-                                        <host>Template_App_Redis</host>
-                                        <key>redis.stat[cmdstat_sdiffstore_calls,{#HOST},{#PORT}]</key>
-                                    </item>
-                                </graph_item>
-                                <graph_item>
-                                    <sortorder>91</sortorder>
-                                    <drawtype>0</drawtype>
-                                    <color>F230E0</color>
-                                    <yaxisside>0</yaxisside>
-                                    <calc_fnc>2</calc_fnc>
-                                    <type>0</type>
-                                    <item>
-                                        <host>Template_App_Redis</host>
-                                        <key>redis.stat[cmdstat_sdiff_calls,{#HOST},{#PORT}]</key>
-                                    </item>
-                                </graph_item>
-                                <graph_item>
-                                    <sortorder>92</sortorder>
-                                    <drawtype>0</drawtype>
-                                    <color>5CCD18</color>
-                                    <yaxisside>0</yaxisside>
-                                    <calc_fnc>2</calc_fnc>
-                                    <type>0</type>
-                                    <item>
-                                        <host>Template_App_Redis</host>
-                                        <key>redis.stat[cmdstat_select_calls,{#HOST},{#PORT}]</key>
-                                    </item>
-                                </graph_item>
-                                <graph_item>
-                                    <sortorder>93</sortorder>
-                                    <drawtype>0</drawtype>
-                                    <color>BB2A02</color>
-                                    <yaxisside>0</yaxisside>
-                                    <calc_fnc>2</calc_fnc>
-                                    <type>0</type>
-                                    <item>
-                                        <host>Template_App_Redis</host>
-                                        <key>redis.stat[cmdstat_setbit_calls,{#HOST},{#PORT}]</key>
-                                    </item>
-                                </graph_item>
-                                <graph_item>
-                                    <sortorder>94</sortorder>
-                                    <drawtype>0</drawtype>
-                                    <color>5A2B57</color>
-                                    <yaxisside>0</yaxisside>
-                                    <calc_fnc>2</calc_fnc>
-                                    <type>0</type>
-                                    <item>
-                                        <host>Template_App_Redis</host>
-                                        <key>redis.stat[cmdstat_setex_calls,{#HOST},{#PORT}]</key>
-                                    </item>
-                                </graph_item>
-                                <graph_item>
-                                    <sortorder>95</sortorder>
-                                    <drawtype>0</drawtype>
-                                    <color>89ABF8</color>
-                                    <yaxisside>0</yaxisside>
-                                    <calc_fnc>2</calc_fnc>
-                                    <type>0</type>
-                                    <item>
-                                        <host>Template_App_Redis</host>
-                                        <key>redis.stat[cmdstat_setnx_calls,{#HOST},{#PORT}]</key>
-                                    </item>
-                                </graph_item>
-                                <graph_item>
-                                    <sortorder>96</sortorder>
-                                    <drawtype>0</drawtype>
-                                    <color>7EC25C</color>
-                                    <yaxisside>0</yaxisside>
-                                    <calc_fnc>2</calc_fnc>
-                                    <type>0</type>
-                                    <item>
-                                        <host>Template_App_Redis</host>
-                                        <key>redis.stat[cmdstat_setrange_calls,{#HOST},{#PORT}]</key>
-                                    </item>
-                                </graph_item>
-                                <graph_item>
-                                    <sortorder>97</sortorder>
-                                    <drawtype>0</drawtype>
-                                    <color>274482</color>
-                                    <yaxisside>0</yaxisside>
-                                    <calc_fnc>2</calc_fnc>
-                                    <type>0</type>
-                                    <item>
-                                        <host>Template_App_Redis</host>
-                                        <key>redis.stat[cmdstat_set_calls,{#HOST},{#PORT}]</key>
+                                        <key>redis.stat[cmdstat_zincrby_calls,{#HOST},{#PORT}]</key>
                                     </item>
                                 </graph_item>
                             </graph_items>
@@ -15179,4 +14337,19 @@
             <screens/>
         </template>
     </templates>
+    <value_maps>
+        <value_map>
+            <name>Service state</name>
+            <mappings>
+                <mapping>
+                    <value>0</value>
+                    <newvalue>Down</newvalue>
+                </mapping>
+                <mapping>
+                    <value>1</value>
+                    <newvalue>Up</newvalue>
+                </mapping>
+            </mappings>
+        </value_map>
+    </value_maps>
 </zabbix_export>
