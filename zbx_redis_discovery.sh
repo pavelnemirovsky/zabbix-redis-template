@@ -1,12 +1,21 @@
 #!/bin/bash
+DISCOVERY_TYPE=$1
+# USE FIRST ARGUMENT TO UNDERSTAND WHICH DISCOVERY TO PERFORM
+shift
 IFS=$'\n'
 PASSWORDS=( "$@" )
 LIST=$(ps -eo uname,args | grep -v grep | grep redis-server | tr -s [:blank:] ":")
 REDIS_CLI=$(whereis -b redis-cli | cut -d":" -f2 | tr -d [:space:])
 
-echo -n '{"data":['
+if [ "$DISCOVERY_TYPE" == "info" ]; then
+    echo "USAGE: ./zbx_redis_discovery.sh where"
+    echo "general - argument generate report with discovered instances\n"
+    echo "stats - generates report for avalable commands\n"
+    echo "replication - generates report for avalable slaves\n"
+    exit 1
+fi
 
-# PROBE DISCOVERED REDIS INSTACES #
+# PROBE DISCOVERED REDIS INSTACES - TO GET INSTANCE NAME#
 discover_redis_instance() {
     HOST=$1
     PORT=$2
@@ -18,23 +27,80 @@ discover_redis_instance() {
         return 0
     else
         INSTANCE=$($REDIS_CLI -h $HOST -p $PORT -a "$PASSWORD" info | grep config_file | rev | cut -d "/" -f1 | rev | tr -d [:space:] | tr -d ".conf" | tr [:lower:] [:upper:])
+        INSTANCE_RDB_PATH=$($REDIS_CLI -h $HOST -p $PORT -a "$PASSWORD" config get *"dir" | cut -d " " -f2 | sed -n 2p)
+        INSTANCE_RDB_FILE=$($REDIS_CLI -h $HOST -p $PORT -a "$PASSWORD" config get *"dbfilename" | cut -d " " -f2 | sed -n 2p)
+
     fi
 
     echo $INSTANCE
 }
 
+# PROBE DISCOVERED REDIS INSTACES - TO GET RDB DATABASE#
+discover_redis_rdb_database() {
+    HOST=$1
+    PORT=$2
+    PASSWORD=$3
+
+    ALIVE=$($REDIS_CLI -h $HOST -p $PORT -a "$PASSWORD" ping)
+
+    if [[ $ALIVE != "PONG" ]]; then
+        return 0
+    else
+        INSTANCE_RDB_PATH=$($REDIS_CLI -h $HOST -p $PORT -a "$PASSWORD" config get *"dir" | cut -d " " -f2 | sed -n 2p)
+        INSTANCE_RDB_FILE=$($REDIS_CLI -h $HOST -p $PORT -a "$PASSWORD" config get *"dbfilename" | cut -d " " -f2 | sed -n 2p)
+    fi
+
+    echo $INSTANCE_RDB_PATH/$INSTANCE_RDB_FILE
+}
+
+discover_redis_avalable_commands() {
+    HOST=$1
+    PORT=$2
+    PASSWORD=$3
+
+    ALIVE=$($REDIS_CLI -h $HOST -p $PORT -a "$PASSWORD" ping)
+
+    if [[ $ALIVE != "PONG" ]]; then
+        return 0
+    else
+        REDIS_COMMANDS=$($REDIS_CLI -h $HOST -p $PORT -a "$PASSWORD" info all | grep cmdstat | cut -d":" -f1)
+    fi
+    # BASH ARRAY NIGHTMARE - http://notes-matthewlmcclure.blogspot.co.il/2009/12/return-array-from-bash-function-v-2.html
+    declare -p REDIS_COMMANDS | sed -e 's/^declare -- REDIS_COMMANDS="//' | tr -d '"'
+}
+
+discover_redis_avalable_slaves() {
+    return 0
+}
+
 # GENERATE ZABBIX DISCOVERY JSON REPONSE #
-generate_discovery_json() {
+generate_general_discovery_json() {
     HOST=$1
     PORT=$2
     INSTANCE=$3
+    RDB_PATH=$4
 
     echo -n '{'
-    echo -n '"{#PORT}":"'$PORT'",'
     echo -n '"{#HOST}":"'$HOST'",'
-    echo -n '"{#INSTANCE}":"'$INSTANCE'"'
+    echo -n '"{#PORT}":"'$PORT'",'
+    echo -n '"{#INSTANCE}":"'$INSTANCE'",'
+    echo -n '"{#RDB_PATH}":"'$RDB_PATH'"'
     echo -n '},'
 }
+
+# GENERATE ZABBIX DISCOVERY JSON REPONSE #
+generate_commands_discovery_json() {
+    HOST=$1
+    PORT=$2
+    COMMAND=$3
+
+    echo -n '{'
+    echo -n '"{#HOST}":"'$HOST'",'
+    echo -n '"{#PORT}":"'$PORT'",'
+    echo -n '"{#COMMAND}":"'$COMMAND'"'
+    echo -n '},'
+}
+
 
 # GENERATE ALL REPORTS REQUIRED FOR REDIS MONITORING #
 generate_redis_stats_report() {
@@ -48,6 +114,9 @@ generate_redis_stats_report() {
     REDIS_MAX_CLIENTS=$(stdbuf -oL $REDIS_CLI -h $HOST -p $PORT -a "$PASSWORD" config get *"maxclients"* | cut -d " " -f2 | sed -n 2p &> /tmp/redis-$HOST-$PORT-maxclients)
 }
 
+# MAIN LOOP #
+
+echo -n '{"data":['
 for s in $LIST; do
     HOST=$(echo $s | cut -d":" -f3)
     PORT=$(echo $s | cut -d":" -f4)
@@ -58,17 +127,47 @@ for s in $LIST; do
         do
             PASSWORD=${PASSWORDS[$i]}
             INSTANCE=$(discover_redis_instance $HOST $PORT $PASSWORD)
+            RDB_PATH=$(discover_redis_rdb_database $HOST $PORT $PASSWORD)
+            COMMANDS=$(discover_redis_avalable_commands $HOST $PORT $PASSWORD)
+
             if [[ -n $INSTANCE ]]; then
                 generate_redis_stats_report $HOST $PORT $PASSWORD
-                generate_discovery_json $HOST $PORT $INSTANCE
+
+                # DECIDE WHICH REPORT TO GENERATE FOR DISCOVERY
+                if [[ $DISCOVERY_TYPE == "general" ]]; then
+                    generate_general_discovery_json $HOST $PORT $INSTANCE $RDB_PATH
+                elif [[ $DISCOVERY_TYPE == "stats" ]]; then
+                    for COMMAND in ${COMMANDS}; do
+                        generate_commands_discovery_json $HOST $PORT $COMMAND
+                    done
+                elif [[ $DISCOVERY_TYPE == "replication" ]]; then
+                    echo "replication"
+                else
+                    echo "Do nothing"
+                fi
+
                 break
             fi
         done
     else
         INSTANCE=$(discover_redis_instance $HOST $PORT "")
+        RDB_PATH=$(discover_redis_rdb_database $HOST $PORT $PASSWORD "")
         if [[ -n $INSTANCE ]]; then
             generate_redis_stats_report $HOST $PORT ""
-            generate_discovery_json $HOST $PORT $INSTANCE
+
+            # DECIDE WHICH REPORT TO GENERATE FOR DISCOVERY
+            if [[ $DISCOVERY_TYPE == "general" ]]; then
+                generate_general_discovery_json $HOST $PORT $INSTANCE $RDB_PATH
+            elif [[ $DISCOVERY_TYPE == "stats" ]]; then
+                for COMMAND in ${COMMANDS}; do
+                    generate_commands_discovery_json $HOST $PORT $COMMAND
+                done
+            elif [[ $DISCOVERY_TYPE == "replication" ]]; then
+                echo "replication"
+            else
+                echo "Do nothing"
+            fi
+
         fi
     fi
     unset

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
     <version>3.2</version>
-    <date>2016-12-06T21:18:45Z</date>
+    <date>2016-12-10T20:26:16Z</date>
     <groups>
         <group>
             <name>Templates</name>
@@ -22,11 +22,11 @@
             <discovery_rules>
                 <discovery_rule>
                     <name>Discover Redis Instances</name>
-                    <type>0</type>
+                    <type>7</type>
                     <snmp_community/>
                     <snmp_oid/>
                     <key>redis.discovery[{$REDIS_PASSWORDS}]</key>
-                    <delay>30</delay>
+                    <delay>60</delay>
                     <status>0</status>
                     <allowed_hosts/>
                     <snmpv3_contextname/>
@@ -55,7 +55,7 @@
                     <item_prototypes>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - General: Redis is running</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -101,7 +101,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - Clients: Max Allowed Clients</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -145,7 +145,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - Slow Logs Events Count</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -189,7 +189,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - Slow Logs Events Details</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -233,7 +233,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - Clients: Blocked Clients</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -277,7 +277,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - Keys: Changes Since Last Save</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -321,7 +321,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - Clients: Client Biggest Input Buffer</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -365,7 +365,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - Clients: Client Longest Output List</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -409,7 +409,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -453,7 +453,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -497,7 +497,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -541,7 +541,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -585,7 +585,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -629,7 +629,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -673,7 +673,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -717,7 +717,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -761,7 +761,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -805,7 +805,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -849,7 +849,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -893,7 +893,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -937,7 +937,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -981,7 +981,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -1025,7 +1025,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -1069,7 +1069,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -1113,7 +1113,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -1157,7 +1157,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -1201,7 +1201,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -1245,7 +1245,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -1289,7 +1289,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -1333,7 +1333,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -1377,7 +1377,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -1421,7 +1421,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -1465,7 +1465,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -1509,7 +1509,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -1553,7 +1553,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -1597,7 +1597,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -1641,7 +1641,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -1685,7 +1685,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -1729,7 +1729,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -1773,7 +1773,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -1817,7 +1817,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -1861,7 +1861,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -1905,7 +1905,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -1949,7 +1949,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -1993,7 +1993,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -2037,7 +2037,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -2081,7 +2081,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -2125,7 +2125,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -2169,7 +2169,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -2213,7 +2213,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -2257,7 +2257,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -2301,7 +2301,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -2345,7 +2345,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -2389,7 +2389,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -2433,7 +2433,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -2477,7 +2477,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -2521,7 +2521,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -2565,7 +2565,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -2609,7 +2609,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -2653,7 +2653,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -2697,7 +2697,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -2741,7 +2741,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -2785,7 +2785,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -2829,7 +2829,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -2873,7 +2873,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -2917,7 +2917,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -2961,7 +2961,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -3005,7 +3005,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -3049,7 +3049,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -3093,7 +3093,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -3137,7 +3137,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -3181,7 +3181,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -3225,7 +3225,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -3269,7 +3269,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -3313,7 +3313,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -3357,7 +3357,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -3401,7 +3401,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -3445,7 +3445,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -3489,7 +3489,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -3533,7 +3533,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -3577,7 +3577,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -3621,7 +3621,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -3665,7 +3665,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -3709,7 +3709,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -3753,7 +3753,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -3797,7 +3797,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -3841,7 +3841,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -3885,7 +3885,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -3929,7 +3929,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -3973,7 +3973,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -4017,7 +4017,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -4061,7 +4061,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -4105,7 +4105,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -4149,7 +4149,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -4193,7 +4193,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -4237,7 +4237,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -4281,7 +4281,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -4325,7 +4325,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -4369,7 +4369,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -4413,7 +4413,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -4457,7 +4457,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -4501,7 +4501,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -4545,7 +4545,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -4589,7 +4589,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -4633,7 +4633,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -4677,7 +4677,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -4721,7 +4721,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -4765,7 +4765,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -4809,7 +4809,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -4853,7 +4853,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -4897,7 +4897,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -4941,7 +4941,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -4985,7 +4985,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -5029,7 +5029,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -5073,7 +5073,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -5117,7 +5117,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -5161,7 +5161,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -5205,7 +5205,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -5249,7 +5249,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -5293,7 +5293,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -5337,7 +5337,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -5381,7 +5381,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -5425,7 +5425,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -5469,7 +5469,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -5513,7 +5513,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -5557,7 +5557,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -5601,7 +5601,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -5645,7 +5645,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -5689,7 +5689,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -5733,7 +5733,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -5777,7 +5777,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -5821,7 +5821,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -5865,7 +5865,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -5909,7 +5909,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -5953,7 +5953,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -5997,7 +5997,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -6041,7 +6041,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -6085,7 +6085,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -6129,7 +6129,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -6173,7 +6173,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -6217,7 +6217,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -6261,7 +6261,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -6305,7 +6305,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -6349,7 +6349,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -6393,7 +6393,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -6437,7 +6437,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -6481,7 +6481,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -6525,7 +6525,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -6569,7 +6569,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -6613,7 +6613,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -6657,7 +6657,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -6701,7 +6701,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -6745,7 +6745,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -6789,7 +6789,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -6833,7 +6833,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -6877,7 +6877,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -6921,7 +6921,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -6965,7 +6965,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -7009,7 +7009,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -7053,7 +7053,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -7097,7 +7097,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -7141,7 +7141,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -7185,7 +7185,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -7229,7 +7229,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -7273,7 +7273,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -7317,7 +7317,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -7361,7 +7361,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -7405,7 +7405,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -7449,7 +7449,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -7493,7 +7493,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -7537,7 +7537,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -7581,7 +7581,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -7625,7 +7625,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -7669,7 +7669,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -7713,7 +7713,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -7757,7 +7757,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -7801,7 +7801,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -7845,7 +7845,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -7889,7 +7889,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -7933,7 +7933,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -7977,7 +7977,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -8021,7 +8021,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -8065,7 +8065,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -8109,7 +8109,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -8153,7 +8153,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -8197,7 +8197,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -8241,7 +8241,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -8285,7 +8285,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -8329,7 +8329,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -8373,7 +8373,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -8417,7 +8417,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -8461,7 +8461,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -8505,7 +8505,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -8549,7 +8549,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -8593,7 +8593,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -8637,7 +8637,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -8681,7 +8681,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -8725,7 +8725,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -8769,7 +8769,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -8813,7 +8813,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -8857,7 +8857,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -8901,7 +8901,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -8945,7 +8945,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -8989,7 +8989,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -9033,7 +9033,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -9077,7 +9077,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -9121,7 +9121,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -9165,7 +9165,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -9209,7 +9209,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -9253,7 +9253,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -9297,7 +9297,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -9341,7 +9341,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -9385,7 +9385,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -9429,7 +9429,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -9473,7 +9473,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -9517,7 +9517,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -9561,7 +9561,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -9605,7 +9605,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -9649,7 +9649,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -9693,7 +9693,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -9737,7 +9737,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -9781,7 +9781,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -9825,7 +9825,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -9869,7 +9869,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -9913,7 +9913,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -9957,7 +9957,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -10001,7 +10001,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -10045,7 +10045,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -10089,7 +10089,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -10133,7 +10133,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -10177,7 +10177,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -10221,7 +10221,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -10265,7 +10265,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -10309,7 +10309,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -10353,7 +10353,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -10397,7 +10397,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -10441,7 +10441,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -10485,7 +10485,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -10529,7 +10529,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -10573,7 +10573,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -10617,7 +10617,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -10661,7 +10661,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -10705,7 +10705,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -10749,7 +10749,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -10793,7 +10793,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -10837,7 +10837,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -10881,7 +10881,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -10925,7 +10925,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -10969,7 +10969,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -11013,7 +11013,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -11057,7 +11057,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -11101,7 +11101,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -11145,7 +11145,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -11189,7 +11189,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -11233,7 +11233,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -11277,7 +11277,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -11321,7 +11321,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -11365,7 +11365,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -11409,7 +11409,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -11453,7 +11453,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -11497,7 +11497,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -11541,7 +11541,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -11585,7 +11585,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -11629,7 +11629,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -11673,7 +11673,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -11717,7 +11717,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -11761,7 +11761,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -11805,7 +11805,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -11849,7 +11849,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -11893,7 +11893,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -11937,7 +11937,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -11981,7 +11981,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -12025,7 +12025,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -12069,7 +12069,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -12113,7 +12113,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -12157,7 +12157,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -12201,7 +12201,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -12245,7 +12245,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -12289,7 +12289,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -12333,7 +12333,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -12377,7 +12377,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -12421,7 +12421,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -12465,7 +12465,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -12509,7 +12509,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - &quot;$1&quot;</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -12553,7 +12553,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - Clients: Connected Clients</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -12597,7 +12597,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - Clients: Connected Slaves</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -12641,7 +12641,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - Keys: Total Expired</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -12685,7 +12685,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - Keys: Total</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -12729,7 +12729,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - Keys: Evicted Keys</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -12773,7 +12773,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - Keys: Expired Keys</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -12817,7 +12817,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - Keys: Keyspace Hits</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -12861,7 +12861,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - Keys: Keyspace Misses</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -12905,7 +12905,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - Slave: Redis Server Master host</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -12949,7 +12949,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - Slave: Redis Server Master last io seconds ago</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -12993,7 +12993,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - Slave: Redis Server Master status</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -13037,7 +13037,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - Slave: Redis Server Master port</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -13081,7 +13081,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - Memory: $1</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -13125,7 +13125,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - Disk Flush: RDB BGSAVE In Progress</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -13169,7 +13169,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - Keys: redis_version</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -13213,7 +13213,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - General: Redis Server Role</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -13257,7 +13257,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - Master: Redis Server Slave0 information</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -13301,7 +13301,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - Master: Redis Server Slave0 IP</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -13345,7 +13345,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - Master: Redis Server Slave0 Port</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -13389,7 +13389,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - Master: Redis Server Slave0 Status</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -13433,7 +13433,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - Master: Redis Server Slave1 information</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -13477,7 +13477,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - Master: Redis Server Slave2 information</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -13521,7 +13521,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - General: Commands/sec</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -13565,7 +13565,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - Clients: Connections/sec</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -13609,7 +13609,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - CPU: Used CPU Sys</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -13653,7 +13653,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - Clients: Used CPU Sys Childrens</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -13697,7 +13697,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - CPU: Used CPU User</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -13741,7 +13741,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - Clients: Used CPU User Childrens</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -13785,7 +13785,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - Memory: $1</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -13829,7 +13829,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - Memory: $1</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -13873,7 +13873,7 @@
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - DB Size on DISK</name>
-                            <type>0</type>
+                            <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
@@ -13942,7 +13942,7 @@
                                     <color>F63100</color>
                                     <yaxisside>0</yaxisside>
                                     <calc_fnc>2</calc_fnc>
-                                    <type>0</type>
+                                    <type>7</type>
                                     <item>
                                         <host>Template_App_Redis</host>
                                         <key>redis.stat[cmdstat_del_calls,{#HOST},{#PORT}]</key>
@@ -13954,7 +13954,7 @@
                                     <color>2774A4</color>
                                     <yaxisside>0</yaxisside>
                                     <calc_fnc>2</calc_fnc>
-                                    <type>0</type>
+                                    <type>7</type>
                                     <item>
                                         <host>Template_App_Redis</host>
                                         <key>redis.stat[cmdstat_exists_calls,{#HOST},{#PORT}]</key>
@@ -13966,7 +13966,7 @@
                                     <color>A54F10</color>
                                     <yaxisside>0</yaxisside>
                                     <calc_fnc>2</calc_fnc>
-                                    <type>0</type>
+                                    <type>7</type>
                                     <item>
                                         <host>Template_App_Redis</host>
                                         <key>redis.stat[cmdstat_expire_calls,{#HOST},{#PORT}]</key>
@@ -13978,7 +13978,7 @@
                                     <color>FC6EA3</color>
                                     <yaxisside>0</yaxisside>
                                     <calc_fnc>2</calc_fnc>
-                                    <type>0</type>
+                                    <type>7</type>
                                     <item>
                                         <host>Template_App_Redis</host>
                                         <key>redis.stat[cmdstat_getbit_calls,{#HOST},{#PORT}]</key>
@@ -13990,7 +13990,7 @@
                                     <color>6C59DC</color>
                                     <yaxisside>0</yaxisside>
                                     <calc_fnc>2</calc_fnc>
-                                    <type>0</type>
+                                    <type>7</type>
                                     <item>
                                         <host>Template_App_Redis</host>
                                         <key>redis.stat[cmdstat_getrange_calls,{#HOST},{#PORT}]</key>
@@ -14002,7 +14002,7 @@
                                     <color>AC8C14</color>
                                     <yaxisside>0</yaxisside>
                                     <calc_fnc>2</calc_fnc>
-                                    <type>0</type>
+                                    <type>7</type>
                                     <item>
                                         <host>Template_App_Redis</host>
                                         <key>redis.stat[cmdstat_getset_calls,{#HOST},{#PORT}]</key>
@@ -14014,7 +14014,7 @@
                                     <color>611F27</color>
                                     <yaxisside>0</yaxisside>
                                     <calc_fnc>2</calc_fnc>
-                                    <type>0</type>
+                                    <type>7</type>
                                     <item>
                                         <host>Template_App_Redis</host>
                                         <key>redis.stat[cmdstat_get_calls,{#HOST},{#PORT}]</key>
@@ -14026,7 +14026,7 @@
                                     <color>F230E0</color>
                                     <yaxisside>0</yaxisside>
                                     <calc_fnc>2</calc_fnc>
-                                    <type>0</type>
+                                    <type>7</type>
                                     <item>
                                         <host>Template_App_Redis</host>
                                         <key>redis.stat[cmdstat_hdel_calls,{#HOST},{#PORT}]</key>
@@ -14038,7 +14038,7 @@
                                     <color>5CCD18</color>
                                     <yaxisside>0</yaxisside>
                                     <calc_fnc>2</calc_fnc>
-                                    <type>0</type>
+                                    <type>7</type>
                                     <item>
                                         <host>Template_App_Redis</host>
                                         <key>redis.stat[cmdstat_hgetall_calls,{#HOST},{#PORT}]</key>
@@ -14050,7 +14050,7 @@
                                     <color>BB2A02</color>
                                     <yaxisside>0</yaxisside>
                                     <calc_fnc>2</calc_fnc>
-                                    <type>0</type>
+                                    <type>7</type>
                                     <item>
                                         <host>Template_App_Redis</host>
                                         <key>redis.stat[cmdstat_hget_calls,{#HOST},{#PORT}]</key>
@@ -14062,7 +14062,7 @@
                                     <color>5A2B57</color>
                                     <yaxisside>0</yaxisside>
                                     <calc_fnc>2</calc_fnc>
-                                    <type>0</type>
+                                    <type>7</type>
                                     <item>
                                         <host>Template_App_Redis</host>
                                         <key>redis.stat[cmdstat_hincrbyfloat_calls,{#HOST},{#PORT}]</key>
@@ -14074,7 +14074,7 @@
                                     <color>89ABF8</color>
                                     <yaxisside>0</yaxisside>
                                     <calc_fnc>2</calc_fnc>
-                                    <type>0</type>
+                                    <type>7</type>
                                     <item>
                                         <host>Template_App_Redis</host>
                                         <key>redis.stat[cmdstat_hincrby_calls,{#HOST},{#PORT}]</key>
@@ -14086,7 +14086,7 @@
                                     <color>7EC25C</color>
                                     <yaxisside>0</yaxisside>
                                     <calc_fnc>2</calc_fnc>
-                                    <type>0</type>
+                                    <type>7</type>
                                     <item>
                                         <host>Template_App_Redis</host>
                                         <key>redis.stat[cmdstat_hkeys_calls,{#HOST},{#PORT}]</key>
@@ -14098,7 +14098,7 @@
                                     <color>274482</color>
                                     <yaxisside>0</yaxisside>
                                     <calc_fnc>2</calc_fnc>
-                                    <type>0</type>
+                                    <type>7</type>
                                     <item>
                                         <host>Template_App_Redis</host>
                                         <key>redis.stat[cmdstat_hlen_calls,{#HOST},{#PORT}]</key>
@@ -14110,7 +14110,7 @@
                                     <color>2B5429</color>
                                     <yaxisside>0</yaxisside>
                                     <calc_fnc>2</calc_fnc>
-                                    <type>0</type>
+                                    <type>7</type>
                                     <item>
                                         <host>Template_App_Redis</host>
                                         <key>redis.stat[cmdstat_hmget_calls,{#HOST},{#PORT}]</key>
@@ -14122,7 +14122,7 @@
                                     <color>8048B4</color>
                                     <yaxisside>0</yaxisside>
                                     <calc_fnc>2</calc_fnc>
-                                    <type>0</type>
+                                    <type>7</type>
                                     <item>
                                         <host>Template_App_Redis</host>
                                         <key>redis.stat[cmdstat_hmset_calls,{#HOST},{#PORT}]</key>
@@ -14134,7 +14134,7 @@
                                     <color>FD5434</color>
                                     <yaxisside>0</yaxisside>
                                     <calc_fnc>2</calc_fnc>
-                                    <type>0</type>
+                                    <type>7</type>
                                     <item>
                                         <host>Template_App_Redis</host>
                                         <key>redis.stat[cmdstat_hsetnx_calls,{#HOST},{#PORT}]</key>
@@ -14146,7 +14146,7 @@
                                     <color>790E1F</color>
                                     <yaxisside>0</yaxisside>
                                     <calc_fnc>2</calc_fnc>
-                                    <type>0</type>
+                                    <type>7</type>
                                     <item>
                                         <host>Template_App_Redis</host>
                                         <key>redis.stat[cmdstat_hset_calls,{#HOST},{#PORT}]</key>
@@ -14158,7 +14158,7 @@
                                     <color>87AC4D</color>
                                     <yaxisside>0</yaxisside>
                                     <calc_fnc>2</calc_fnc>
-                                    <type>0</type>
+                                    <type>7</type>
                                     <item>
                                         <host>Template_App_Redis</host>
                                         <key>redis.stat[cmdstat_incrbyfloat_calls,{#HOST},{#PORT}]</key>
@@ -14170,7 +14170,7 @@
                                     <color>E89DF4</color>
                                     <yaxisside>0</yaxisside>
                                     <calc_fnc>2</calc_fnc>
-                                    <type>0</type>
+                                    <type>7</type>
                                     <item>
                                         <host>Template_App_Redis</host>
                                         <key>redis.stat[cmdstat_incrby_calls,{#HOST},{#PORT}]</key>
@@ -14182,7 +14182,7 @@
                                     <color>1A7C11</color>
                                     <yaxisside>0</yaxisside>
                                     <calc_fnc>2</calc_fnc>
-                                    <type>0</type>
+                                    <type>7</type>
                                     <item>
                                         <host>Template_App_Redis</host>
                                         <key>redis.stat[cmdstat_incr_calls,{#HOST},{#PORT}]</key>
@@ -14194,7 +14194,7 @@
                                     <color>F63100</color>
                                     <yaxisside>0</yaxisside>
                                     <calc_fnc>2</calc_fnc>
-                                    <type>0</type>
+                                    <type>7</type>
                                     <item>
                                         <host>Template_App_Redis</host>
                                         <key>redis.stat[cmdstat_info_calls,{#HOST},{#PORT}]</key>
@@ -14206,7 +14206,7 @@
                                     <color>2774A4</color>
                                     <yaxisside>0</yaxisside>
                                     <calc_fnc>2</calc_fnc>
-                                    <type>0</type>
+                                    <type>7</type>
                                     <item>
                                         <host>Template_App_Redis</host>
                                         <key>redis.stat[cmdstat_mget_calls,{#HOST},{#PORT}]</key>
@@ -14218,7 +14218,7 @@
                                     <color>A54F10</color>
                                     <yaxisside>0</yaxisside>
                                     <calc_fnc>2</calc_fnc>
-                                    <type>0</type>
+                                    <type>7</type>
                                     <item>
                                         <host>Template_App_Redis</host>
                                         <key>redis.stat[cmdstat_zincrby_calls,{#HOST},{#PORT}]</key>
@@ -14234,7 +14234,7 @@
                             <yaxismax>100.0000</yaxismax>
                             <show_work_period>1</show_work_period>
                             <show_triggers>1</show_triggers>
-                            <type>0</type>
+                            <type>7</type>
                             <show_legend>1</show_legend>
                             <show_3d>0</show_3d>
                             <percent_left>0.0000</percent_left>
@@ -14250,7 +14250,7 @@
                                     <color>6666FF</color>
                                     <yaxisside>0</yaxisside>
                                     <calc_fnc>2</calc_fnc>
-                                    <type>0</type>
+                                    <type>7</type>
                                     <item>
                                         <host>Template_App_Redis</host>
                                         <key>redis.stat[total_commands_processed,{#HOST},{#PORT}]</key>
@@ -14266,7 +14266,7 @@
                             <yaxismax>100.0000</yaxismax>
                             <show_work_period>1</show_work_period>
                             <show_triggers>1</show_triggers>
-                            <type>0</type>
+                            <type>7</type>
                             <show_legend>1</show_legend>
                             <show_3d>0</show_3d>
                             <percent_left>0.0000</percent_left>
@@ -14282,7 +14282,7 @@
                                     <color>00BB00</color>
                                     <yaxisside>0</yaxisside>
                                     <calc_fnc>2</calc_fnc>
-                                    <type>0</type>
+                                    <type>7</type>
                                     <item>
                                         <host>Template_App_Redis</host>
                                         <key>redis.stat[connected_clients,{#HOST},{#PORT}]</key>
@@ -14298,7 +14298,7 @@
                             <yaxismax>100.0000</yaxismax>
                             <show_work_period>1</show_work_period>
                             <show_triggers>1</show_triggers>
-                            <type>0</type>
+                            <type>7</type>
                             <show_legend>1</show_legend>
                             <show_3d>0</show_3d>
                             <percent_left>0.0000</percent_left>
@@ -14314,7 +14314,7 @@
                                     <color>00DDDD</color>
                                     <yaxisside>0</yaxisside>
                                     <calc_fnc>2</calc_fnc>
-                                    <type>0</type>
+                                    <type>7</type>
                                     <item>
                                         <host>Template_App_Redis</host>
                                         <key>redis.stat[total_connections_received,{#HOST},{#PORT}]</key>
