@@ -65,12 +65,24 @@ discover_redis_avalable_commands() {
     else
         REDIS_COMMANDS=$($REDIS_CLI -h $HOST -p $PORT -a "$PASSWORD" info all | grep cmdstat | cut -d":" -f1)
     fi
-    # BASH ARRAY NIGHTMARE - http://notes-matthewlmcclure.blogspot.co.il/2009/12/return-array-from-bash-function-v-2.html
-    declare -p REDIS_COMMANDS | sed -e 's/^declare -- REDIS_COMMANDS="//' | tr -d '"'
+
+    ( IFS=$'\n'; echo "${REDIS_COMMANDS[*]}" )
 }
 
 discover_redis_avalable_slaves() {
-    return 0
+    HOST=$1
+    PORT=$2
+    PASSWORD=$3
+
+    ALIVE=$($REDIS_CLI -h $HOST -p $PORT -a "$PASSWORD" ping)
+
+    if [[ $ALIVE != "PONG" ]]; then
+        return 0
+    else
+        REDIS_SLAVES=$($REDIS_CLI -h $HOST -p $PORT -a "$PASSWORD" info all | grep ^slave | cut -d ":" -f1 | grep [0-1024])
+    fi
+
+    ( IFS=$'\n'; echo "${REDIS_SLAVES[*]}" )
 }
 
 # GENERATE ZABBIX DISCOVERY JSON REPONSE #
@@ -101,6 +113,19 @@ generate_commands_discovery_json() {
     echo -n '},'
 }
 
+# GENERATE ZABBIX DISCOVERY JSON REPONSE #
+generate_replication_discovery_json() {
+    HOST=$1
+    PORT=$2
+    SLAVE=$3
+
+    echo -n '{'
+    echo -n '"{#HOST}":"'$HOST'",'
+    echo -n '"{#PORT}":"'$PORT'",'
+    echo -n '"{#SLAVE}":"'$SLAVE'"'
+    echo -n '},'
+}
+
 
 # GENERATE ALL REPORTS REQUIRED FOR REDIS MONITORING #
 generate_redis_stats_report() {
@@ -108,7 +133,7 @@ generate_redis_stats_report() {
     PORT=$2
     PASSWORD=$3
 
-    REDIS_REPORT=$(stdbuf -oL $REDIS_CLI -h $HOST -p $PORT -a "$PASSWORD" info all | sed 's/\(cmdstat_.*:\)\(.*,\)\(.*,\)\(.*$\)/\1_\2\n\r\1_\3\n\r\1_\4/' | sed 's/\(db0.*:\)\(.*,\)\(.*,\)\(.*$\)/\1_\2\n\r\1_\3\n\r\1_\4/' | sed 's/\(slave.*:\)\(.*,\)\(.*,\)\(.*$\)/\1_ip=\2\n\r\1_port=\3\n\r\1_status=\4/' | sed 's/:_/_/g' | sed 's/,//g' | sed 's/=/:/g' &> /tmp/redis-$HOST-$PORT)
+    REDIS_REPORT=$(stdbuf -oL $REDIS_CLI -h $HOST -p $PORT -a "$PASSWORD" info all &> /tmp/redis-$HOST-$PORT)
     REDIS_SLOWLOG_LEN=$(stdbuf -oL $REDIS_CLI -h $HOST -p $PORT -a "$PASSWORD" slowlog len | cut -d " " -f2 &> /tmp/redis-$HOST-$PORT-slowlog-len; $REDIS_CLI -h $HOST -p $PORT -a $PASSWORD slowlog reset > /dev/null  )
     REDIS_SLOWLOG_RAW=$(stdbuf -oL $REDIS_CLI -h $HOST -p $PORT -a "$PASSWORD" slowlog get &> /tmp/redis-$HOST-$PORT-slowlog-raw)
     REDIS_MAX_CLIENTS=$(stdbuf -oL $REDIS_CLI -h $HOST -p $PORT -a "$PASSWORD" config get *"maxclients"* | cut -d " " -f2 | sed -n 2p &> /tmp/redis-$HOST-$PORT-maxclients)
@@ -129,6 +154,7 @@ for s in $LIST; do
             INSTANCE=$(discover_redis_instance $HOST $PORT $PASSWORD)
             RDB_PATH=$(discover_redis_rdb_database $HOST $PORT $PASSWORD)
             COMMANDS=$(discover_redis_avalable_commands $HOST $PORT $PASSWORD)
+            SLAVES=$(discover_redis_avalable_slaves $HOST $PORT $PASSWORD)
 
             if [[ -n $INSTANCE ]]; then
                 generate_redis_stats_report $HOST $PORT $PASSWORD
@@ -138,12 +164,14 @@ for s in $LIST; do
                     generate_general_discovery_json $HOST $PORT $INSTANCE $RDB_PATH
                 elif [[ $DISCOVERY_TYPE == "stats" ]]; then
                     for COMMAND in ${COMMANDS}; do
-                        generate_commands_discovery_json $HOST $PORT $COMMAND
+                        generate_replication_discovery_json $HOST $PORT $COMMAND
                     done
                 elif [[ $DISCOVERY_TYPE == "replication" ]]; then
-                    echo "replication"
+                    for SLAVE in ${SLAVES}; do
+                        generate_replication_discovery_json $HOST $PORT $SLAVE
+                    done
                 else
-                    echo "Do nothing"
+                    echo "Smooking :)"
                 fi
 
                 break
@@ -152,6 +180,8 @@ for s in $LIST; do
     else
         INSTANCE=$(discover_redis_instance $HOST $PORT "")
         RDB_PATH=$(discover_redis_rdb_database $HOST $PORT $PASSWORD "")
+        SLAVES=$(discover_redis_avalable_slaves $HOST $PORT $PASSWORD)
+
         if [[ -n $INSTANCE ]]; then
             generate_redis_stats_report $HOST $PORT ""
 
@@ -160,12 +190,14 @@ for s in $LIST; do
                 generate_general_discovery_json $HOST $PORT $INSTANCE $RDB_PATH
             elif [[ $DISCOVERY_TYPE == "stats" ]]; then
                 for COMMAND in ${COMMANDS}; do
-                    generate_commands_discovery_json $HOST $PORT $COMMAND
+                    generate_replication_discovery_json $HOST $PORT $COMMAND
                 done
             elif [[ $DISCOVERY_TYPE == "replication" ]]; then
-                echo "replication"
+                for SLAVE in ${SLAVES}; do
+                    generate_replication_discovery_json $HOST $PORT $SLAVE
+                done
             else
-                echo "Do nothing"
+                echo "Smooking :)"
             fi
 
         fi
