@@ -105,11 +105,13 @@ generate_commands_discovery_json() {
     HOST=$1
     PORT=$2
     COMMAND=$3
+    INSTANCE=$4
 
     echo -n '{'
     echo -n '"{#HOST}":"'$HOST'",'
     echo -n '"{#PORT}":"'$PORT'",'
-    echo -n '"{#COMMAND}":"'$COMMAND'"'
+    echo -n '"{#COMMAND}":"'$COMMAND'",'
+    echo -n '"{#INSTANCE}":"'$INSTANCE'"'
     echo -n '},'
 }
 
@@ -118,11 +120,13 @@ generate_replication_discovery_json() {
     HOST=$1
     PORT=$2
     SLAVE=$3
+    INSTANCE=$4
 
     echo -n '{'
     echo -n '"{#HOST}":"'$HOST'",'
     echo -n '"{#PORT}":"'$PORT'",'
-    echo -n '"{#SLAVE}":"'$SLAVE'"'
+    echo -n '"{#SLAVE}":"'$SLAVE'",'
+    echo -n '"{#INSTANCE}":"'$INSTANCE'"'
     echo -n '},'
 }
 
@@ -157,18 +161,18 @@ for s in $LIST; do
             SLAVES=$(discover_redis_avalable_slaves $HOST $PORT $PASSWORD)
 
             if [[ -n $INSTANCE ]]; then
-                generate_redis_stats_report $HOST $PORT $PASSWORD
 
                 # DECIDE WHICH REPORT TO GENERATE FOR DISCOVERY
                 if [[ $DISCOVERY_TYPE == "general" ]]; then
+                    generate_redis_stats_report $HOST $PORT $PASSWORD
                     generate_general_discovery_json $HOST $PORT $INSTANCE $RDB_PATH
                 elif [[ $DISCOVERY_TYPE == "stats" ]]; then
                     for COMMAND in ${COMMANDS}; do
-                        generate_replication_discovery_json $HOST $PORT $COMMAND
+                        generate_commands_discovery_json $HOST $PORT $COMMAND $INSTANCE
                     done
                 elif [[ $DISCOVERY_TYPE == "replication" ]]; then
                     for SLAVE in ${SLAVES}; do
-                        generate_replication_discovery_json $HOST $PORT $SLAVE
+                        generate_replication_discovery_json $HOST $PORT $SLAVE $INSTANCE
                     done
                 else
                     echo "Smooking :)"
@@ -183,18 +187,18 @@ for s in $LIST; do
         SLAVES=$(discover_redis_avalable_slaves $HOST $PORT $PASSWORD)
 
         if [[ -n $INSTANCE ]]; then
-            generate_redis_stats_report $HOST $PORT ""
 
             # DECIDE WHICH REPORT TO GENERATE FOR DISCOVERY
             if [[ $DISCOVERY_TYPE == "general" ]]; then
+                generate_redis_stats_report $HOST $PORT ""
                 generate_general_discovery_json $HOST $PORT $INSTANCE $RDB_PATH
             elif [[ $DISCOVERY_TYPE == "stats" ]]; then
                 for COMMAND in ${COMMANDS}; do
-                    generate_replication_discovery_json $HOST $PORT $COMMAND
+                    generate_commands_discovery_json $HOST $PORT $COMMAND $INSTANCE
                 done
             elif [[ $DISCOVERY_TYPE == "replication" ]]; then
                 for SLAVE in ${SLAVES}; do
-                    generate_replication_discovery_json $HOST $PORT $SLAVE
+                    generate_replication_discovery_json $HOST $PORT $SLAVE $INSTANCE
                 done
             else
                 echo "Smooking :)"
