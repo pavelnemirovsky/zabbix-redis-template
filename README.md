@@ -11,7 +11,7 @@
 - [Important](#important)
 - [Plans](#plans)
 - [Discovery Flow ](#Discovery with Statistics Report Flow)
-- [Discovery Examples ](#Example Instance Discovery)
+- [Discovery Examples ](#example instance discovery)
 
 ## Features
   - Ability to discovery multiple Redis instances running on same host
