@@ -22,7 +22,7 @@
   - Make sure your redis-server configuration file ends by "*.conf" otherwise INSTANCE name won't be discovered
 
 ## Plans
-  - Keep pushing on Zabbix R&D to let create graphs with multiple prototype items, meanwhile use ![Zabbix Grafana](https://github.com/alexanderzobnin/grafana-zabbix) 
+  - Keep pushing on Zabbix R&D to let create graphs with multiple prototype items, meanwhile use [Zabbix Grafana](https://github.com/alexanderzobnin/grafana-zabbix) 
 
 Discovery with Statistics Report Flow
 ===========================
