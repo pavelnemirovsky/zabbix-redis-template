@@ -10,8 +10,8 @@
 - [Installation](#installation)
 - [Important](#important)
 - [Plans](#plans)
-- [Discovery Flow ](#Discovery with Statistics Report Flow)
-- [Discovery Examples ](#example instance discovery)
+- [Discovery Flow ](#example-instance-discovery)
+- [Discovery Examples ](#example-commands-stats-discovery)
 
 ## Features
   - Ability to discovery multiple Redis instances running on same host
