@@ -1,28 +1,36 @@
 # Redis Template for Zabbix
 
+<img width="800" alt="Redis General View" src="https://github.com/pavelnemirovsky/zabbix-redis-template/blob/master/images/redis_general.png?raw=true">
+
+<img width="800" alt="Dashboard" src="https://github.com/pavelnemirovsky/zabbix-redis-template/blob/master/images/redis_command.png?raw=true">
+
+
 ## Table of Contents
-- [Description ](#description)
 - [Features](#features)
 - [Installation](#installation)
-- [Plans](#todo)
+- [Important](#important)
+- [Plans](#plans)
 - [Discovery Flow ](#Discovery with Statistics Report Flow)
 - [Discovery Examples ](#Example Instance Discovery)
 
 ## Features
-  - Ability to discovery multiple redis instances running on same host
-  - Generate automatically a zabbix screen for redis commands are currently in use only!
-  - Screens are included in scope of provided template
-  - Triggers identify command anomaly and instance crash
+  - Ability to discovery multiple Redis instances running on same host
+  - Generate automatically a zabbix screen for general overview and Redis commands are currently in use only!
+  - Triggers identify command anomaly (not done yet) and instance crash
 
 ## Installation
   - Import zbx_export_templates.xml into your Zabbix
   - Place zbx_redis_discovery.sh under **/usr/bin/zbx_redis_discovery.sh**
   - Place template userparameters under **/etc/zabbix/zabbix_agentd.d/** or other place according your installation
   - Restart your zabbix agent where all above were placed
-  - Make sure your redis-server configuration file ends by "*.conf" otherwise INSTANCE name won't be discovered
+
+## Important
+  - Make sure your redis-server configuration file ends with **.conf** otherwise INSTANCE name won't be discovered
+  - Discovery produce stats files from where template gathers stats per 1 min basis, so important to leave discovery rules to run with short interval only. (current template do that each 1 min)
+  - You don't have to worry about discovery process to update all items per 1 min basic, actually Zabbix Server use its own cache and perform DB update only when there is a new item appears.
 
 ## Plans
-  - Keep pushing on Zabbix R&D to let create graphs with multiple prototype items, meanwhile use [Zabbix Grafana](https://github.com/alexanderzobnin/grafana-zabbix) 
+  - Keep pushing on Zabbix R&D to let create graphs with multiple prototype items, meanwhile use [Zabbix Grafana](https://github.com/alexanderzobnin/grafana-zabbix)
 
 Discovery with Statistics Report Flow
 ===========================
