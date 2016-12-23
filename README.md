@@ -1,12 +1,38 @@
-Discovery sequence flow:
+# Redis Template for Zabbix
+
+## Table of Contents
+- [Description ](#description)
+- [Features](#features)
+- [Installation](#installation)
+- [Plans](#todo)
+- [Discovery Flow ](#Discovery with Statistics Report Flow)
+- [Discovery Examples ](#Example Instance Discovery)
+
+## Features
+  - Ability to discovery multiple redis instances running on same host
+  - Generate automatically a zabbix screen for redis commands are currently in use only!
+  - Screens are included in scope of provided template
+  - Triggers identify command anomaly and instance crash
+
+## Installation
+  - Import zbx_export_templates.xml into your Zabbix
+  - Place zbx_redis_discovery.sh under **/usr/bin/zbx_redis_discovery.sh**
+  - Place template userparameters under **/etc/zabbix/zabbix_agentd.d/** or other place according your installation
+  - Restart your zabbix agent where all above were placed
+  - Make sure your redis-server configuration file ends by "*.conf" otherwise INSTANCE name won't be discovered
+
+## Plans
+  - Keep pushing on Zabbix R&D to let create graphs with multiple prototype items, meanwhile use ![Zabbix Grafana](https://github.com/alexanderzobnin/grafana-zabbix) 
+
+Discovery with Statistics Report Flow
 ===========================
 
-![Discovery Flow](https://www.websequencediagrams.com/cgi-bin/cdraw?lz=dGl0bGUgUmVkaXMgRGlzY292ZXJ5IEZsb3cKClphYmJpeCBTZXJ2ZXJzLT4ACQdBZ2VudDogcmVkaXMuZAAsCFtQYXNzd29yZHMgQXJyYXldADcIACoFLT4AIA8uc2gAMhEuc2gKI21haW4KABsSLT4AgR8FOiBHZXRMaXN0AIEtBUluc3RhbmNlcyg8AG8PPikKbG9vcCB2aWEgbGlzdCBvZiBpACYIAEMcAIFICF8AgVoFXwAsCCgpAHgcZ2VuZXJhdGUALgdzdGF0c19yZXBvcnQoKQplbmQKAIJcBQCBbxYANAkAgkIJX2pzb24AWxcAgnYOACIaAIJvDgCDPA4AWBwK&s=modern-blue)
+![Discovery ](https://www.websequencediagrams.com/cgi-bin/cdraw?lz=dGl0bGUgUmVkaXMgRGlzY292ZXJ5IEZsb3cgJiBTdGF0aXN0aWNzIFJlcG9ydCBHZW5lcmF0b3IKClphYmJpeCBTZXJ2ZXJzLT4ACQdBZ2VudDogcmVkaXMuZABKCFtnADQFbCx7JFJFRElTX1BBU1NXT1JEU31dABsvc3RhdHMANBQJAGQvcmVwbGljYXRpb24AOxUAgVoJAIFOBS0-AIFEDy5zaACBVhEuc2gKCmxvb3AgdmlhIGxpc3Qgb2YgaW5zdGFuY2VzCgAxEi0-AIJ3BTogAIIjCF8AgjUFXwAsCCgAgjEIIDxQYXNzd29yZHMgQXJyYXk-KQpGaWxlc3lzdGVtLT4AgxsGOi90bXAvAIJ4BS0kSE9TVC0kUE9SVAABKVQtc2xvd2xvZy1sZW4AAzNyYXcAQSttYXhjbGllbnQAgW4sYXZhbGFibGVfY29tbWFuZHMoAIQMBgCCDRQAIzNzbGF2ZXMoAIQSCwCCZhVlbmQKAIYxBQCEAhYAhWkGdGVfAIVxB18AhgEJX2pzb24oKQAYJQCBWggACDYAhVULAG0SAIR2FACHNA4AgSQOX3Jlc3BvbnNlAIYGDwCHeA4AHBoK&s=modern-blue)
 
 Example Instance Discovery:
 ===========================
 
- ```
+```json
 zabbix_get -s redis.host.me -k redis.discovery[general,"123456 123456"] | jq .
 {
   "data": [
@@ -40,7 +66,7 @@ zabbix_get -s redis.host.me -k redis.discovery[general,"123456 123456"] | jq .
 
 Example Commands Stats Discovery:
 =================================
- ```
+```json
 zabbix_get -s redis.host.me -k redis.discovery[stats,"123456 123456"] | jq .
 {
   "data": [

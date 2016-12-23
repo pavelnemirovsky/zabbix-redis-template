@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
     <version>3.2</version>
-    <date>2016-12-23T15:59:42Z</date>
+    <date>2016-12-23T20:11:12Z</date>
     <groups>
         <group>
             <name>Templates</name>
@@ -1772,7 +1772,24 @@
                             </application_prototypes>
                         </item_prototype>
                     </item_prototypes>
-                    <trigger_prototypes/>
+                    <trigger_prototypes>
+                        <trigger_prototype>
+                            <expression>{Template_App_Redis:proc.num[redis-server,,,{#HOST}:{#PORT}].last(#1)}=0 and {Template_App_Redis:proc.num[redis-server,,,{#HOST}:{#PORT}].last(#2)}=0 and {Template_App_Redis:proc.num[redis-server,,,{#HOST}:{#PORT}].last(#3)}=0</expression>
+                            <recovery_mode>0</recovery_mode>
+                            <recovery_expression/>
+                            <name>Redis {#INSTANCE} is down on {HOST.HOST}</name>
+                            <correlation_mode>0</correlation_mode>
+                            <correlation_tag/>
+                            <url/>
+                            <status>0</status>
+                            <priority>4</priority>
+                            <description/>
+                            <type>0</type>
+                            <manual_close>0</manual_close>
+                            <dependencies/>
+                            <tags/>
+                        </trigger_prototype>
+                    </trigger_prototypes>
                     <graph_prototypes>
                         <graph_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - Commands Overview</name>
@@ -1903,7 +1920,7 @@
                         <formula/>
                         <conditions/>
                     </filter>
-                    <lifetime>30</lifetime>
+                    <lifetime>14</lifetime>
                     <description/>
                     <item_prototypes/>
                     <trigger_prototypes/>
@@ -1940,7 +1957,7 @@
                         <formula/>
                         <conditions/>
                     </filter>
-                    <lifetime>30</lifetime>
+                    <lifetime>14</lifetime>
                     <description/>
                     <item_prototypes>
                         <item_prototype>
