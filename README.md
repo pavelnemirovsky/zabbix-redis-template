@@ -8,6 +8,7 @@
 ## Table of Contents
 - [Features](#features)
 - [Installation](#installation)
+- [Installation (Optional)](#installation-optional)
 - [Important](#important)
 - [Plans](#plans)
 - [Discovery Flow ](#example-instance-discovery)
@@ -19,10 +20,14 @@
   - Triggers identify command anomaly (not done yet) and instance crash
 
 ## Installation
-  - Import zbx_export_templates.xml into your Zabbix
-  - Place zbx_redis_discovery.sh under **/usr/bin/zbx_redis_discovery.sh**
+  - Import **zbx_template/zbx_export_templates.xml** via **Zabbix -> Configuration -> Templates -> Import**
+  - Place **zbx_template/zbx_redis_discovery.sh** under **/usr/bin/zbx_redis_discovery.sh**
   - Place template userparameters under **/etc/zabbix/zabbix_agentd.d/** or other place according your installation
   - Restart your zabbix agent where all above were placed
+
+## Installation (OPTIONAL)
+  - Replace following line **<host>your.first.redis.host.local</host>** under **zbx_screens/zbx_export_screens.xml** with your first redis host
+  - Import saved file zbx_export_screens.xml via **Zabbix -> Monitoring -> Screens**
 
 ## Important
   - Make sure your redis-server configuration file ends with **.conf** otherwise INSTANCE name won't be discovered
@@ -35,7 +40,7 @@
 Discovery with Statistics Report Flow
 ===========================
 
-![Discovery ](https://www.websequencediagrams.com/cgi-bin/cdraw?lz=dGl0bGUgUmVkaXMgRGlzY292ZXJ5IEZsb3cgJiBTdGF0aXN0aWNzIFJlcG9ydCBHZW5lcmF0b3IKClphYmJpeCBTZXJ2ZXJzLT4ACQdBZ2VudDogcmVkaXMuZABKCFtnADQFbCx7JFJFRElTX1BBU1NXT1JEU31dABsvc3RhdHMANBQJAGQvcmVwbGljYXRpb24AOxUAgVoJAIFOBS0-AIFEDy5zaACBVhEuc2gKCmxvb3AgdmlhIGxpc3Qgb2YgaW5zdGFuY2VzCgAxEi0-AIJ3BTogAIIjCF8AgjUFXwAsCCgAgjEIIDxQYXNzd29yZHMgQXJyYXk-KQpGaWxlc3lzdGVtLT4AgxsGOi90bXAvAIJ4BS0kSE9TVC0kUE9SVAABKVQtc2xvd2xvZy1sZW4AAzNyYXcAQSttYXhjbGllbnQAgW4sYXZhbGFibGVfY29tbWFuZHMoAIQMBgCCDRQAIzNzbGF2ZXMoAIQSCwCCZhVlbmQKAIYxBQCEAhYAhWkGdGVfAIVxB18AhgEJX2pzb24oKQAYJQCBWggACDYAhVULAG0SAIR2FACHNA4AgSQOX3Jlc3BvbnNlAIYGDwCHeA4AHBoK&s=modern-blue)
+![Discovery](https://www.websequencediagrams.com/cgi-bin/cdraw?lz=dGl0bGUgUmVkaXMgRGlzY292ZXJ5IEZsb3cgJiBTdGF0aXN0aWNzIFJlcG9ydCBHZW5lcmF0b3IKClphYmJpeCBTZXJ2ZXJzLT4ACQdBZ2VudDogcmVkaXMuZABKCFtnADQFbCx7JFJFRElTX1BBU1NXT1JEU31dABsvc3RhdHMANBQJAGQvcmVwbGljYXRpb24AOxUAgVoJAIFOBS0-AIFEDy5zaACBVhEuc2gKCmxvb3AgdmlhIGxpc3Qgb2YgaW5zdGFuY2VzCgAxEi0-AIJ3BTogAIIjCF8AgjUFXwAsCCgAgjEIIDxQYXNzd29yZHMgQXJyYXk-KQpGaWxlc3lzdGVtLT4AgxsGOi90bXAvAIJ4BS0kSE9TVC0kUE9SVAABKVQtc2xvd2xvZy1sZW4AAzNyYXcAQSttYXhjbGllbnQAgW4sYXZhbGFibGVfY29tbWFuZHMoAIQMBgCCDRQAIzNzbGF2ZXMoAIQSCwCCZhVlbmQKAIYxBQCEAhYAhWkGdGVfAIVxB18AhgEJX2pzb24oKQAYJQCBWggACDYAhVULAG0SAIR2FACHNA4AgSQOX3Jlc3BvbnNlAIYGDwCHeA4AHBoK&s=modern-blue)
 
 Example Instance Discovery:
 ===========================
