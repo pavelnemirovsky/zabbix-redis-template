@@ -1,17 +1,48 @@
 #!/bin/bash
+ARGS=("$@")
 DISCOVERY_TYPE=$1
 # USE FIRST ARGUMENT TO UNDERSTAND WHICH DISCOVERY TO PERFORM
 shift
 IFS=$'\n'
 PASSWORDS=( "$@" )
-LIST=$(ps -eo uname,args | grep -v grep | grep redis-server | tr -s [:blank:] ":")
-REDIS_CLI=$(whereis -b redis-cli | cut -d":" -f2 | tr -d [:space:])
+LIST=$(ps -eo user,args | grep -v grep | grep redis-server | tr -s [:blank:] ":")
 
-if [ "$DISCOVERY_TYPE" == "info" ]; then
+if [[ " ${ARGS[@]} " =~ " debug " ]]; then
+    set -x
+else
+    set -e  # RUDIMENTARY ERROR MECHANISM
+fi
+
+# REQUIRED UTILS TO BE ABLE TO RUN
+if [ -a /tmp/redis-cli ]; then
+    REDIS_CLI=$(cat /tmp/redis-cli)
+else
+    REDIS_CLI=$(locate redis-cli | head -n 1)
+    if [ "$REDIS_CLI" = "" ]; then
+        echo "REDIS-CLI not found..."
+        exit 1
+    else
+        REDIS_CLI_FILE=$(echo $REDIS_CLI > /tmp/redis-cli)
+    fi
+fi
+
+if [ -a /tmp/stdbuf ]; then
+    STDBUF=$(cat /tmp/stdbuf)
+else
+    STDBUF=$(locate stdbuf | head -n 1)
+    if [ "$STDBUF" = "" ]; then
+        echo "STDBUF-CLI not found..."
+        exit 1
+    else
+        STDBUF_FILE=$(echo $STDBUF > /tmp/stdbuf)
+    fi
+fi
+
+if [ "$DISCOVERY_TYPE" != "general" ] && [ "$DISCOVERY_TYPE" != "stats" ] && [ "$DISCOVERY_TYPE" != "replication" ]; then
     echo "USAGE: ./zbx_redis_discovery.sh where"
-    echo "general - argument generate report with discovered instances\n"
-    echo "stats - generates report for avalable commands\n"
-    echo "replication - generates report for avalable slaves\n"
+    echo "general - argument generate report with discovered instances"
+    echo "stats - generates report for avalable commands"
+    echo "replication - generates report for avalable slaves"
     exit 1
 fi
 
@@ -24,12 +55,11 @@ discover_redis_instance() {
     ALIVE=$($REDIS_CLI -h $HOST -p $PORT -a "$PASSWORD" ping)
 
     if [[ $ALIVE != "PONG" ]]; then
-        return 0
+        return 1
     else
         INSTANCE=$($REDIS_CLI -h $HOST -p $PORT -a "$PASSWORD" info | grep config_file  | sed 's/.conf//g' | rev | cut -d "/" -f1 | rev | tr -d [:space:] | tr [:lower:] [:upper:])
         INSTANCE_RDB_PATH=$($REDIS_CLI -h $HOST -p $PORT -a "$PASSWORD" config get *"dir" | cut -d " " -f2 | sed -n 2p)
         INSTANCE_RDB_FILE=$($REDIS_CLI -h $HOST -p $PORT -a "$PASSWORD" config get *"dbfilename" | cut -d " " -f2 | sed -n 2p)
-
     fi
 
     echo $INSTANCE
@@ -44,7 +74,7 @@ discover_redis_rdb_database() {
     ALIVE=$($REDIS_CLI -h $HOST -p $PORT -a "$PASSWORD" ping)
 
     if [[ $ALIVE != "PONG" ]]; then
-        return 0
+        return 1
     else
         INSTANCE_RDB_PATH=$($REDIS_CLI -h $HOST -p $PORT -a "$PASSWORD" config get *"dir" | cut -d " " -f2 | sed -n 2p)
         INSTANCE_RDB_FILE=$($REDIS_CLI -h $HOST -p $PORT -a "$PASSWORD" config get *"dbfilename" | cut -d " " -f2 | sed -n 2p)
@@ -61,7 +91,7 @@ discover_redis_avalable_commands() {
     ALIVE=$($REDIS_CLI -h $HOST -p $PORT -a "$PASSWORD" ping)
 
     if [[ $ALIVE != "PONG" ]]; then
-        return 0
+        return 1
     else
         REDIS_COMMANDS=$($REDIS_CLI -h $HOST -p $PORT -a "$PASSWORD" info all | grep cmdstat | cut -d":" -f1)
     fi
@@ -77,7 +107,7 @@ discover_redis_avalable_slaves() {
     ALIVE=$($REDIS_CLI -h $HOST -p $PORT -a "$PASSWORD" ping)
 
     if [[ $ALIVE != "PONG" ]]; then
-        return 0
+        return 1
     else
         REDIS_SLAVES=$($REDIS_CLI -h $HOST -p $PORT -a "$PASSWORD" info all | grep ^slave | cut -d ":" -f1 | grep [0-1024])
     fi
@@ -147,8 +177,8 @@ generate_redis_stats_report() {
 
 echo -n '{"data":['
 for s in $LIST; do
-    HOST=$(echo $s | cut -d":" -f3)
-    PORT=$(echo $s | cut -d":" -f4)
+    HOST=$(echo $s | sed 's/*/127.0.0.1/g' | cut -d":" -f3)
+    PORT=$(echo $s | sed 's/*/127.0.0.1/g' | cut -d":" -f4)
 
     # TRY PASSWORD PER EACH DISCOVERED INSTANCE
     if [[ ${#PASSWORDS[@]} -ne 0 ]]; then
@@ -174,17 +204,14 @@ for s in $LIST; do
                     for SLAVE in ${SLAVES}; do
                         generate_replication_discovery_json $HOST $PORT $SLAVE $INSTANCE
                     done
-                else
-                    echo "Smooking :)"
                 fi
-
-                break
             fi
         done
     else
         INSTANCE=$(discover_redis_instance $HOST $PORT "")
-        RDB_PATH=$(discover_redis_rdb_database $HOST $PORT $PASSWORD "")
-        SLAVES=$(discover_redis_avalable_slaves $HOST $PORT $PASSWORD)
+        RDB_PATH=$(discover_redis_rdb_database $HOST $PORT "")
+        COMMANDS=$(discover_redis_avalable_commands $HOST $PORT "")
+        SLAVES=$(discover_redis_avalable_slaves $HOST $PORT "")
 
         if [[ -n $INSTANCE ]]; then
 
@@ -200,10 +227,7 @@ for s in $LIST; do
                 for SLAVE in ${SLAVES}; do
                     generate_replication_discovery_json $HOST $PORT $SLAVE $INSTANCE
                 done
-            else
-                echo "Smooking :)"
             fi
-
         fi
     fi
     unset
