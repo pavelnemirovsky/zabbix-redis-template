@@ -34,6 +34,9 @@
   - Discovery produce stats files from where template gathers stats per 1 min basis, so important to leave discovery rules to run with short interval only. (current template do that each 1 min)
   - You don't have to worry about discovery process to update all items per 1 min basic, actually Zabbix Server use its own cache and perform DB update only when there is a new item appears.
 
+## Debuging / Issue reporting
+  - Please run following command **zbx_template/zbx_redis_discovery.sh <command> debug** upon you report an issue and attach an output
+
 ## Plans
   - Keep pushing on Zabbix R&D to let create graphs with multiple prototype items, meanwhile use [Zabbix Grafana](https://github.com/alexanderzobnin/grafana-zabbix)
 
