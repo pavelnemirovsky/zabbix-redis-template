@@ -35,8 +35,10 @@
   - You don't have to worry about discovery process to update all items per 1 min basic, actually Zabbix Server use its own cache and perform DB update only when there is a new item appears.
 
 ## Debuging / Issue reporting
-  - Please run following command **zbx_template/zbx_redis_discovery.sh <command> debug** upon you report an issue and attach an output
-
+  - if Discovery: "Discover Redis Instances" doesn't work: execute following command **zbx_template/zbx_redis_discovery.sh general debug**  and output attach to the issue ticket
+  - if Discovery: "Discover Redis Commands" doesn't work: execute following command **zbx_template/zbx_redis_discovery.sh stats debug**  and output attach to the issue ticket
+  - if Discovery: "Discover Redis Slaves" doesn't work: execute following command **zbx_template/zbx_redis_discovery.sh replications debug**  and output attach to the issue ticket
+  
 ## Plans
   - Keep pushing on Zabbix R&D to let create graphs with multiple prototype items, meanwhile use [Zabbix Grafana](https://github.com/alexanderzobnin/grafana-zabbix)
 
