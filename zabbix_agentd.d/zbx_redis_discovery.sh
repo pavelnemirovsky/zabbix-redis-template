@@ -1,6 +1,8 @@
 #!/bin/bash
 ARGS=("$@")
 DISCOVERY_TYPE=$1
+REDIS_CLI_DEFAULT_PATH="/usr/bin/redis-cli"
+STBDBUF_DEFAULT_PATH="/usr/bin/stdbuf"
 # USE FIRST ARGUMENT TO UNDERSTAND WHICH DISCOVERY TO PERFORM
 shift
 IFS=$'\n'
@@ -14,13 +16,17 @@ else
 fi
 
 # REQUIRED UTILS TO BE ABLE TO RUN
-if [ -a /tmp/redis-cli ]; then
+if [ -e /tmp/redis-cli ]; then
     REDIS_CLI=$(cat /tmp/redis-cli)
 else
     REDIS_CLI=$(locate redis-cli | head -n 1)
     if [ "$REDIS_CLI" = "" ]; then
-        echo "REDIS-CLI not found..."
-        exit 1
+        if [ -e $REDIS_CLI_DEFAULT_PATH ]; then
+            REDIS_CLI_FILE=$(echo $REDIS_CLI_DEFAULT_PATH > /tmp/redis-cli)
+        else
+            echo "REDIS-CLI not found ...."
+            exit 1
+        fi
     else
         REDIS_CLI_FILE=$(echo $REDIS_CLI > /tmp/redis-cli)
     fi
@@ -31,8 +37,12 @@ if [ -a /tmp/stdbuf ]; then
 else
     STDBUF=$(locate stdbuf | head -n 1)
     if [ "$STDBUF" = "" ]; then
-        echo "STDBUF-CLI not found..."
-        exit 1
+        if [ -e $STBDBUF_DEFAULT_PATH ]; then
+            STDBUF_FILE=$(echo $STBDBUF_DEFAULT_PATH > /tmp/stdbuf)
+        else
+            echo "STDBUF-CLI not found..."
+            exit 1
+        fi
     else
         STDBUF_FILE=$(echo $STDBUF > /tmp/stdbuf)
     fi
@@ -57,9 +67,13 @@ discover_redis_instance() {
     if [[ $ALIVE != "PONG" ]]; then
         return 1
     else
-        INSTANCE=$($REDIS_CLI -h $HOST -p $PORT -a "$PASSWORD" info | grep config_file  | sed 's/.conf//g' | rev | cut -d "/" -f1 | rev | tr -d [:space:] | tr [:lower:] [:upper:])
-        INSTANCE_RDB_PATH=$($REDIS_CLI -h $HOST -p $PORT -a "$PASSWORD" config get *"dir" | cut -d " " -f2 | sed -n 2p)
-        INSTANCE_RDB_FILE=$($REDIS_CLI -h $HOST -p $PORT -a "$PASSWORD" config get *"dbfilename" | cut -d " " -f2 | sed -n 2p)
+        INSTANCE=$($REDIS_CLI -h $HOST -p $PORT -a "$PASSWORD" info | grep config_file | cut -d ":" -f2 | sed 's/.conf//g' | rev | cut -d "/" -f1 | rev | tr -d [:space:] | tr [:lower:] [:upper:])
+        # WHEN UNABLE TO IDENTIFY INSTANCE NAME BASED ON CONFIG
+        if [ "$INSTANCE" = "" ]; then
+            INSTANCE=$(echo "$HOST:$PORT")
+        fi
+        INSTANCE_RDB_PATH=$($REDIS_CLI -h $HOST -p $PORT -a "$PASSWORD" config get "dir" | cut -d " " -f2 | sed -n 2p)
+        INSTANCE_RDB_FILE=$($REDIS_CLI -h $HOST -p $PORT -a "$PASSWORD" config get "dbfilename" | cut -d " " -f2 | sed -n 2p)
     fi
 
     echo $INSTANCE
@@ -76,8 +90,8 @@ discover_redis_rdb_database() {
     if [[ $ALIVE != "PONG" ]]; then
         return 1
     else
-        INSTANCE_RDB_PATH=$($REDIS_CLI -h $HOST -p $PORT -a "$PASSWORD" config get *"dir" | cut -d " " -f2 | sed -n 2p)
-        INSTANCE_RDB_FILE=$($REDIS_CLI -h $HOST -p $PORT -a "$PASSWORD" config get *"dbfilename" | cut -d " " -f2 | sed -n 2p)
+        INSTANCE_RDB_PATH=$($REDIS_CLI -h $HOST -p $PORT -a "$PASSWORD" config get "dir" | cut -d " " -f2 | sed -n 2p)
+        INSTANCE_RDB_FILE=$($REDIS_CLI -h $HOST -p $PORT -a "$PASSWORD" config get "dbfilename" | cut -d " " -f2 | sed -n 2p)
     fi
 
     echo $INSTANCE_RDB_PATH/$INSTANCE_RDB_FILE
