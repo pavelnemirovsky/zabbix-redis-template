@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
     <version>3.2</version>
-    <date>2017-03-07T06:34:34Z</date>
+    <date>2017-10-03T10:44:52Z</date>
     <groups>
         <group>
             <name>Templates</name>
@@ -1112,270 +1112,6 @@
                             </application_prototypes>
                         </item_prototype>
                         <item_prototype>
-                            <name>Redis: &quot;{#INSTANCE}&quot; - Master: Redis Server Slave0 information</name>
-                            <type>7</type>
-                            <snmp_community/>
-                            <multiplier>0</multiplier>
-                            <snmp_oid/>
-                            <key>redis.stat.get[slave0,{#HOST},{#PORT}]</key>
-                            <delay>300</delay>
-                            <history>14</history>
-                            <trends>0</trends>
-                            <status>1</status>
-                            <value_type>4</value_type>
-                            <allowed_hosts/>
-                            <units/>
-                            <delta>0</delta>
-                            <snmpv3_contextname/>
-                            <snmpv3_securityname/>
-                            <snmpv3_securitylevel>0</snmpv3_securitylevel>
-                            <snmpv3_authprotocol>0</snmpv3_authprotocol>
-                            <snmpv3_authpassphrase/>
-                            <snmpv3_privprotocol>0</snmpv3_privprotocol>
-                            <snmpv3_privpassphrase/>
-                            <formula>0</formula>
-                            <delay_flex/>
-                            <params/>
-                            <ipmi_sensor/>
-                            <data_type>0</data_type>
-                            <authtype>0</authtype>
-                            <username/>
-                            <password/>
-                            <publickey/>
-                            <privatekey/>
-                            <port/>
-                            <description/>
-                            <inventory_link>0</inventory_link>
-                            <applications/>
-                            <valuemap/>
-                            <logtimefmt/>
-                            <application_prototypes>
-                                <application_prototype>
-                                    <name>Redis: {#INSTANCE} - General</name>
-                                </application_prototype>
-                            </application_prototypes>
-                        </item_prototype>
-                        <item_prototype>
-                            <name>Redis: &quot;{#INSTANCE}&quot; - Master: Redis Server Slave0 IP</name>
-                            <type>7</type>
-                            <snmp_community/>
-                            <multiplier>0</multiplier>
-                            <snmp_oid/>
-                            <key>redis.stat.get[slave0_ip,{#HOST},{#PORT}]</key>
-                            <delay>300</delay>
-                            <history>14</history>
-                            <trends>0</trends>
-                            <status>0</status>
-                            <value_type>4</value_type>
-                            <allowed_hosts/>
-                            <units/>
-                            <delta>0</delta>
-                            <snmpv3_contextname/>
-                            <snmpv3_securityname/>
-                            <snmpv3_securitylevel>0</snmpv3_securitylevel>
-                            <snmpv3_authprotocol>0</snmpv3_authprotocol>
-                            <snmpv3_authpassphrase/>
-                            <snmpv3_privprotocol>0</snmpv3_privprotocol>
-                            <snmpv3_privpassphrase/>
-                            <formula>1</formula>
-                            <delay_flex/>
-                            <params/>
-                            <ipmi_sensor/>
-                            <data_type>0</data_type>
-                            <authtype>0</authtype>
-                            <username/>
-                            <password/>
-                            <publickey/>
-                            <privatekey/>
-                            <port/>
-                            <description/>
-                            <inventory_link>0</inventory_link>
-                            <applications/>
-                            <valuemap/>
-                            <logtimefmt/>
-                            <application_prototypes>
-                                <application_prototype>
-                                    <name>Redis: {#INSTANCE} - General</name>
-                                </application_prototype>
-                            </application_prototypes>
-                        </item_prototype>
-                        <item_prototype>
-                            <name>Redis: &quot;{#INSTANCE}&quot; - Master: Redis Server Slave0 Port</name>
-                            <type>7</type>
-                            <snmp_community/>
-                            <multiplier>0</multiplier>
-                            <snmp_oid/>
-                            <key>redis.stat.get[slave0_port,{#HOST},{#PORT}]</key>
-                            <delay>300</delay>
-                            <history>14</history>
-                            <trends>0</trends>
-                            <status>0</status>
-                            <value_type>4</value_type>
-                            <allowed_hosts/>
-                            <units/>
-                            <delta>0</delta>
-                            <snmpv3_contextname/>
-                            <snmpv3_securityname/>
-                            <snmpv3_securitylevel>0</snmpv3_securitylevel>
-                            <snmpv3_authprotocol>0</snmpv3_authprotocol>
-                            <snmpv3_authpassphrase/>
-                            <snmpv3_privprotocol>0</snmpv3_privprotocol>
-                            <snmpv3_privpassphrase/>
-                            <formula>1</formula>
-                            <delay_flex/>
-                            <params/>
-                            <ipmi_sensor/>
-                            <data_type>0</data_type>
-                            <authtype>0</authtype>
-                            <username/>
-                            <password/>
-                            <publickey/>
-                            <privatekey/>
-                            <port/>
-                            <description/>
-                            <inventory_link>0</inventory_link>
-                            <applications/>
-                            <valuemap/>
-                            <logtimefmt/>
-                            <application_prototypes>
-                                <application_prototype>
-                                    <name>Redis: {#INSTANCE} - General</name>
-                                </application_prototype>
-                            </application_prototypes>
-                        </item_prototype>
-                        <item_prototype>
-                            <name>Redis: &quot;{#INSTANCE}&quot; - Master: Redis Server Slave0 Status</name>
-                            <type>7</type>
-                            <snmp_community/>
-                            <multiplier>0</multiplier>
-                            <snmp_oid/>
-                            <key>redis.stat.get[slave0_status,{#HOST},{#PORT}]</key>
-                            <delay>300</delay>
-                            <history>14</history>
-                            <trends>0</trends>
-                            <status>0</status>
-                            <value_type>4</value_type>
-                            <allowed_hosts/>
-                            <units/>
-                            <delta>0</delta>
-                            <snmpv3_contextname/>
-                            <snmpv3_securityname/>
-                            <snmpv3_securitylevel>0</snmpv3_securitylevel>
-                            <snmpv3_authprotocol>0</snmpv3_authprotocol>
-                            <snmpv3_authpassphrase/>
-                            <snmpv3_privprotocol>0</snmpv3_privprotocol>
-                            <snmpv3_privpassphrase/>
-                            <formula>1</formula>
-                            <delay_flex/>
-                            <params/>
-                            <ipmi_sensor/>
-                            <data_type>0</data_type>
-                            <authtype>0</authtype>
-                            <username/>
-                            <password/>
-                            <publickey/>
-                            <privatekey/>
-                            <port/>
-                            <description/>
-                            <inventory_link>0</inventory_link>
-                            <applications/>
-                            <valuemap/>
-                            <logtimefmt/>
-                            <application_prototypes>
-                                <application_prototype>
-                                    <name>Redis: {#INSTANCE} - General</name>
-                                </application_prototype>
-                            </application_prototypes>
-                        </item_prototype>
-                        <item_prototype>
-                            <name>Redis: &quot;{#INSTANCE}&quot; - Master: Redis Server Slave1 information</name>
-                            <type>7</type>
-                            <snmp_community/>
-                            <multiplier>0</multiplier>
-                            <snmp_oid/>
-                            <key>redis.stat.get[slave1,{#HOST},{#PORT}]</key>
-                            <delay>300</delay>
-                            <history>14</history>
-                            <trends>0</trends>
-                            <status>1</status>
-                            <value_type>4</value_type>
-                            <allowed_hosts/>
-                            <units/>
-                            <delta>0</delta>
-                            <snmpv3_contextname/>
-                            <snmpv3_securityname/>
-                            <snmpv3_securitylevel>0</snmpv3_securitylevel>
-                            <snmpv3_authprotocol>0</snmpv3_authprotocol>
-                            <snmpv3_authpassphrase/>
-                            <snmpv3_privprotocol>0</snmpv3_privprotocol>
-                            <snmpv3_privpassphrase/>
-                            <formula>0</formula>
-                            <delay_flex/>
-                            <params/>
-                            <ipmi_sensor/>
-                            <data_type>0</data_type>
-                            <authtype>0</authtype>
-                            <username/>
-                            <password/>
-                            <publickey/>
-                            <privatekey/>
-                            <port/>
-                            <description/>
-                            <inventory_link>0</inventory_link>
-                            <applications/>
-                            <valuemap/>
-                            <logtimefmt/>
-                            <application_prototypes>
-                                <application_prototype>
-                                    <name>Redis: {#INSTANCE} - General</name>
-                                </application_prototype>
-                            </application_prototypes>
-                        </item_prototype>
-                        <item_prototype>
-                            <name>Redis: &quot;{#INSTANCE}&quot; - Master: Redis Server Slave2 information</name>
-                            <type>7</type>
-                            <snmp_community/>
-                            <multiplier>0</multiplier>
-                            <snmp_oid/>
-                            <key>redis.stat.get[slave2,{#HOST},{#PORT}]</key>
-                            <delay>300</delay>
-                            <history>14</history>
-                            <trends>0</trends>
-                            <status>1</status>
-                            <value_type>4</value_type>
-                            <allowed_hosts/>
-                            <units/>
-                            <delta>0</delta>
-                            <snmpv3_contextname/>
-                            <snmpv3_securityname/>
-                            <snmpv3_securitylevel>0</snmpv3_securitylevel>
-                            <snmpv3_authprotocol>0</snmpv3_authprotocol>
-                            <snmpv3_authpassphrase/>
-                            <snmpv3_privprotocol>0</snmpv3_privprotocol>
-                            <snmpv3_privpassphrase/>
-                            <formula>0</formula>
-                            <delay_flex/>
-                            <params/>
-                            <ipmi_sensor/>
-                            <data_type>0</data_type>
-                            <authtype>0</authtype>
-                            <username/>
-                            <password/>
-                            <publickey/>
-                            <privatekey/>
-                            <port/>
-                            <description/>
-                            <inventory_link>0</inventory_link>
-                            <applications/>
-                            <valuemap/>
-                            <logtimefmt/>
-                            <application_prototypes>
-                                <application_prototype>
-                                    <name>Redis: {#INSTANCE} - General</name>
-                                </application_prototype>
-                            </application_prototypes>
-                        </item_prototype>
-                        <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - General: Commands/sec</name>
                             <type>7</type>
                             <snmp_community/>
@@ -1792,7 +1528,7 @@
                     </trigger_prototypes>
                     <graph_prototypes>
                         <graph_prototype>
-                            <name>Redis: &quot;{#INSTANCE}&quot; - Commands Overview</name>
+                            <name>Redis: &quot;{#INSTANCE}:{#PORT}&quot; - Commands Overview</name>
                             <width>900</width>
                             <height>200</height>
                             <yaxismin>0.0000</yaxismin>
@@ -1824,7 +1560,7 @@
                             </graph_items>
                         </graph_prototype>
                         <graph_prototype>
-                            <name>Redis: &quot;{#INSTANCE}&quot; - Connected Clients</name>
+                            <name>Redis: &quot;{#INSTANCE}:{#PORT}&quot; - Connected Clients</name>
                             <width>900</width>
                             <height>200</height>
                             <yaxismin>0.0000</yaxismin>
@@ -1843,7 +1579,7 @@
                             <graph_items>
                                 <graph_item>
                                     <sortorder>0</sortorder>
-                                    <drawtype>0</drawtype>
+                                    <drawtype>2</drawtype>
                                     <color>00BB00</color>
                                     <yaxisside>0</yaxisside>
                                     <calc_fnc>2</calc_fnc>
@@ -1856,7 +1592,7 @@
                             </graph_items>
                         </graph_prototype>
                         <graph_prototype>
-                            <name>Redis: &quot;{#INSTANCE}&quot; - Connections</name>
+                            <name>Redis: &quot;{#INSTANCE}:{#PORT}&quot; - Connections</name>
                             <width>900</width>
                             <height>200</height>
                             <yaxismin>0.0000</yaxismin>
@@ -1875,8 +1611,8 @@
                             <graph_items>
                                 <graph_item>
                                     <sortorder>0</sortorder>
-                                    <drawtype>0</drawtype>
-                                    <color>00DDDD</color>
+                                    <drawtype>2</drawtype>
+                                    <color>EE0000</color>
                                     <yaxisside>0</yaxisside>
                                     <calc_fnc>2</calc_fnc>
                                     <type>7</type>
@@ -1922,9 +1658,295 @@
                     </filter>
                     <lifetime>14</lifetime>
                     <description/>
-                    <item_prototypes/>
+                    <item_prototypes>
+                        <item_prototype>
+                            <name>Redis: &quot;{#INSTANCE}&quot; - Slave: {#SLAVE} - IP</name>
+                            <type>0</type>
+                            <snmp_community/>
+                            <multiplier>0</multiplier>
+                            <snmp_oid/>
+                            <key>redis.stat.mget[ {#SLAVE},ip,{#HOST},{#PORT}]</key>
+                            <delay>60</delay>
+                            <history>90</history>
+                            <trends>0</trends>
+                            <status>0</status>
+                            <value_type>4</value_type>
+                            <allowed_hosts/>
+                            <units/>
+                            <delta>0</delta>
+                            <snmpv3_contextname/>
+                            <snmpv3_securityname/>
+                            <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                            <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                            <snmpv3_authpassphrase/>
+                            <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                            <snmpv3_privpassphrase/>
+                            <formula>1</formula>
+                            <delay_flex/>
+                            <params/>
+                            <ipmi_sensor/>
+                            <data_type>0</data_type>
+                            <authtype>0</authtype>
+                            <username/>
+                            <password/>
+                            <publickey/>
+                            <privatekey/>
+                            <port/>
+                            <description/>
+                            <inventory_link>0</inventory_link>
+                            <applications/>
+                            <valuemap/>
+                            <logtimefmt/>
+                            <application_prototypes>
+                                <application_prototype>
+                                    <name>Redis: &quot;{#INSTANCE}&quot; - Slaves Info</name>
+                                </application_prototype>
+                            </application_prototypes>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>Redis: &quot;{#INSTANCE}&quot; - Slave: {#SLAVE} - Lag</name>
+                            <type>0</type>
+                            <snmp_community/>
+                            <multiplier>0</multiplier>
+                            <snmp_oid/>
+                            <key>redis.stat.mget[ {#SLAVE},lag,{#HOST},{#PORT}]</key>
+                            <delay>60</delay>
+                            <history>90</history>
+                            <trends>365</trends>
+                            <status>0</status>
+                            <value_type>0</value_type>
+                            <allowed_hosts/>
+                            <units/>
+                            <delta>0</delta>
+                            <snmpv3_contextname/>
+                            <snmpv3_securityname/>
+                            <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                            <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                            <snmpv3_authpassphrase/>
+                            <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                            <snmpv3_privpassphrase/>
+                            <formula>1</formula>
+                            <delay_flex/>
+                            <params/>
+                            <ipmi_sensor/>
+                            <data_type>0</data_type>
+                            <authtype>0</authtype>
+                            <username/>
+                            <password/>
+                            <publickey/>
+                            <privatekey/>
+                            <port/>
+                            <description/>
+                            <inventory_link>0</inventory_link>
+                            <applications/>
+                            <valuemap/>
+                            <logtimefmt/>
+                            <application_prototypes>
+                                <application_prototype>
+                                    <name>Redis: &quot;{#INSTANCE}&quot; - Slaves Info</name>
+                                </application_prototype>
+                            </application_prototypes>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>Redis: &quot;{#INSTANCE}&quot; - Slave: {#SLAVE} - Rep offset</name>
+                            <type>0</type>
+                            <snmp_community/>
+                            <multiplier>0</multiplier>
+                            <snmp_oid/>
+                            <key>redis.stat.mget[ {#SLAVE},offset,{#HOST},{#PORT}]</key>
+                            <delay>60</delay>
+                            <history>90</history>
+                            <trends>365</trends>
+                            <status>0</status>
+                            <value_type>3</value_type>
+                            <allowed_hosts/>
+                            <units/>
+                            <delta>0</delta>
+                            <snmpv3_contextname/>
+                            <snmpv3_securityname/>
+                            <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                            <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                            <snmpv3_authpassphrase/>
+                            <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                            <snmpv3_privpassphrase/>
+                            <formula>1</formula>
+                            <delay_flex/>
+                            <params/>
+                            <ipmi_sensor/>
+                            <data_type>0</data_type>
+                            <authtype>0</authtype>
+                            <username/>
+                            <password/>
+                            <publickey/>
+                            <privatekey/>
+                            <port/>
+                            <description/>
+                            <inventory_link>0</inventory_link>
+                            <applications/>
+                            <valuemap/>
+                            <logtimefmt/>
+                            <application_prototypes>
+                                <application_prototype>
+                                    <name>Redis: &quot;{#INSTANCE}&quot; - Slaves Info</name>
+                                </application_prototype>
+                            </application_prototypes>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>Redis: &quot;{#INSTANCE}&quot; - Slave: {#SLAVE} - Port</name>
+                            <type>0</type>
+                            <snmp_community/>
+                            <multiplier>0</multiplier>
+                            <snmp_oid/>
+                            <key>redis.stat.mget[ {#SLAVE},port,{#HOST},{#PORT}]</key>
+                            <delay>60</delay>
+                            <history>90</history>
+                            <trends>365</trends>
+                            <status>0</status>
+                            <value_type>0</value_type>
+                            <allowed_hosts/>
+                            <units/>
+                            <delta>0</delta>
+                            <snmpv3_contextname/>
+                            <snmpv3_securityname/>
+                            <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                            <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                            <snmpv3_authpassphrase/>
+                            <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                            <snmpv3_privpassphrase/>
+                            <formula>1</formula>
+                            <delay_flex/>
+                            <params/>
+                            <ipmi_sensor/>
+                            <data_type>0</data_type>
+                            <authtype>0</authtype>
+                            <username/>
+                            <password/>
+                            <publickey/>
+                            <privatekey/>
+                            <port/>
+                            <description/>
+                            <inventory_link>0</inventory_link>
+                            <applications/>
+                            <valuemap/>
+                            <logtimefmt/>
+                            <application_prototypes>
+                                <application_prototype>
+                                    <name>Redis: &quot;{#INSTANCE}&quot; - Slaves Info</name>
+                                </application_prototype>
+                            </application_prototypes>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>Redis: &quot;{#INSTANCE}&quot; - Slave: {#SLAVE} - State</name>
+                            <type>0</type>
+                            <snmp_community/>
+                            <multiplier>0</multiplier>
+                            <snmp_oid/>
+                            <key>redis.stat.mget[ {#SLAVE},state,{#HOST},{#PORT}]</key>
+                            <delay>60</delay>
+                            <history>90</history>
+                            <trends>0</trends>
+                            <status>0</status>
+                            <value_type>4</value_type>
+                            <allowed_hosts/>
+                            <units/>
+                            <delta>0</delta>
+                            <snmpv3_contextname/>
+                            <snmpv3_securityname/>
+                            <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                            <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                            <snmpv3_authpassphrase/>
+                            <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                            <snmpv3_privpassphrase/>
+                            <formula>1</formula>
+                            <delay_flex/>
+                            <params/>
+                            <ipmi_sensor/>
+                            <data_type>0</data_type>
+                            <authtype>0</authtype>
+                            <username/>
+                            <password/>
+                            <publickey/>
+                            <privatekey/>
+                            <port/>
+                            <description/>
+                            <inventory_link>0</inventory_link>
+                            <applications/>
+                            <valuemap/>
+                            <logtimefmt/>
+                            <application_prototypes>
+                                <application_prototype>
+                                    <name>Redis: &quot;{#INSTANCE}&quot; - Slaves Info</name>
+                                </application_prototype>
+                            </application_prototypes>
+                        </item_prototype>
+                    </item_prototypes>
                     <trigger_prototypes/>
-                    <graph_prototypes/>
+                    <graph_prototypes>
+                        <graph_prototype>
+                            <name>Redis: &quot;{#INSTANCE}:{#PORT}&quot; - &quot;{#SLAVE}&quot; Lag Overview</name>
+                            <width>900</width>
+                            <height>200</height>
+                            <yaxismin>0.0000</yaxismin>
+                            <yaxismax>100.0000</yaxismax>
+                            <show_work_period>1</show_work_period>
+                            <show_triggers>1</show_triggers>
+                            <type>0</type>
+                            <show_legend>1</show_legend>
+                            <show_3d>0</show_3d>
+                            <percent_left>0.0000</percent_left>
+                            <percent_right>0.0000</percent_right>
+                            <ymin_type_1>0</ymin_type_1>
+                            <ymax_type_1>0</ymax_type_1>
+                            <ymin_item_1>0</ymin_item_1>
+                            <ymax_item_1>0</ymax_item_1>
+                            <graph_items>
+                                <graph_item>
+                                    <sortorder>0</sortorder>
+                                    <drawtype>2</drawtype>
+                                    <color>DD0000</color>
+                                    <yaxisside>0</yaxisside>
+                                    <calc_fnc>2</calc_fnc>
+                                    <type>0</type>
+                                    <item>
+                                        <host>Template_App_Redis</host>
+                                        <key>redis.stat.mget[ {#SLAVE},lag,{#HOST},{#PORT}]</key>
+                                    </item>
+                                </graph_item>
+                            </graph_items>
+                        </graph_prototype>
+                        <graph_prototype>
+                            <name>Redis: &quot;{#INSTANCE}:{#PORT}&quot; - &quot;{#SLAVE}&quot; Offset Overview</name>
+                            <width>900</width>
+                            <height>200</height>
+                            <yaxismin>0.0000</yaxismin>
+                            <yaxismax>100.0000</yaxismax>
+                            <show_work_period>1</show_work_period>
+                            <show_triggers>1</show_triggers>
+                            <type>0</type>
+                            <show_legend>1</show_legend>
+                            <show_3d>0</show_3d>
+                            <percent_left>0.0000</percent_left>
+                            <percent_right>0.0000</percent_right>
+                            <ymin_type_1>0</ymin_type_1>
+                            <ymax_type_1>0</ymax_type_1>
+                            <ymin_item_1>0</ymin_item_1>
+                            <ymax_item_1>0</ymax_item_1>
+                            <graph_items>
+                                <graph_item>
+                                    <sortorder>0</sortorder>
+                                    <drawtype>2</drawtype>
+                                    <color>0000CC</color>
+                                    <yaxisside>0</yaxisside>
+                                    <calc_fnc>2</calc_fnc>
+                                    <type>0</type>
+                                    <item>
+                                        <host>Template_App_Redis</host>
+                                        <key>redis.stat.mget[ {#SLAVE},offset,{#HOST},{#PORT}]</key>
+                                    </item>
+                                </graph_item>
+                            </graph_items>
+                        </graph_prototype>
+                    </graph_prototypes>
                     <host_prototypes/>
                 </discovery_rule>
                 <discovery_rule>
@@ -2200,7 +2222,7 @@
                             <dynamic>0</dynamic>
                             <sort_triggers>0</sort_triggers>
                             <resource>
-                                <name>Redis: &quot;{#INSTANCE}&quot; - Commands Overview</name>
+                                <name>Redis: &quot;{#INSTANCE}:{#PORT}&quot; - Commands Overview</name>
                                 <host>Template_App_Redis</host>
                             </resource>
                             <max_columns>1</max_columns>
@@ -2222,7 +2244,7 @@
                             <dynamic>0</dynamic>
                             <sort_triggers>0</sort_triggers>
                             <resource>
-                                <name>Redis: &quot;{#INSTANCE}&quot; - Connected Clients</name>
+                                <name>Redis: &quot;{#INSTANCE}:{#PORT}&quot; - Connected Clients</name>
                                 <host>Template_App_Redis</host>
                             </resource>
                             <max_columns>1</max_columns>
@@ -2244,7 +2266,58 @@
                             <dynamic>0</dynamic>
                             <sort_triggers>0</sort_triggers>
                             <resource>
-                                <name>Redis: &quot;{#INSTANCE}&quot; - Connections</name>
+                                <name>Redis: &quot;{#INSTANCE}:{#PORT}&quot; - Connections</name>
+                                <host>Template_App_Redis</host>
+                            </resource>
+                            <max_columns>1</max_columns>
+                            <application/>
+                        </screen_item>
+                    </screen_items>
+                </screen>
+                <screen>
+                    <name>Redis Slaves Overview</name>
+                    <hsize>2</hsize>
+                    <vsize>1</vsize>
+                    <screen_items>
+                        <screen_item>
+                            <resourcetype>20</resourcetype>
+                            <width>600</width>
+                            <height>100</height>
+                            <x>0</x>
+                            <y>0</y>
+                            <colspan>1</colspan>
+                            <rowspan>1</rowspan>
+                            <elements>0</elements>
+                            <valign>0</valign>
+                            <halign>0</halign>
+                            <style>0</style>
+                            <url/>
+                            <dynamic>0</dynamic>
+                            <sort_triggers>0</sort_triggers>
+                            <resource>
+                                <name>Redis: &quot;{#INSTANCE}:{#PORT}&quot; - &quot;{#SLAVE}&quot; Lag Overview</name>
+                                <host>Template_App_Redis</host>
+                            </resource>
+                            <max_columns>1</max_columns>
+                            <application/>
+                        </screen_item>
+                        <screen_item>
+                            <resourcetype>20</resourcetype>
+                            <width>600</width>
+                            <height>100</height>
+                            <x>1</x>
+                            <y>0</y>
+                            <colspan>1</colspan>
+                            <rowspan>1</rowspan>
+                            <elements>0</elements>
+                            <valign>0</valign>
+                            <halign>0</halign>
+                            <style>0</style>
+                            <url/>
+                            <dynamic>0</dynamic>
+                            <sort_triggers>0</sort_triggers>
+                            <resource>
+                                <name>Redis: &quot;{#INSTANCE}:{#PORT}&quot; - &quot;{#SLAVE}&quot; Offset Overview</name>
                                 <host>Template_App_Redis</host>
                             </resource>
                             <max_columns>1</max_columns>

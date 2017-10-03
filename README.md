@@ -16,7 +16,7 @@
 
 ## Features
   - Ability to discovery multiple Redis instances running on same host
-  - Generate automatically a zabbix screen for general overview and Redis commands are currently in use only!
+  - Generate automatically a zabbix screen for general statistics, commands and replication overvies on host! level.
   - Triggers identify command anomaly (not done yet) and instance crash
 
 ## Installation
@@ -38,7 +38,7 @@
   - if Discovery: "Discover Redis Instances" doesn't work: execute following command **zbx_template/zbx_redis_discovery.sh general debug**  and output attach to the issue ticket
   - if Discovery: "Discover Redis Commands" doesn't work: execute following command **zbx_template/zbx_redis_discovery.sh stats debug**  and output attach to the issue ticket
   - if Discovery: "Discover Redis Slaves" doesn't work: execute following command **zbx_template/zbx_redis_discovery.sh replications debug**  and output attach to the issue ticket
-  
+
 ## Plans
   - Keep pushing on Zabbix R&D to let create graphs with multiple prototype items, meanwhile use [Zabbix Grafana](https://github.com/alexanderzobnin/grafana-zabbix)
 
@@ -223,3 +223,42 @@ zabbix_get -s redis.host.me -k redis.discovery[stats,"123456 123456"] | jq .
   ]
 }
  ```
+ Example Commands Stats Discovery:
+ =================================
+ ```json
+ zabbix_get -s redis.host.me -k redis.discovery[replication] | jq .
+{
+  "data": [
+    {
+      "{#HOST}": "127.0.0.1",
+      "{#PORT}": "6400",
+      "{#SLAVE}": "slave0",
+      "{#INSTANCE}": "INSTANCE1"
+    },
+    {
+      "{#HOST}": "127.0.0.1",
+      "{#PORT}": "6400",
+      "{#SLAVE}": "slave1",
+      "{#INSTANCE}": "INSTANCE1"
+    },
+    {
+      "{#HOST}": "127.0.0.1",
+      "{#PORT}": "6400",
+      "{#SLAVE}": "slave2",
+      "{#INSTANCE}": "INSTANCE1"
+    },
+    {
+      "{#HOST}": "127.0.0.1",
+      "{#PORT}": "6400",
+      "{#SLAVE}": "slave4",
+      "{#INSTANCE}": "INSTANCE1"
+    },
+    {
+      "{#HOST}": "127.0.0.1",
+      "{#PORT}": "6400",
+      "{#SLAVE}": "slave5",
+      "{#INSTANCE}": "INSTANCE1"
+    }
+  ]
+}    
+ ```    
