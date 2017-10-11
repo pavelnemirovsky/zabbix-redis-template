@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
     <version>3.2</version>
-    <date>2017-10-03T11:30:42Z</date>
+    <date>2017-10-11T20:15:11Z</date>
     <groups>
         <group>
             <name>Templates</name>
@@ -26,7 +26,7 @@
                     <snmp_community/>
                     <snmp_oid/>
                     <key>redis.discovery[general,{$REDIS_PASSWORDS}]</key>
-                    <delay>60</delay>
+                    <delay>20</delay>
                     <status>0</status>
                     <allowed_hosts/>
                     <snmpv3_contextname/>
@@ -2044,7 +2044,7 @@
                     <description/>
                     <item_prototypes>
                         <item_prototype>
-                            <name>Redis: &quot;{#INSTANCE}&quot; - {#COMMAND} Latency</name>
+                            <name>Redis: &quot;{#INSTANCE}&quot; - {#COMMAND} Calls</name>
                             <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
@@ -2056,7 +2056,7 @@
                             <status>0</status>
                             <value_type>0</value_type>
                             <allowed_hosts/>
-                            <units>usec</units>
+                            <units>calls</units>
                             <delta>1</delta>
                             <snmpv3_contextname/>
                             <snmpv3_securityname/>
@@ -2088,20 +2088,20 @@
                             </application_prototypes>
                         </item_prototype>
                         <item_prototype>
-                            <name>Redis: &quot;{#INSTANCE}&quot; - {#COMMAND} Calls</name>
+                            <name>Redis: &quot;{#INSTANCE}&quot; - {#COMMAND} Latency</name>
                             <type>7</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
-                            <key>redis.stat.mget[{#COMMAND},usec_per_call,{#HOST},{#PORT}]</key>
+                            <key>redis.stat.mget[{#COMMAND}, usec_per_call,{#HOST},{#PORT}]</key>
                             <delay>30</delay>
                             <history>90</history>
                             <trends>365</trends>
                             <status>0</status>
                             <value_type>0</value_type>
                             <allowed_hosts/>
-                            <units>calls</units>
-                            <delta>1</delta>
+                            <units>usec</units>
+                            <delta>0</delta>
                             <snmpv3_contextname/>
                             <snmpv3_securityname/>
                             <snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -2161,7 +2161,7 @@
                                     <type>0</type>
                                     <item>
                                         <host>Template_App_Redis</host>
-                                        <key>redis.stat.mget[{#COMMAND},usec_per_call,{#HOST},{#PORT}]</key>
+                                        <key>redis.stat.mget[{#COMMAND},calls,{#HOST},{#PORT}]</key>
                                     </item>
                                 </graph_item>
                             </graph_items>
@@ -2193,7 +2193,7 @@
                                     <type>0</type>
                                     <item>
                                         <host>Template_App_Redis</host>
-                                        <key>redis.stat.mget[{#COMMAND},calls,{#HOST},{#PORT}]</key>
+                                        <key>redis.stat.mget[{#COMMAND}, usec_per_call,{#HOST},{#PORT}]</key>
                                     </item>
                                 </graph_item>
                             </graph_items>
