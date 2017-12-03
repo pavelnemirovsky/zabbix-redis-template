@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
-    <version>3.2</version>
-    <date>2017-10-11T20:15:11Z</date>
+    <version>3.4</version>
+    <date>2017-12-03T16:43:37Z</date>
     <groups>
         <group>
             <name>Templates</name>
@@ -26,7 +26,7 @@
                     <snmp_community/>
                     <snmp_oid/>
                     <key>redis.discovery[general,{$REDIS_PASSWORDS}]</key>
-                    <delay>20</delay>
+                    <delay>20s</delay>
                     <status>0</status>
                     <allowed_hosts/>
                     <snmpv3_contextname/>
@@ -36,7 +36,6 @@
                     <snmpv3_authpassphrase/>
                     <snmpv3_privprotocol>0</snmpv3_privprotocol>
                     <snmpv3_privpassphrase/>
-                    <delay_flex/>
                     <params/>
                     <ipmi_sensor/>
                     <authtype>0</authtype>
@@ -50,24 +49,22 @@
                         <formula/>
                         <conditions/>
                     </filter>
-                    <lifetime>14</lifetime>
+                    <lifetime>31d</lifetime>
                     <description/>
                     <item_prototypes>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - General: Redis is running</name>
                             <type>7</type>
                             <snmp_community/>
-                            <multiplier>0</multiplier>
                             <snmp_oid/>
                             <key>proc.num[redis-server,,,{#HOST}:{#PORT}]</key>
-                            <delay>300</delay>
-                            <history>14</history>
-                            <trends>1825</trends>
+                            <delay>1m</delay>
+                            <history>2w</history>
+                            <trends>1825d</trends>
                             <status>0</status>
                             <value_type>0</value_type>
                             <allowed_hosts/>
                             <units/>
-                            <delta>0</delta>
                             <snmpv3_contextname/>
                             <snmpv3_securityname/>
                             <snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -75,11 +72,8 @@
                             <snmpv3_authpassphrase/>
                             <snmpv3_privprotocol>0</snmpv3_privprotocol>
                             <snmpv3_privpassphrase/>
-                            <formula>1</formula>
-                            <delay_flex/>
                             <params/>
                             <ipmi_sensor/>
-                            <data_type>0</data_type>
                             <authtype>0</authtype>
                             <username/>
                             <password/>
@@ -93,27 +87,28 @@
                                 <name>Service state</name>
                             </valuemap>
                             <logtimefmt/>
+                            <preprocessing/>
+                            <jmx_endpoint/>
                             <application_prototypes>
                                 <application_prototype>
                                     <name>Redis: {#INSTANCE} - General</name>
                                 </application_prototype>
                             </application_prototypes>
+                            <master_item_prototype/>
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - Clients: Max Allowed Clients</name>
                             <type>7</type>
                             <snmp_community/>
-                            <multiplier>0</multiplier>
                             <snmp_oid/>
                             <key>redis.maxclients[{#HOST},{#PORT}]</key>
-                            <delay>300</delay>
-                            <history>90</history>
-                            <trends>365</trends>
+                            <delay>5m</delay>
+                            <history>90d</history>
+                            <trends>365d</trends>
                             <status>0</status>
                             <value_type>0</value_type>
                             <allowed_hosts/>
                             <units/>
-                            <delta>0</delta>
                             <snmpv3_contextname/>
                             <snmpv3_securityname/>
                             <snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -121,11 +116,8 @@
                             <snmpv3_authpassphrase/>
                             <snmpv3_privprotocol>0</snmpv3_privprotocol>
                             <snmpv3_privpassphrase/>
-                            <formula>1</formula>
-                            <delay_flex/>
                             <params/>
                             <ipmi_sensor/>
-                            <data_type>0</data_type>
                             <authtype>0</authtype>
                             <username/>
                             <password/>
@@ -137,27 +129,28 @@
                             <applications/>
                             <valuemap/>
                             <logtimefmt/>
+                            <preprocessing/>
+                            <jmx_endpoint/>
                             <application_prototypes>
                                 <application_prototype>
                                     <name>Redis: {#INSTANCE} - General</name>
                                 </application_prototype>
                             </application_prototypes>
+                            <master_item_prototype/>
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - Slow Logs Events Count</name>
                             <type>7</type>
                             <snmp_community/>
-                            <multiplier>0</multiplier>
                             <snmp_oid/>
                             <key>redis.slowlog.count[{#HOST}, {#PORT}]</key>
-                            <delay>60</delay>
-                            <history>90</history>
-                            <trends>365</trends>
+                            <delay>1m</delay>
+                            <history>90d</history>
+                            <trends>365d</trends>
                             <status>0</status>
                             <value_type>0</value_type>
                             <allowed_hosts/>
                             <units/>
-                            <delta>0</delta>
                             <snmpv3_contextname/>
                             <snmpv3_securityname/>
                             <snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -165,11 +158,8 @@
                             <snmpv3_authpassphrase/>
                             <snmpv3_privprotocol>0</snmpv3_privprotocol>
                             <snmpv3_privpassphrase/>
-                            <formula>1</formula>
-                            <delay_flex/>
                             <params/>
                             <ipmi_sensor/>
-                            <data_type>0</data_type>
                             <authtype>0</authtype>
                             <username/>
                             <password/>
@@ -181,27 +171,28 @@
                             <applications/>
                             <valuemap/>
                             <logtimefmt/>
+                            <preprocessing/>
+                            <jmx_endpoint/>
                             <application_prototypes>
                                 <application_prototype>
                                     <name>Redis: {#INSTANCE} - Slow Logs</name>
                                 </application_prototype>
                             </application_prototypes>
+                            <master_item_prototype/>
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - Slow Logs Events Details</name>
                             <type>7</type>
                             <snmp_community/>
-                            <multiplier>0</multiplier>
                             <snmp_oid/>
                             <key>redis.slowlog.get[{#HOST}, {#PORT}]</key>
-                            <delay>30</delay>
-                            <history>300</history>
+                            <delay>30s</delay>
+                            <history>300d</history>
                             <trends>0</trends>
                             <status>0</status>
                             <value_type>1</value_type>
                             <allowed_hosts/>
                             <units/>
-                            <delta>0</delta>
                             <snmpv3_contextname/>
                             <snmpv3_securityname/>
                             <snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -209,11 +200,8 @@
                             <snmpv3_authpassphrase/>
                             <snmpv3_privprotocol>0</snmpv3_privprotocol>
                             <snmpv3_privpassphrase/>
-                            <formula>1</formula>
-                            <delay_flex/>
                             <params/>
                             <ipmi_sensor/>
-                            <data_type>0</data_type>
                             <authtype>0</authtype>
                             <username/>
                             <password/>
@@ -225,27 +213,28 @@
                             <applications/>
                             <valuemap/>
                             <logtimefmt/>
+                            <preprocessing/>
+                            <jmx_endpoint/>
                             <application_prototypes>
                                 <application_prototype>
                                     <name>Redis: {#INSTANCE} - Slow Logs</name>
                                 </application_prototype>
                             </application_prototypes>
+                            <master_item_prototype/>
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - Clients: Blocked Clients</name>
                             <type>7</type>
                             <snmp_community/>
-                            <multiplier>0</multiplier>
                             <snmp_oid/>
                             <key>redis.stat.get[blocked_clients,{#HOST},{#PORT}]</key>
-                            <delay>300</delay>
-                            <history>14</history>
-                            <trends>1825</trends>
+                            <delay>5m</delay>
+                            <history>2w</history>
+                            <trends>1825d</trends>
                             <status>0</status>
                             <value_type>3</value_type>
                             <allowed_hosts>localhost</allowed_hosts>
                             <units/>
-                            <delta>2</delta>
                             <snmpv3_contextname/>
                             <snmpv3_securityname/>
                             <snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -253,11 +242,8 @@
                             <snmpv3_authpassphrase/>
                             <snmpv3_privprotocol>0</snmpv3_privprotocol>
                             <snmpv3_privpassphrase/>
-                            <formula>0</formula>
-                            <delay_flex/>
                             <params/>
                             <ipmi_sensor/>
-                            <data_type>0</data_type>
                             <authtype>0</authtype>
                             <username/>
                             <password/>
@@ -269,27 +255,33 @@
                             <applications/>
                             <valuemap/>
                             <logtimefmt/>
+                            <preprocessing>
+                                <step>
+                                    <type>9</type>
+                                    <params/>
+                                </step>
+                            </preprocessing>
+                            <jmx_endpoint/>
                             <application_prototypes>
                                 <application_prototype>
                                     <name>Redis: {#INSTANCE} - General</name>
                                 </application_prototype>
                             </application_prototypes>
+                            <master_item_prototype/>
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - Keys: Changes Since Last Save</name>
                             <type>7</type>
                             <snmp_community/>
-                            <multiplier>0</multiplier>
                             <snmp_oid/>
                             <key>redis.stat.get[changes_since_last_save,{#HOST},{#PORT}]</key>
-                            <delay>300</delay>
-                            <history>14</history>
-                            <trends>1825</trends>
+                            <delay>5m</delay>
+                            <history>2w</history>
+                            <trends>1825d</trends>
                             <status>0</status>
                             <value_type>3</value_type>
                             <allowed_hosts>localhost</allowed_hosts>
                             <units/>
-                            <delta>0</delta>
                             <snmpv3_contextname/>
                             <snmpv3_securityname/>
                             <snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -297,11 +289,8 @@
                             <snmpv3_authpassphrase/>
                             <snmpv3_privprotocol>0</snmpv3_privprotocol>
                             <snmpv3_privpassphrase/>
-                            <formula>0</formula>
-                            <delay_flex/>
                             <params/>
                             <ipmi_sensor/>
-                            <data_type>0</data_type>
                             <authtype>0</authtype>
                             <username/>
                             <password/>
@@ -313,27 +302,28 @@
                             <applications/>
                             <valuemap/>
                             <logtimefmt/>
+                            <preprocessing/>
+                            <jmx_endpoint/>
                             <application_prototypes>
                                 <application_prototype>
                                     <name>Redis: {#INSTANCE} - General</name>
                                 </application_prototype>
                             </application_prototypes>
+                            <master_item_prototype/>
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - Clients: Client Biggest Input Buffer</name>
                             <type>7</type>
                             <snmp_community/>
-                            <multiplier>0</multiplier>
                             <snmp_oid/>
                             <key>redis.stat.get[client_biggest_input_buf,{#HOST},{#PORT}]</key>
-                            <delay>300</delay>
-                            <history>14</history>
-                            <trends>1825</trends>
+                            <delay>5m</delay>
+                            <history>2w</history>
+                            <trends>1825d</trends>
                             <status>0</status>
                             <value_type>3</value_type>
                             <allowed_hosts>localhost</allowed_hosts>
                             <units/>
-                            <delta>1</delta>
                             <snmpv3_contextname/>
                             <snmpv3_securityname/>
                             <snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -341,11 +331,8 @@
                             <snmpv3_authpassphrase/>
                             <snmpv3_privprotocol>0</snmpv3_privprotocol>
                             <snmpv3_privpassphrase/>
-                            <formula>0</formula>
-                            <delay_flex/>
                             <params/>
                             <ipmi_sensor/>
-                            <data_type>0</data_type>
                             <authtype>0</authtype>
                             <username/>
                             <password/>
@@ -357,27 +344,33 @@
                             <applications/>
                             <valuemap/>
                             <logtimefmt/>
+                            <preprocessing>
+                                <step>
+                                    <type>10</type>
+                                    <params/>
+                                </step>
+                            </preprocessing>
+                            <jmx_endpoint/>
                             <application_prototypes>
                                 <application_prototype>
                                     <name>Redis: {#INSTANCE} - General</name>
                                 </application_prototype>
                             </application_prototypes>
+                            <master_item_prototype/>
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - Clients: Client Longest Output List</name>
                             <type>7</type>
                             <snmp_community/>
-                            <multiplier>0</multiplier>
                             <snmp_oid/>
                             <key>redis.stat.get[client_longest_output_list,{#HOST},{#PORT}]</key>
-                            <delay>300</delay>
-                            <history>14</history>
-                            <trends>1825</trends>
+                            <delay>5m</delay>
+                            <history>2w</history>
+                            <trends>1825d</trends>
                             <status>0</status>
                             <value_type>3</value_type>
                             <allowed_hosts>localhost</allowed_hosts>
                             <units/>
-                            <delta>1</delta>
                             <snmpv3_contextname/>
                             <snmpv3_securityname/>
                             <snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -385,11 +378,8 @@
                             <snmpv3_authpassphrase/>
                             <snmpv3_privprotocol>0</snmpv3_privprotocol>
                             <snmpv3_privpassphrase/>
-                            <formula>0</formula>
-                            <delay_flex/>
                             <params/>
                             <ipmi_sensor/>
-                            <data_type>0</data_type>
                             <authtype>0</authtype>
                             <username/>
                             <password/>
@@ -401,27 +391,33 @@
                             <applications/>
                             <valuemap/>
                             <logtimefmt/>
+                            <preprocessing>
+                                <step>
+                                    <type>10</type>
+                                    <params/>
+                                </step>
+                            </preprocessing>
+                            <jmx_endpoint/>
                             <application_prototypes>
                                 <application_prototype>
                                     <name>Redis: {#INSTANCE} - General</name>
                                 </application_prototype>
                             </application_prototypes>
+                            <master_item_prototype/>
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - Clients: Connected Clients</name>
                             <type>7</type>
                             <snmp_community/>
-                            <multiplier>0</multiplier>
                             <snmp_oid/>
                             <key>redis.stat.get[connected_clients,{#HOST},{#PORT}]</key>
-                            <delay>300</delay>
-                            <history>14</history>
-                            <trends>1825</trends>
+                            <delay>5m</delay>
+                            <history>2w</history>
+                            <trends>1825d</trends>
                             <status>0</status>
                             <value_type>3</value_type>
                             <allowed_hosts>localhost</allowed_hosts>
                             <units/>
-                            <delta>0</delta>
                             <snmpv3_contextname/>
                             <snmpv3_securityname/>
                             <snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -429,11 +425,8 @@
                             <snmpv3_authpassphrase/>
                             <snmpv3_privprotocol>0</snmpv3_privprotocol>
                             <snmpv3_privpassphrase/>
-                            <formula>0</formula>
-                            <delay_flex/>
                             <params/>
                             <ipmi_sensor/>
-                            <data_type>0</data_type>
                             <authtype>0</authtype>
                             <username/>
                             <password/>
@@ -445,27 +438,28 @@
                             <applications/>
                             <valuemap/>
                             <logtimefmt/>
+                            <preprocessing/>
+                            <jmx_endpoint/>
                             <application_prototypes>
                                 <application_prototype>
                                     <name>Redis: {#INSTANCE} - General</name>
                                 </application_prototype>
                             </application_prototypes>
+                            <master_item_prototype/>
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - Clients: Connected Slaves</name>
                             <type>7</type>
                             <snmp_community/>
-                            <multiplier>0</multiplier>
                             <snmp_oid/>
                             <key>redis.stat.get[connected_slaves,{#HOST},{#PORT}]</key>
-                            <delay>300</delay>
-                            <history>14</history>
-                            <trends>1825</trends>
+                            <delay>5m</delay>
+                            <history>2w</history>
+                            <trends>1825d</trends>
                             <status>0</status>
                             <value_type>3</value_type>
                             <allowed_hosts>localhost</allowed_hosts>
                             <units/>
-                            <delta>0</delta>
                             <snmpv3_contextname/>
                             <snmpv3_securityname/>
                             <snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -473,11 +467,8 @@
                             <snmpv3_authpassphrase/>
                             <snmpv3_privprotocol>0</snmpv3_privprotocol>
                             <snmpv3_privpassphrase/>
-                            <formula>0</formula>
-                            <delay_flex/>
                             <params/>
                             <ipmi_sensor/>
-                            <data_type>0</data_type>
                             <authtype>0</authtype>
                             <username/>
                             <password/>
@@ -489,115 +480,28 @@
                             <applications/>
                             <valuemap/>
                             <logtimefmt/>
+                            <preprocessing/>
+                            <jmx_endpoint/>
                             <application_prototypes>
                                 <application_prototype>
                                     <name>Redis: {#INSTANCE} - General</name>
                                 </application_prototype>
                             </application_prototypes>
-                        </item_prototype>
-                        <item_prototype>
-                            <name>Redis: &quot;{#INSTANCE}&quot; - Keys: Total Expired</name>
-                            <type>7</type>
-                            <snmp_community/>
-                            <multiplier>0</multiplier>
-                            <snmp_oid/>
-                            <key>redis.stat.get[db0_expires,{#HOST},{#PORT}]</key>
-                            <delay>300</delay>
-                            <history>14</history>
-                            <trends>1825</trends>
-                            <status>0</status>
-                            <value_type>3</value_type>
-                            <allowed_hosts/>
-                            <units/>
-                            <delta>0</delta>
-                            <snmpv3_contextname/>
-                            <snmpv3_securityname/>
-                            <snmpv3_securitylevel>0</snmpv3_securitylevel>
-                            <snmpv3_authprotocol>0</snmpv3_authprotocol>
-                            <snmpv3_authpassphrase/>
-                            <snmpv3_privprotocol>0</snmpv3_privprotocol>
-                            <snmpv3_privpassphrase/>
-                            <formula>1</formula>
-                            <delay_flex/>
-                            <params/>
-                            <ipmi_sensor/>
-                            <data_type>0</data_type>
-                            <authtype>0</authtype>
-                            <username/>
-                            <password/>
-                            <publickey/>
-                            <privatekey/>
-                            <port/>
-                            <description/>
-                            <inventory_link>0</inventory_link>
-                            <applications/>
-                            <valuemap/>
-                            <logtimefmt/>
-                            <application_prototypes>
-                                <application_prototype>
-                                    <name>Redis: {#INSTANCE} - General</name>
-                                </application_prototype>
-                            </application_prototypes>
-                        </item_prototype>
-                        <item_prototype>
-                            <name>Redis: &quot;{#INSTANCE}&quot; - Keys: Total</name>
-                            <type>7</type>
-                            <snmp_community/>
-                            <multiplier>0</multiplier>
-                            <snmp_oid/>
-                            <key>redis.stat.get[db0_keys,{#HOST},{#PORT}]</key>
-                            <delay>300</delay>
-                            <history>14</history>
-                            <trends>1825</trends>
-                            <status>0</status>
-                            <value_type>3</value_type>
-                            <allowed_hosts/>
-                            <units/>
-                            <delta>0</delta>
-                            <snmpv3_contextname/>
-                            <snmpv3_securityname/>
-                            <snmpv3_securitylevel>0</snmpv3_securitylevel>
-                            <snmpv3_authprotocol>0</snmpv3_authprotocol>
-                            <snmpv3_authpassphrase/>
-                            <snmpv3_privprotocol>0</snmpv3_privprotocol>
-                            <snmpv3_privpassphrase/>
-                            <formula>1</formula>
-                            <delay_flex/>
-                            <params/>
-                            <ipmi_sensor/>
-                            <data_type>0</data_type>
-                            <authtype>0</authtype>
-                            <username/>
-                            <password/>
-                            <publickey/>
-                            <privatekey/>
-                            <port/>
-                            <description/>
-                            <inventory_link>0</inventory_link>
-                            <applications/>
-                            <valuemap/>
-                            <logtimefmt/>
-                            <application_prototypes>
-                                <application_prototype>
-                                    <name>Redis: {#INSTANCE} - General</name>
-                                </application_prototype>
-                            </application_prototypes>
+                            <master_item_prototype/>
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - Keys: Evicted Keys</name>
                             <type>7</type>
                             <snmp_community/>
-                            <multiplier>0</multiplier>
                             <snmp_oid/>
                             <key>redis.stat.get[evicted_keys,{#HOST},{#PORT}]</key>
-                            <delay>300</delay>
-                            <history>14</history>
-                            <trends>1825</trends>
+                            <delay>5m</delay>
+                            <history>2w</history>
+                            <trends>1825d</trends>
                             <status>0</status>
                             <value_type>3</value_type>
                             <allowed_hosts>localhost</allowed_hosts>
                             <units/>
-                            <delta>1</delta>
                             <snmpv3_contextname/>
                             <snmpv3_securityname/>
                             <snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -605,11 +509,8 @@
                             <snmpv3_authpassphrase/>
                             <snmpv3_privprotocol>0</snmpv3_privprotocol>
                             <snmpv3_privpassphrase/>
-                            <formula>0</formula>
-                            <delay_flex/>
                             <params/>
                             <ipmi_sensor/>
-                            <data_type>0</data_type>
                             <authtype>0</authtype>
                             <username/>
                             <password/>
@@ -621,27 +522,33 @@
                             <applications/>
                             <valuemap/>
                             <logtimefmt/>
+                            <preprocessing>
+                                <step>
+                                    <type>10</type>
+                                    <params/>
+                                </step>
+                            </preprocessing>
+                            <jmx_endpoint/>
                             <application_prototypes>
                                 <application_prototype>
                                     <name>Redis: {#INSTANCE} - General</name>
                                 </application_prototype>
                             </application_prototypes>
+                            <master_item_prototype/>
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - Keys: Expired Keys</name>
                             <type>7</type>
                             <snmp_community/>
-                            <multiplier>0</multiplier>
                             <snmp_oid/>
                             <key>redis.stat.get[expired_keys,{#HOST},{#PORT}]</key>
-                            <delay>300</delay>
-                            <history>14</history>
-                            <trends>1825</trends>
+                            <delay>5m</delay>
+                            <history>2w</history>
+                            <trends>1825d</trends>
                             <status>0</status>
                             <value_type>3</value_type>
                             <allowed_hosts>localhost</allowed_hosts>
                             <units/>
-                            <delta>1</delta>
                             <snmpv3_contextname/>
                             <snmpv3_securityname/>
                             <snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -649,11 +556,8 @@
                             <snmpv3_authpassphrase/>
                             <snmpv3_privprotocol>0</snmpv3_privprotocol>
                             <snmpv3_privpassphrase/>
-                            <formula>0</formula>
-                            <delay_flex/>
                             <params/>
                             <ipmi_sensor/>
-                            <data_type>0</data_type>
                             <authtype>0</authtype>
                             <username/>
                             <password/>
@@ -665,27 +569,33 @@
                             <applications/>
                             <valuemap/>
                             <logtimefmt/>
+                            <preprocessing>
+                                <step>
+                                    <type>10</type>
+                                    <params/>
+                                </step>
+                            </preprocessing>
+                            <jmx_endpoint/>
                             <application_prototypes>
                                 <application_prototype>
                                     <name>Redis: {#INSTANCE} - General</name>
                                 </application_prototype>
                             </application_prototypes>
+                            <master_item_prototype/>
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - Keys: Keyspace Hits</name>
                             <type>7</type>
                             <snmp_community/>
-                            <multiplier>0</multiplier>
                             <snmp_oid/>
                             <key>redis.stat.get[keyspace_hits,{#HOST},{#PORT}]</key>
-                            <delay>300</delay>
-                            <history>14</history>
-                            <trends>1825</trends>
+                            <delay>5m</delay>
+                            <history>2w</history>
+                            <trends>1825d</trends>
                             <status>0</status>
                             <value_type>3</value_type>
                             <allowed_hosts>localhost</allowed_hosts>
                             <units/>
-                            <delta>1</delta>
                             <snmpv3_contextname/>
                             <snmpv3_securityname/>
                             <snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -693,11 +603,8 @@
                             <snmpv3_authpassphrase/>
                             <snmpv3_privprotocol>0</snmpv3_privprotocol>
                             <snmpv3_privpassphrase/>
-                            <formula>0</formula>
-                            <delay_flex/>
                             <params/>
                             <ipmi_sensor/>
-                            <data_type>0</data_type>
                             <authtype>0</authtype>
                             <username/>
                             <password/>
@@ -709,27 +616,33 @@
                             <applications/>
                             <valuemap/>
                             <logtimefmt/>
+                            <preprocessing>
+                                <step>
+                                    <type>10</type>
+                                    <params/>
+                                </step>
+                            </preprocessing>
+                            <jmx_endpoint/>
                             <application_prototypes>
                                 <application_prototype>
                                     <name>Redis: {#INSTANCE} - General</name>
                                 </application_prototype>
                             </application_prototypes>
+                            <master_item_prototype/>
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - Keys: Keyspace Misses</name>
                             <type>7</type>
                             <snmp_community/>
-                            <multiplier>0</multiplier>
                             <snmp_oid/>
                             <key>redis.stat.get[keyspace_misses,{#HOST},{#PORT}]</key>
-                            <delay>300</delay>
-                            <history>14</history>
-                            <trends>1825</trends>
+                            <delay>5m</delay>
+                            <history>2w</history>
+                            <trends>1825d</trends>
                             <status>0</status>
                             <value_type>3</value_type>
                             <allowed_hosts>localhost</allowed_hosts>
                             <units/>
-                            <delta>1</delta>
                             <snmpv3_contextname/>
                             <snmpv3_securityname/>
                             <snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -737,11 +650,8 @@
                             <snmpv3_authpassphrase/>
                             <snmpv3_privprotocol>0</snmpv3_privprotocol>
                             <snmpv3_privpassphrase/>
-                            <formula>0</formula>
-                            <delay_flex/>
                             <params/>
                             <ipmi_sensor/>
-                            <data_type>0</data_type>
                             <authtype>0</authtype>
                             <username/>
                             <password/>
@@ -753,27 +663,33 @@
                             <applications/>
                             <valuemap/>
                             <logtimefmt/>
+                            <preprocessing>
+                                <step>
+                                    <type>10</type>
+                                    <params/>
+                                </step>
+                            </preprocessing>
+                            <jmx_endpoint/>
                             <application_prototypes>
                                 <application_prototype>
                                     <name>Redis: {#INSTANCE} - General</name>
                                 </application_prototype>
                             </application_prototypes>
+                            <master_item_prototype/>
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - Slave: Redis Server Master host</name>
                             <type>7</type>
                             <snmp_community/>
-                            <multiplier>0</multiplier>
                             <snmp_oid/>
                             <key>redis.stat.get[master_host,{#HOST},{#PORT}]</key>
-                            <delay>300</delay>
-                            <history>14</history>
+                            <delay>5m</delay>
+                            <history>2w</history>
                             <trends>0</trends>
                             <status>0</status>
                             <value_type>4</value_type>
                             <allowed_hosts/>
                             <units/>
-                            <delta>0</delta>
                             <snmpv3_contextname/>
                             <snmpv3_securityname/>
                             <snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -781,11 +697,8 @@
                             <snmpv3_authpassphrase/>
                             <snmpv3_privprotocol>0</snmpv3_privprotocol>
                             <snmpv3_privpassphrase/>
-                            <formula>0</formula>
-                            <delay_flex/>
                             <params/>
                             <ipmi_sensor/>
-                            <data_type>0</data_type>
                             <authtype>0</authtype>
                             <username/>
                             <password/>
@@ -797,27 +710,28 @@
                             <applications/>
                             <valuemap/>
                             <logtimefmt/>
+                            <preprocessing/>
+                            <jmx_endpoint/>
                             <application_prototypes>
                                 <application_prototype>
                                     <name>Redis: {#INSTANCE} - General</name>
                                 </application_prototype>
                             </application_prototypes>
+                            <master_item_prototype/>
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - Slave: Redis Server Master last io seconds ago</name>
                             <type>7</type>
                             <snmp_community/>
-                            <multiplier>0</multiplier>
                             <snmp_oid/>
                             <key>redis.stat.get[master_last_io_seconds_ago,{#HOST},{#PORT}]</key>
-                            <delay>300</delay>
-                            <history>14</history>
-                            <trends>1825</trends>
+                            <delay>5m</delay>
+                            <history>2w</history>
+                            <trends>1825d</trends>
                             <status>0</status>
                             <value_type>0</value_type>
                             <allowed_hosts/>
                             <units>s</units>
-                            <delta>0</delta>
                             <snmpv3_contextname/>
                             <snmpv3_securityname/>
                             <snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -825,11 +739,8 @@
                             <snmpv3_authpassphrase/>
                             <snmpv3_privprotocol>0</snmpv3_privprotocol>
                             <snmpv3_privpassphrase/>
-                            <formula>1</formula>
-                            <delay_flex/>
                             <params/>
                             <ipmi_sensor/>
-                            <data_type>0</data_type>
                             <authtype>0</authtype>
                             <username/>
                             <password/>
@@ -841,27 +752,75 @@
                             <applications/>
                             <valuemap/>
                             <logtimefmt/>
+                            <preprocessing/>
+                            <jmx_endpoint/>
                             <application_prototypes>
                                 <application_prototype>
                                     <name>Redis: {#INSTANCE} - General</name>
                                 </application_prototype>
                             </application_prototypes>
+                            <master_item_prototype/>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>Redis: &quot;{#INSTANCE}&quot; - Master Link: Down Time</name>
+                            <type>7</type>
+                            <snmp_community/>
+                            <snmp_oid/>
+                            <key>redis.stat.get[master_link_down_since_seconds,{#HOST},{#PORT}]</key>
+                            <delay>1m</delay>
+                            <history>2w</history>
+                            <trends>1825d</trends>
+                            <status>0</status>
+                            <value_type>3</value_type>
+                            <allowed_hosts/>
+                            <units/>
+                            <snmpv3_contextname/>
+                            <snmpv3_securityname/>
+                            <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                            <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                            <snmpv3_authpassphrase/>
+                            <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                            <snmpv3_privpassphrase/>
+                            <params/>
+                            <ipmi_sensor/>
+                            <authtype>0</authtype>
+                            <username/>
+                            <password/>
+                            <publickey/>
+                            <privatekey/>
+                            <port/>
+                            <description/>
+                            <inventory_link>0</inventory_link>
+                            <applications/>
+                            <valuemap/>
+                            <logtimefmt/>
+                            <preprocessing>
+                                <step>
+                                    <type>10</type>
+                                    <params/>
+                                </step>
+                            </preprocessing>
+                            <jmx_endpoint/>
+                            <application_prototypes>
+                                <application_prototype>
+                                    <name>Redis: {#INSTANCE} - General</name>
+                                </application_prototype>
+                            </application_prototypes>
+                            <master_item_prototype/>
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - Slave: Redis Server Master status</name>
                             <type>7</type>
                             <snmp_community/>
-                            <multiplier>0</multiplier>
                             <snmp_oid/>
                             <key>redis.stat.get[master_link_status,{#HOST},{#PORT}]</key>
-                            <delay>300</delay>
-                            <history>14</history>
+                            <delay>5m</delay>
+                            <history>2w</history>
                             <trends>0</trends>
                             <status>0</status>
                             <value_type>4</value_type>
                             <allowed_hosts/>
                             <units/>
-                            <delta>0</delta>
                             <snmpv3_contextname/>
                             <snmpv3_securityname/>
                             <snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -869,11 +828,8 @@
                             <snmpv3_authpassphrase/>
                             <snmpv3_privprotocol>0</snmpv3_privprotocol>
                             <snmpv3_privpassphrase/>
-                            <formula>0</formula>
-                            <delay_flex/>
                             <params/>
                             <ipmi_sensor/>
-                            <data_type>0</data_type>
                             <authtype>0</authtype>
                             <username/>
                             <password/>
@@ -885,27 +841,28 @@
                             <applications/>
                             <valuemap/>
                             <logtimefmt/>
+                            <preprocessing/>
+                            <jmx_endpoint/>
                             <application_prototypes>
                                 <application_prototype>
                                     <name>Redis: {#INSTANCE} - General</name>
                                 </application_prototype>
                             </application_prototypes>
+                            <master_item_prototype/>
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - Slave: Redis Server Master port</name>
                             <type>7</type>
                             <snmp_community/>
-                            <multiplier>0</multiplier>
                             <snmp_oid/>
                             <key>redis.stat.get[master_port,{#HOST},{#PORT}]</key>
-                            <delay>300</delay>
-                            <history>14</history>
+                            <delay>5m</delay>
+                            <history>2w</history>
                             <trends>0</trends>
                             <status>0</status>
                             <value_type>4</value_type>
                             <allowed_hosts/>
                             <units/>
-                            <delta>0</delta>
                             <snmpv3_contextname/>
                             <snmpv3_securityname/>
                             <snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -913,11 +870,8 @@
                             <snmpv3_authpassphrase/>
                             <snmpv3_privprotocol>0</snmpv3_privprotocol>
                             <snmpv3_privpassphrase/>
-                            <formula>0</formula>
-                            <delay_flex/>
                             <params/>
                             <ipmi_sensor/>
-                            <data_type>0</data_type>
                             <authtype>0</authtype>
                             <username/>
                             <password/>
@@ -929,27 +883,28 @@
                             <applications/>
                             <valuemap/>
                             <logtimefmt/>
+                            <preprocessing/>
+                            <jmx_endpoint/>
                             <application_prototypes>
                                 <application_prototype>
                                     <name>Redis: {#INSTANCE} - General</name>
                                 </application_prototype>
                             </application_prototypes>
+                            <master_item_prototype/>
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - Replication: master_repl_offset</name>
                             <type>7</type>
                             <snmp_community/>
-                            <multiplier>0</multiplier>
                             <snmp_oid/>
                             <key>redis.stat.get[master_repl_offset,{#HOST},{#PORT}]</key>
-                            <delay>300</delay>
-                            <history>14</history>
-                            <trends>1825</trends>
+                            <delay>5m</delay>
+                            <history>2w</history>
+                            <trends>1825d</trends>
                             <status>0</status>
                             <value_type>3</value_type>
                             <allowed_hosts/>
                             <units/>
-                            <delta>1</delta>
                             <snmpv3_contextname/>
                             <snmpv3_securityname/>
                             <snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -957,11 +912,8 @@
                             <snmpv3_authpassphrase/>
                             <snmpv3_privprotocol>0</snmpv3_privprotocol>
                             <snmpv3_privpassphrase/>
-                            <formula>1</formula>
-                            <delay_flex/>
                             <params/>
                             <ipmi_sensor/>
-                            <data_type>0</data_type>
                             <authtype>0</authtype>
                             <username/>
                             <password/>
@@ -973,27 +925,33 @@
                             <applications/>
                             <valuemap/>
                             <logtimefmt/>
+                            <preprocessing>
+                                <step>
+                                    <type>10</type>
+                                    <params/>
+                                </step>
+                            </preprocessing>
+                            <jmx_endpoint/>
                             <application_prototypes>
                                 <application_prototype>
                                     <name>Redis: {#INSTANCE} - General</name>
                                 </application_prototype>
                             </application_prototypes>
+                            <master_item_prototype/>
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - Memory: $1</name>
                             <type>7</type>
                             <snmp_community/>
-                            <multiplier>0</multiplier>
                             <snmp_oid/>
                             <key>redis.stat.get[mem_fragmentation_ratio,{#HOST},{#PORT}]</key>
-                            <delay>300</delay>
-                            <history>14</history>
-                            <trends>1825</trends>
+                            <delay>5m</delay>
+                            <history>2w</history>
+                            <trends>1825d</trends>
                             <status>0</status>
                             <value_type>0</value_type>
                             <allowed_hosts/>
                             <units/>
-                            <delta>0</delta>
                             <snmpv3_contextname/>
                             <snmpv3_securityname/>
                             <snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -1001,11 +959,8 @@
                             <snmpv3_authpassphrase/>
                             <snmpv3_privprotocol>0</snmpv3_privprotocol>
                             <snmpv3_privpassphrase/>
-                            <formula>1</formula>
-                            <delay_flex/>
                             <params/>
                             <ipmi_sensor/>
-                            <data_type>0</data_type>
                             <authtype>0</authtype>
                             <username/>
                             <password/>
@@ -1017,27 +972,28 @@
                             <applications/>
                             <valuemap/>
                             <logtimefmt/>
+                            <preprocessing/>
+                            <jmx_endpoint/>
                             <application_prototypes>
                                 <application_prototype>
                                     <name>Redis: {#INSTANCE} - General</name>
                                 </application_prototype>
                             </application_prototypes>
+                            <master_item_prototype/>
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - Disk Flush: RDB BGSAVE In Progress</name>
                             <type>7</type>
                             <snmp_community/>
-                            <multiplier>0</multiplier>
                             <snmp_oid/>
                             <key>redis.stat.get[rdb_bgsave_in_progress,{#HOST},{#PORT}]</key>
-                            <delay>60</delay>
-                            <history>14</history>
-                            <trends>1825</trends>
+                            <delay>1m</delay>
+                            <history>2w</history>
+                            <trends>1825d</trends>
                             <status>0</status>
                             <value_type>3</value_type>
                             <allowed_hosts/>
                             <units/>
-                            <delta>0</delta>
                             <snmpv3_contextname/>
                             <snmpv3_securityname/>
                             <snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -1045,11 +1001,8 @@
                             <snmpv3_authpassphrase/>
                             <snmpv3_privprotocol>0</snmpv3_privprotocol>
                             <snmpv3_privpassphrase/>
-                            <formula>1</formula>
-                            <delay_flex/>
                             <params/>
                             <ipmi_sensor/>
-                            <data_type>0</data_type>
                             <authtype>0</authtype>
                             <username/>
                             <password/>
@@ -1061,27 +1014,28 @@
                             <applications/>
                             <valuemap/>
                             <logtimefmt/>
+                            <preprocessing/>
+                            <jmx_endpoint/>
                             <application_prototypes>
                                 <application_prototype>
                                     <name>Redis: {#INSTANCE} - General</name>
                                 </application_prototype>
                             </application_prototypes>
+                            <master_item_prototype/>
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - Keys: redis_version</name>
                             <type>7</type>
                             <snmp_community/>
-                            <multiplier>0</multiplier>
                             <snmp_oid/>
                             <key>redis.stat.get[redis_version,{#HOST},{#PORT}]</key>
-                            <delay>300</delay>
-                            <history>14</history>
+                            <delay>5m</delay>
+                            <history>2w</history>
                             <trends>0</trends>
                             <status>0</status>
                             <value_type>4</value_type>
                             <allowed_hosts/>
                             <units/>
-                            <delta>0</delta>
                             <snmpv3_contextname/>
                             <snmpv3_securityname/>
                             <snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -1089,11 +1043,8 @@
                             <snmpv3_authpassphrase/>
                             <snmpv3_privprotocol>0</snmpv3_privprotocol>
                             <snmpv3_privpassphrase/>
-                            <formula>1</formula>
-                            <delay_flex/>
                             <params/>
                             <ipmi_sensor/>
-                            <data_type>0</data_type>
                             <authtype>0</authtype>
                             <username/>
                             <password/>
@@ -1105,27 +1056,28 @@
                             <applications/>
                             <valuemap/>
                             <logtimefmt/>
+                            <preprocessing/>
+                            <jmx_endpoint/>
                             <application_prototypes>
                                 <application_prototype>
                                     <name>Redis: {#INSTANCE} - General</name>
                                 </application_prototype>
                             </application_prototypes>
+                            <master_item_prototype/>
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - General: Redis Server Role</name>
                             <type>7</type>
                             <snmp_community/>
-                            <multiplier>0</multiplier>
                             <snmp_oid/>
                             <key>redis.stat.get[role,{#HOST},{#PORT}]</key>
-                            <delay>300</delay>
-                            <history>14</history>
+                            <delay>5m</delay>
+                            <history>2w</history>
                             <trends>0</trends>
                             <status>0</status>
                             <value_type>4</value_type>
                             <allowed_hosts/>
                             <units/>
-                            <delta>0</delta>
                             <snmpv3_contextname/>
                             <snmpv3_securityname/>
                             <snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -1133,11 +1085,8 @@
                             <snmpv3_authpassphrase/>
                             <snmpv3_privprotocol>0</snmpv3_privprotocol>
                             <snmpv3_privpassphrase/>
-                            <formula>0</formula>
-                            <delay_flex/>
                             <params/>
                             <ipmi_sensor/>
-                            <data_type>0</data_type>
                             <authtype>0</authtype>
                             <username/>
                             <password/>
@@ -1149,27 +1098,28 @@
                             <applications/>
                             <valuemap/>
                             <logtimefmt/>
+                            <preprocessing/>
+                            <jmx_endpoint/>
                             <application_prototypes>
                                 <application_prototype>
                                     <name>Redis: {#INSTANCE} - General</name>
                                 </application_prototype>
                             </application_prototypes>
+                            <master_item_prototype/>
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - General: Commands/sec</name>
                             <type>7</type>
                             <snmp_community/>
-                            <multiplier>0</multiplier>
                             <snmp_oid/>
                             <key>redis.stat.get[total_commands_processed,{#HOST},{#PORT}]</key>
-                            <delay>300</delay>
-                            <history>14</history>
-                            <trends>1825</trends>
+                            <delay>5m</delay>
+                            <history>2w</history>
+                            <trends>1825d</trends>
                             <status>0</status>
                             <value_type>3</value_type>
                             <allowed_hosts/>
                             <units/>
-                            <delta>1</delta>
                             <snmpv3_contextname/>
                             <snmpv3_securityname/>
                             <snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -1177,11 +1127,8 @@
                             <snmpv3_authpassphrase/>
                             <snmpv3_privprotocol>0</snmpv3_privprotocol>
                             <snmpv3_privpassphrase/>
-                            <formula>1</formula>
-                            <delay_flex/>
                             <params/>
                             <ipmi_sensor/>
-                            <data_type>0</data_type>
                             <authtype>0</authtype>
                             <username/>
                             <password/>
@@ -1193,27 +1140,33 @@
                             <applications/>
                             <valuemap/>
                             <logtimefmt/>
+                            <preprocessing>
+                                <step>
+                                    <type>10</type>
+                                    <params/>
+                                </step>
+                            </preprocessing>
+                            <jmx_endpoint/>
                             <application_prototypes>
                                 <application_prototype>
                                     <name>Redis: {#INSTANCE} - General</name>
                                 </application_prototype>
                             </application_prototypes>
+                            <master_item_prototype/>
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - Clients: Connections/sec</name>
                             <type>7</type>
                             <snmp_community/>
-                            <multiplier>0</multiplier>
                             <snmp_oid/>
                             <key>redis.stat.get[total_connections_received,{#HOST},{#PORT}]</key>
-                            <delay>300</delay>
-                            <history>14</history>
-                            <trends>1825</trends>
+                            <delay>5m</delay>
+                            <history>2w</history>
+                            <trends>1825d</trends>
                             <status>0</status>
                             <value_type>3</value_type>
                             <allowed_hosts>localhost</allowed_hosts>
                             <units/>
-                            <delta>1</delta>
                             <snmpv3_contextname/>
                             <snmpv3_securityname/>
                             <snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -1221,11 +1174,8 @@
                             <snmpv3_authpassphrase/>
                             <snmpv3_privprotocol>0</snmpv3_privprotocol>
                             <snmpv3_privpassphrase/>
-                            <formula>0</formula>
-                            <delay_flex/>
                             <params/>
                             <ipmi_sensor/>
-                            <data_type>0</data_type>
                             <authtype>0</authtype>
                             <username/>
                             <password/>
@@ -1237,27 +1187,33 @@
                             <applications/>
                             <valuemap/>
                             <logtimefmt/>
+                            <preprocessing>
+                                <step>
+                                    <type>10</type>
+                                    <params/>
+                                </step>
+                            </preprocessing>
+                            <jmx_endpoint/>
                             <application_prototypes>
                                 <application_prototype>
                                     <name>Redis: {#INSTANCE} - General</name>
                                 </application_prototype>
                             </application_prototypes>
+                            <master_item_prototype/>
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - CPU: Used CPU Sys</name>
                             <type>7</type>
                             <snmp_community/>
-                            <multiplier>0</multiplier>
                             <snmp_oid/>
                             <key>redis.stat.get[used_cpu_sys,{#HOST},{#PORT}]</key>
-                            <delay>300</delay>
-                            <history>14</history>
-                            <trends>1825</trends>
+                            <delay>5m</delay>
+                            <history>2w</history>
+                            <trends>1825d</trends>
                             <status>0</status>
                             <value_type>0</value_type>
                             <allowed_hosts>localhost</allowed_hosts>
                             <units/>
-                            <delta>1</delta>
                             <snmpv3_contextname/>
                             <snmpv3_securityname/>
                             <snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -1265,11 +1221,8 @@
                             <snmpv3_authpassphrase/>
                             <snmpv3_privprotocol>0</snmpv3_privprotocol>
                             <snmpv3_privpassphrase/>
-                            <formula>0</formula>
-                            <delay_flex/>
                             <params/>
                             <ipmi_sensor/>
-                            <data_type>0</data_type>
                             <authtype>0</authtype>
                             <username/>
                             <password/>
@@ -1281,27 +1234,33 @@
                             <applications/>
                             <valuemap/>
                             <logtimefmt/>
+                            <preprocessing>
+                                <step>
+                                    <type>10</type>
+                                    <params/>
+                                </step>
+                            </preprocessing>
+                            <jmx_endpoint/>
                             <application_prototypes>
                                 <application_prototype>
                                     <name>Redis: {#INSTANCE} - General</name>
                                 </application_prototype>
                             </application_prototypes>
+                            <master_item_prototype/>
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - Clients: Used CPU Sys Childrens</name>
                             <type>7</type>
                             <snmp_community/>
-                            <multiplier>0</multiplier>
                             <snmp_oid/>
                             <key>redis.stat.get[used_cpu_sys_childrens,{#HOST},{#PORT}]</key>
-                            <delay>300</delay>
-                            <history>14</history>
-                            <trends>1825</trends>
+                            <delay>5m</delay>
+                            <history>2w</history>
+                            <trends>1825d</trends>
                             <status>0</status>
                             <value_type>0</value_type>
                             <allowed_hosts>localhost</allowed_hosts>
                             <units/>
-                            <delta>1</delta>
                             <snmpv3_contextname/>
                             <snmpv3_securityname/>
                             <snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -1309,11 +1268,8 @@
                             <snmpv3_authpassphrase/>
                             <snmpv3_privprotocol>0</snmpv3_privprotocol>
                             <snmpv3_privpassphrase/>
-                            <formula>0</formula>
-                            <delay_flex/>
                             <params/>
                             <ipmi_sensor/>
-                            <data_type>0</data_type>
                             <authtype>0</authtype>
                             <username/>
                             <password/>
@@ -1325,27 +1281,33 @@
                             <applications/>
                             <valuemap/>
                             <logtimefmt/>
+                            <preprocessing>
+                                <step>
+                                    <type>10</type>
+                                    <params/>
+                                </step>
+                            </preprocessing>
+                            <jmx_endpoint/>
                             <application_prototypes>
                                 <application_prototype>
                                     <name>Redis: {#INSTANCE} - General</name>
                                 </application_prototype>
                             </application_prototypes>
+                            <master_item_prototype/>
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - CPU: Used CPU User</name>
                             <type>7</type>
                             <snmp_community/>
-                            <multiplier>0</multiplier>
                             <snmp_oid/>
                             <key>redis.stat.get[used_cpu_user,{#HOST},{#PORT}]</key>
-                            <delay>300</delay>
-                            <history>14</history>
-                            <trends>1825</trends>
+                            <delay>5m</delay>
+                            <history>2w</history>
+                            <trends>1825d</trends>
                             <status>0</status>
                             <value_type>0</value_type>
                             <allowed_hosts>localhost</allowed_hosts>
                             <units/>
-                            <delta>1</delta>
                             <snmpv3_contextname/>
                             <snmpv3_securityname/>
                             <snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -1353,11 +1315,8 @@
                             <snmpv3_authpassphrase/>
                             <snmpv3_privprotocol>0</snmpv3_privprotocol>
                             <snmpv3_privpassphrase/>
-                            <formula>0</formula>
-                            <delay_flex/>
                             <params/>
                             <ipmi_sensor/>
-                            <data_type>0</data_type>
                             <authtype>0</authtype>
                             <username/>
                             <password/>
@@ -1369,27 +1328,33 @@
                             <applications/>
                             <valuemap/>
                             <logtimefmt/>
+                            <preprocessing>
+                                <step>
+                                    <type>10</type>
+                                    <params/>
+                                </step>
+                            </preprocessing>
+                            <jmx_endpoint/>
                             <application_prototypes>
                                 <application_prototype>
                                     <name>Redis: {#INSTANCE} - General</name>
                                 </application_prototype>
                             </application_prototypes>
+                            <master_item_prototype/>
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - Clients: Used CPU User Childrens</name>
                             <type>7</type>
                             <snmp_community/>
-                            <multiplier>0</multiplier>
                             <snmp_oid/>
                             <key>redis.stat.get[used_cpu_user_childrens,{#HOST},{#PORT}]</key>
-                            <delay>300</delay>
-                            <history>14</history>
-                            <trends>1825</trends>
+                            <delay>5m</delay>
+                            <history>2w</history>
+                            <trends>1825d</trends>
                             <status>0</status>
                             <value_type>0</value_type>
                             <allowed_hosts>localhost</allowed_hosts>
                             <units/>
-                            <delta>1</delta>
                             <snmpv3_contextname/>
                             <snmpv3_securityname/>
                             <snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -1397,11 +1362,8 @@
                             <snmpv3_authpassphrase/>
                             <snmpv3_privprotocol>0</snmpv3_privprotocol>
                             <snmpv3_privpassphrase/>
-                            <formula>0</formula>
-                            <delay_flex/>
                             <params/>
                             <ipmi_sensor/>
-                            <data_type>0</data_type>
                             <authtype>0</authtype>
                             <username/>
                             <password/>
@@ -1413,27 +1375,33 @@
                             <applications/>
                             <valuemap/>
                             <logtimefmt/>
+                            <preprocessing>
+                                <step>
+                                    <type>10</type>
+                                    <params/>
+                                </step>
+                            </preprocessing>
+                            <jmx_endpoint/>
                             <application_prototypes>
                                 <application_prototype>
                                     <name>Redis: {#INSTANCE} - General</name>
                                 </application_prototype>
                             </application_prototypes>
+                            <master_item_prototype/>
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - Memory: $1</name>
                             <type>7</type>
                             <snmp_community/>
-                            <multiplier>0</multiplier>
                             <snmp_oid/>
                             <key>redis.stat.get[used_memory,{#HOST},{#PORT}]</key>
-                            <delay>300</delay>
-                            <history>14</history>
-                            <trends>1825</trends>
+                            <delay>5m</delay>
+                            <history>2w</history>
+                            <trends>1825d</trends>
                             <status>0</status>
                             <value_type>3</value_type>
                             <allowed_hosts/>
                             <units>B</units>
-                            <delta>0</delta>
                             <snmpv3_contextname/>
                             <snmpv3_securityname/>
                             <snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -1441,11 +1409,8 @@
                             <snmpv3_authpassphrase/>
                             <snmpv3_privprotocol>0</snmpv3_privprotocol>
                             <snmpv3_privpassphrase/>
-                            <formula>1</formula>
-                            <delay_flex/>
                             <params/>
                             <ipmi_sensor/>
-                            <data_type>0</data_type>
                             <authtype>0</authtype>
                             <username/>
                             <password/>
@@ -1457,27 +1422,28 @@
                             <applications/>
                             <valuemap/>
                             <logtimefmt/>
+                            <preprocessing/>
+                            <jmx_endpoint/>
                             <application_prototypes>
                                 <application_prototype>
                                     <name>Redis: {#INSTANCE} - General</name>
                                 </application_prototype>
                             </application_prototypes>
+                            <master_item_prototype/>
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - Memory: $1</name>
                             <type>7</type>
                             <snmp_community/>
-                            <multiplier>0</multiplier>
                             <snmp_oid/>
                             <key>redis.stat.get[used_memory_rss,{#HOST},{#PORT}]</key>
-                            <delay>300</delay>
-                            <history>14</history>
-                            <trends>1825</trends>
+                            <delay>5m</delay>
+                            <history>2w</history>
+                            <trends>1825d</trends>
                             <status>0</status>
                             <value_type>3</value_type>
                             <allowed_hosts/>
                             <units>B</units>
-                            <delta>0</delta>
                             <snmpv3_contextname/>
                             <snmpv3_securityname/>
                             <snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -1485,11 +1451,8 @@
                             <snmpv3_authpassphrase/>
                             <snmpv3_privprotocol>0</snmpv3_privprotocol>
                             <snmpv3_privpassphrase/>
-                            <formula>1</formula>
-                            <delay_flex/>
                             <params/>
                             <ipmi_sensor/>
-                            <data_type>0</data_type>
                             <authtype>0</authtype>
                             <username/>
                             <password/>
@@ -1501,27 +1464,154 @@
                             <applications/>
                             <valuemap/>
                             <logtimefmt/>
+                            <preprocessing/>
+                            <jmx_endpoint/>
                             <application_prototypes>
                                 <application_prototype>
                                     <name>Redis: {#INSTANCE} - General</name>
                                 </application_prototype>
                             </application_prototypes>
+                            <master_item_prototype/>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>Redis: &quot;{#INSTANCE}&quot; - Keys: Total</name>
+                            <type>7</type>
+                            <snmp_community/>
+                            <snmp_oid/>
+                            <key>redis.stat.mget[db0,avg_ttl,{#HOST},{#PORT}]</key>
+                            <delay>5m</delay>
+                            <history>2w</history>
+                            <trends>1825d</trends>
+                            <status>0</status>
+                            <value_type>3</value_type>
+                            <allowed_hosts/>
+                            <units/>
+                            <snmpv3_contextname/>
+                            <snmpv3_securityname/>
+                            <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                            <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                            <snmpv3_authpassphrase/>
+                            <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                            <snmpv3_privpassphrase/>
+                            <params/>
+                            <ipmi_sensor/>
+                            <authtype>0</authtype>
+                            <username/>
+                            <password/>
+                            <publickey/>
+                            <privatekey/>
+                            <port/>
+                            <description/>
+                            <inventory_link>0</inventory_link>
+                            <applications/>
+                            <valuemap/>
+                            <logtimefmt/>
+                            <preprocessing/>
+                            <jmx_endpoint/>
+                            <application_prototypes>
+                                <application_prototype>
+                                    <name>Redis: {#INSTANCE} - General</name>
+                                </application_prototype>
+                            </application_prototypes>
+                            <master_item_prototype/>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>Redis: &quot;{#INSTANCE}&quot; - Keys: Total Expired</name>
+                            <type>7</type>
+                            <snmp_community/>
+                            <snmp_oid/>
+                            <key>redis.stat.mget[db0,expires,{#HOST},{#PORT}]</key>
+                            <delay>5m</delay>
+                            <history>2w</history>
+                            <trends>1825d</trends>
+                            <status>0</status>
+                            <value_type>3</value_type>
+                            <allowed_hosts/>
+                            <units/>
+                            <snmpv3_contextname/>
+                            <snmpv3_securityname/>
+                            <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                            <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                            <snmpv3_authpassphrase/>
+                            <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                            <snmpv3_privpassphrase/>
+                            <params/>
+                            <ipmi_sensor/>
+                            <authtype>0</authtype>
+                            <username/>
+                            <password/>
+                            <publickey/>
+                            <privatekey/>
+                            <port/>
+                            <description/>
+                            <inventory_link>0</inventory_link>
+                            <applications/>
+                            <valuemap/>
+                            <logtimefmt/>
+                            <preprocessing/>
+                            <jmx_endpoint/>
+                            <application_prototypes>
+                                <application_prototype>
+                                    <name>Redis: {#INSTANCE} - General</name>
+                                </application_prototype>
+                            </application_prototypes>
+                            <master_item_prototype/>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>Redis: &quot;{#INSTANCE}&quot; - Keys: Total</name>
+                            <type>7</type>
+                            <snmp_community/>
+                            <snmp_oid/>
+                            <key>redis.stat.mget[db0,keys,{#HOST},{#PORT}]</key>
+                            <delay>5m</delay>
+                            <history>2w</history>
+                            <trends>1825d</trends>
+                            <status>0</status>
+                            <value_type>3</value_type>
+                            <allowed_hosts/>
+                            <units/>
+                            <snmpv3_contextname/>
+                            <snmpv3_securityname/>
+                            <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                            <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                            <snmpv3_authpassphrase/>
+                            <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                            <snmpv3_privpassphrase/>
+                            <params/>
+                            <ipmi_sensor/>
+                            <authtype>0</authtype>
+                            <username/>
+                            <password/>
+                            <publickey/>
+                            <privatekey/>
+                            <port/>
+                            <description/>
+                            <inventory_link>0</inventory_link>
+                            <applications/>
+                            <valuemap/>
+                            <logtimefmt/>
+                            <preprocessing/>
+                            <jmx_endpoint/>
+                            <application_prototypes>
+                                <application_prototype>
+                                    <name>Redis: {#INSTANCE} - General</name>
+                                </application_prototype>
+                            </application_prototypes>
+                            <master_item_prototype/>
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - DB Size on DISK</name>
                             <type>7</type>
                             <snmp_community/>
-                            <multiplier>0</multiplier>
                             <snmp_oid/>
                             <key>vfs.file.size[{#RDB_PATH},{#HOST},{#PORT}]</key>
-                            <delay>300</delay>
-                            <history>14</history>
-                            <trends>1825</trends>
-                            <status>1</status>
+                            <delay>5m</delay>
+                            <history>2w</history>
+                            <trends>1825d</trends>
+                            <status>0</status>
                             <value_type>0</value_type>
                             <allowed_hosts/>
                             <units>b</units>
-                            <delta>0</delta>
                             <snmpv3_contextname/>
                             <snmpv3_securityname/>
                             <snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -1529,11 +1619,8 @@
                             <snmpv3_authpassphrase/>
                             <snmpv3_privprotocol>0</snmpv3_privprotocol>
                             <snmpv3_privpassphrase/>
-                            <formula>1</formula>
-                            <delay_flex/>
                             <params/>
                             <ipmi_sensor/>
-                            <data_type>0</data_type>
                             <authtype>0</authtype>
                             <username/>
                             <password/>
@@ -1545,14 +1632,49 @@
                             <applications/>
                             <valuemap/>
                             <logtimefmt/>
+                            <preprocessing/>
+                            <jmx_endpoint/>
                             <application_prototypes>
                                 <application_prototype>
                                     <name>Redis: {#INSTANCE} - General</name>
                                 </application_prototype>
                             </application_prototypes>
+                            <master_item_prototype/>
                         </item_prototype>
                     </item_prototypes>
                     <trigger_prototypes>
+                        <trigger_prototype>
+                            <expression>{Template_App_Redis:redis.stat.get[master_link_down_since_seconds,{#HOST},{#PORT}].last()}&gt;{$REDIS_DOWN_LINK_MAX}</expression>
+                            <recovery_mode>0</recovery_mode>
+                            <recovery_expression/>
+                            <name>Redis: &quot;{#INSTANCE}&quot; - Master Link: Down Time more than {$REDIS_DOWN_LINK_MAX} sec (actual = {ITEM.VALUE1}) on {HOST.HOST}</name>
+                            <correlation_mode>0</correlation_mode>
+                            <correlation_tag/>
+                            <url/>
+                            <status>0</status>
+                            <priority>1</priority>
+                            <description/>
+                            <type>0</type>
+                            <manual_close>0</manual_close>
+                            <dependencies/>
+                            <tags/>
+                        </trigger_prototype>
+                        <trigger_prototype>
+                            <expression>{Template_App_Redis:redis.stat.get[master_link_status,{#HOST},{#PORT}].str(down,10m)}=1</expression>
+                            <recovery_mode>1</recovery_mode>
+                            <recovery_expression>{Template_App_Redis:redis.stat.get[master_link_status,{#HOST},{#PORT}].str(up,20m)}=1</recovery_expression>
+                            <name>Redis: &quot;{#INSTANCE}&quot; - Slave: Redis Server Master status DOWN on {HOST.HOST}</name>
+                            <correlation_mode>0</correlation_mode>
+                            <correlation_tag/>
+                            <url/>
+                            <status>0</status>
+                            <priority>1</priority>
+                            <description/>
+                            <type>0</type>
+                            <manual_close>1</manual_close>
+                            <dependencies/>
+                            <tags/>
+                        </trigger_prototype>
                         <trigger_prototype>
                             <expression>{Template_App_Redis:proc.num[redis-server,,,{#HOST}:{#PORT}].last(#1)}=0 and {Template_App_Redis:proc.num[redis-server,,,{#HOST}:{#PORT}].last(#2)}=0 and {Template_App_Redis:proc.num[redis-server,,,{#HOST}:{#PORT}].last(#3)}=0</expression>
                             <recovery_mode>0</recovery_mode>
@@ -1669,6 +1791,7 @@
                         </graph_prototype>
                     </graph_prototypes>
                     <host_prototypes/>
+                    <jmx_endpoint/>
                 </discovery_rule>
                 <discovery_rule>
                     <name>Discover Redis Slaves</name>
@@ -1676,7 +1799,7 @@
                     <snmp_community/>
                     <snmp_oid/>
                     <key>redis.discovery[replication,{$REDIS_PASSWORDS}]</key>
-                    <delay>60</delay>
+                    <delay>1m</delay>
                     <status>0</status>
                     <allowed_hosts/>
                     <snmpv3_contextname/>
@@ -1686,7 +1809,6 @@
                     <snmpv3_authpassphrase/>
                     <snmpv3_privprotocol>0</snmpv3_privprotocol>
                     <snmpv3_privpassphrase/>
-                    <delay_flex/>
                     <params/>
                     <ipmi_sensor/>
                     <authtype>0</authtype>
@@ -1700,24 +1822,22 @@
                         <formula/>
                         <conditions/>
                     </filter>
-                    <lifetime>14</lifetime>
+                    <lifetime>31d</lifetime>
                     <description/>
                     <item_prototypes>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - Slave: {#SLAVE} - IP</name>
                             <type>0</type>
                             <snmp_community/>
-                            <multiplier>0</multiplier>
                             <snmp_oid/>
                             <key>redis.stat.mget[ {#SLAVE},ip,{#HOST},{#PORT}]</key>
-                            <delay>60</delay>
-                            <history>90</history>
+                            <delay>1m</delay>
+                            <history>90d</history>
                             <trends>0</trends>
                             <status>0</status>
                             <value_type>4</value_type>
                             <allowed_hosts/>
                             <units/>
-                            <delta>0</delta>
                             <snmpv3_contextname/>
                             <snmpv3_securityname/>
                             <snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -1725,11 +1845,8 @@
                             <snmpv3_authpassphrase/>
                             <snmpv3_privprotocol>0</snmpv3_privprotocol>
                             <snmpv3_privpassphrase/>
-                            <formula>1</formula>
-                            <delay_flex/>
                             <params/>
                             <ipmi_sensor/>
-                            <data_type>0</data_type>
                             <authtype>0</authtype>
                             <username/>
                             <password/>
@@ -1741,27 +1858,28 @@
                             <applications/>
                             <valuemap/>
                             <logtimefmt/>
+                            <preprocessing/>
+                            <jmx_endpoint/>
                             <application_prototypes>
                                 <application_prototype>
                                     <name>Redis: &quot;{#INSTANCE}&quot; - Slaves Info</name>
                                 </application_prototype>
                             </application_prototypes>
+                            <master_item_prototype/>
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - Slave: {#SLAVE} - Lag</name>
                             <type>0</type>
                             <snmp_community/>
-                            <multiplier>0</multiplier>
                             <snmp_oid/>
                             <key>redis.stat.mget[ {#SLAVE},lag,{#HOST},{#PORT}]</key>
-                            <delay>60</delay>
-                            <history>90</history>
-                            <trends>365</trends>
+                            <delay>1m</delay>
+                            <history>90d</history>
+                            <trends>365d</trends>
                             <status>0</status>
                             <value_type>0</value_type>
                             <allowed_hosts/>
                             <units/>
-                            <delta>0</delta>
                             <snmpv3_contextname/>
                             <snmpv3_securityname/>
                             <snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -1769,11 +1887,8 @@
                             <snmpv3_authpassphrase/>
                             <snmpv3_privprotocol>0</snmpv3_privprotocol>
                             <snmpv3_privpassphrase/>
-                            <formula>1</formula>
-                            <delay_flex/>
                             <params/>
                             <ipmi_sensor/>
-                            <data_type>0</data_type>
                             <authtype>0</authtype>
                             <username/>
                             <password/>
@@ -1785,27 +1900,28 @@
                             <applications/>
                             <valuemap/>
                             <logtimefmt/>
+                            <preprocessing/>
+                            <jmx_endpoint/>
                             <application_prototypes>
                                 <application_prototype>
                                     <name>Redis: &quot;{#INSTANCE}&quot; - Slaves Info</name>
                                 </application_prototype>
                             </application_prototypes>
+                            <master_item_prototype/>
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - Slave: {#SLAVE} - Rep offset</name>
                             <type>0</type>
                             <snmp_community/>
-                            <multiplier>0</multiplier>
                             <snmp_oid/>
                             <key>redis.stat.mget[ {#SLAVE},offset,{#HOST},{#PORT}]</key>
-                            <delay>60</delay>
-                            <history>90</history>
-                            <trends>365</trends>
+                            <delay>1m</delay>
+                            <history>90d</history>
+                            <trends>365d</trends>
                             <status>0</status>
                             <value_type>3</value_type>
                             <allowed_hosts/>
                             <units/>
-                            <delta>0</delta>
                             <snmpv3_contextname/>
                             <snmpv3_securityname/>
                             <snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -1813,11 +1929,8 @@
                             <snmpv3_authpassphrase/>
                             <snmpv3_privprotocol>0</snmpv3_privprotocol>
                             <snmpv3_privpassphrase/>
-                            <formula>1</formula>
-                            <delay_flex/>
                             <params/>
                             <ipmi_sensor/>
-                            <data_type>0</data_type>
                             <authtype>0</authtype>
                             <username/>
                             <password/>
@@ -1829,27 +1942,28 @@
                             <applications/>
                             <valuemap/>
                             <logtimefmt/>
+                            <preprocessing/>
+                            <jmx_endpoint/>
                             <application_prototypes>
                                 <application_prototype>
                                     <name>Redis: &quot;{#INSTANCE}&quot; - Slaves Info</name>
                                 </application_prototype>
                             </application_prototypes>
+                            <master_item_prototype/>
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - Slave: {#SLAVE} - Port</name>
                             <type>0</type>
                             <snmp_community/>
-                            <multiplier>0</multiplier>
                             <snmp_oid/>
                             <key>redis.stat.mget[ {#SLAVE},port,{#HOST},{#PORT}]</key>
-                            <delay>60</delay>
-                            <history>90</history>
-                            <trends>365</trends>
+                            <delay>1m</delay>
+                            <history>90d</history>
+                            <trends>365d</trends>
                             <status>0</status>
                             <value_type>0</value_type>
                             <allowed_hosts/>
                             <units/>
-                            <delta>0</delta>
                             <snmpv3_contextname/>
                             <snmpv3_securityname/>
                             <snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -1857,11 +1971,8 @@
                             <snmpv3_authpassphrase/>
                             <snmpv3_privprotocol>0</snmpv3_privprotocol>
                             <snmpv3_privpassphrase/>
-                            <formula>1</formula>
-                            <delay_flex/>
                             <params/>
                             <ipmi_sensor/>
-                            <data_type>0</data_type>
                             <authtype>0</authtype>
                             <username/>
                             <password/>
@@ -1873,27 +1984,28 @@
                             <applications/>
                             <valuemap/>
                             <logtimefmt/>
+                            <preprocessing/>
+                            <jmx_endpoint/>
                             <application_prototypes>
                                 <application_prototype>
                                     <name>Redis: &quot;{#INSTANCE}&quot; - Slaves Info</name>
                                 </application_prototype>
                             </application_prototypes>
+                            <master_item_prototype/>
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - Slave: {#SLAVE} - State</name>
                             <type>0</type>
                             <snmp_community/>
-                            <multiplier>0</multiplier>
                             <snmp_oid/>
                             <key>redis.stat.mget[ {#SLAVE},state,{#HOST},{#PORT}]</key>
-                            <delay>60</delay>
-                            <history>90</history>
+                            <delay>1m</delay>
+                            <history>90d</history>
                             <trends>0</trends>
                             <status>0</status>
                             <value_type>4</value_type>
                             <allowed_hosts/>
                             <units/>
-                            <delta>0</delta>
                             <snmpv3_contextname/>
                             <snmpv3_securityname/>
                             <snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -1901,11 +2013,8 @@
                             <snmpv3_authpassphrase/>
                             <snmpv3_privprotocol>0</snmpv3_privprotocol>
                             <snmpv3_privpassphrase/>
-                            <formula>1</formula>
-                            <delay_flex/>
                             <params/>
                             <ipmi_sensor/>
-                            <data_type>0</data_type>
                             <authtype>0</authtype>
                             <username/>
                             <password/>
@@ -1917,11 +2026,14 @@
                             <applications/>
                             <valuemap/>
                             <logtimefmt/>
+                            <preprocessing/>
+                            <jmx_endpoint/>
                             <application_prototypes>
                                 <application_prototype>
                                     <name>Redis: &quot;{#INSTANCE}&quot; - Slaves Info</name>
                                 </application_prototype>
                             </application_prototypes>
+                            <master_item_prototype/>
                         </item_prototype>
                     </item_prototypes>
                     <trigger_prototypes>
@@ -2009,6 +2121,7 @@
                         </graph_prototype>
                     </graph_prototypes>
                     <host_prototypes/>
+                    <jmx_endpoint/>
                 </discovery_rule>
                 <discovery_rule>
                     <name>Discover Redis Commands</name>
@@ -2016,7 +2129,7 @@
                     <snmp_community/>
                     <snmp_oid/>
                     <key>redis.discovery[stats,{$REDIS_PASSWORDS}]</key>
-                    <delay>60</delay>
+                    <delay>1m</delay>
                     <status>0</status>
                     <allowed_hosts/>
                     <snmpv3_contextname/>
@@ -2026,7 +2139,6 @@
                     <snmpv3_authpassphrase/>
                     <snmpv3_privprotocol>0</snmpv3_privprotocol>
                     <snmpv3_privpassphrase/>
-                    <delay_flex/>
                     <params/>
                     <ipmi_sensor/>
                     <authtype>0</authtype>
@@ -2040,24 +2152,22 @@
                         <formula/>
                         <conditions/>
                     </filter>
-                    <lifetime>14</lifetime>
+                    <lifetime>31d</lifetime>
                     <description/>
                     <item_prototypes>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - {#COMMAND} Calls</name>
                             <type>7</type>
                             <snmp_community/>
-                            <multiplier>0</multiplier>
                             <snmp_oid/>
                             <key>redis.stat.mget[{#COMMAND},calls,{#HOST},{#PORT}]</key>
-                            <delay>30</delay>
-                            <history>90</history>
-                            <trends>365</trends>
+                            <delay>30s</delay>
+                            <history>90d</history>
+                            <trends>365d</trends>
                             <status>0</status>
                             <value_type>0</value_type>
                             <allowed_hosts/>
                             <units>calls</units>
-                            <delta>1</delta>
                             <snmpv3_contextname/>
                             <snmpv3_securityname/>
                             <snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -2065,11 +2175,8 @@
                             <snmpv3_authpassphrase/>
                             <snmpv3_privprotocol>0</snmpv3_privprotocol>
                             <snmpv3_privpassphrase/>
-                            <formula>1</formula>
-                            <delay_flex/>
                             <params/>
                             <ipmi_sensor/>
-                            <data_type>0</data_type>
                             <authtype>0</authtype>
                             <username/>
                             <password/>
@@ -2081,27 +2188,33 @@
                             <applications/>
                             <valuemap/>
                             <logtimefmt/>
+                            <preprocessing>
+                                <step>
+                                    <type>10</type>
+                                    <params/>
+                                </step>
+                            </preprocessing>
+                            <jmx_endpoint/>
                             <application_prototypes>
                                 <application_prototype>
                                     <name>Redis: {#INSTANCE} - Command Statistics</name>
                                 </application_prototype>
                             </application_prototypes>
+                            <master_item_prototype/>
                         </item_prototype>
                         <item_prototype>
                             <name>Redis: &quot;{#INSTANCE}&quot; - {#COMMAND} Latency</name>
                             <type>7</type>
                             <snmp_community/>
-                            <multiplier>0</multiplier>
                             <snmp_oid/>
                             <key>redis.stat.mget[{#COMMAND}, usec_per_call,{#HOST},{#PORT}]</key>
-                            <delay>30</delay>
-                            <history>90</history>
-                            <trends>365</trends>
+                            <delay>30s</delay>
+                            <history>90d</history>
+                            <trends>365d</trends>
                             <status>0</status>
                             <value_type>0</value_type>
                             <allowed_hosts/>
                             <units>usec</units>
-                            <delta>0</delta>
                             <snmpv3_contextname/>
                             <snmpv3_securityname/>
                             <snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -2109,11 +2222,8 @@
                             <snmpv3_authpassphrase/>
                             <snmpv3_privprotocol>0</snmpv3_privprotocol>
                             <snmpv3_privpassphrase/>
-                            <formula>1</formula>
-                            <delay_flex/>
                             <params/>
                             <ipmi_sensor/>
-                            <data_type>0</data_type>
                             <authtype>0</authtype>
                             <username/>
                             <password/>
@@ -2125,11 +2235,14 @@
                             <applications/>
                             <valuemap/>
                             <logtimefmt/>
+                            <preprocessing/>
+                            <jmx_endpoint/>
                             <application_prototypes>
                                 <application_prototype>
                                     <name>Redis: {#INSTANCE} - Command Statistics</name>
                                 </application_prototype>
                             </application_prototypes>
+                            <master_item_prototype/>
                         </item_prototype>
                     </item_prototypes>
                     <trigger_prototypes/>
@@ -2200,10 +2313,15 @@
                         </graph_prototype>
                     </graph_prototypes>
                     <host_prototypes/>
+                    <jmx_endpoint/>
                 </discovery_rule>
             </discovery_rules>
             <httptests/>
             <macros>
+                <macro>
+                    <macro>{$REDIS_DOWN_LINK_MAX}</macro>
+                    <value>3600</value>
+                </macro>
                 <macro>
                     <macro>{$REDIS_PASSWORDS}</macro>
                     <value/>
