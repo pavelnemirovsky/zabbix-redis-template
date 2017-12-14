@@ -16,7 +16,7 @@
 
 ## Features
   - Ability to discovery multiple Redis instances running on same host
-  - Generate automatically a zabbix screen for general statistics, commands and replication overvies on host! level.
+  - Generate automatically a zabbix screen for general statistics, commands and replication overview on host! level.
   - Triggers identify command anomaly (not done yet) and instance crash
 
 ## Installation
