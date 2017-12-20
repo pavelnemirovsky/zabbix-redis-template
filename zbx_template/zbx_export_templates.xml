@@ -1604,7 +1604,7 @@
                             <type>7</type>
                             <snmp_community/>
                             <snmp_oid/>
-                            <key>vfs.file.size[{#RDB_PATH},{#HOST},{#PORT}]</key>
+                            <key>vfs.file.size[{#RDB_PATH}]</key>
                             <delay>5m</delay>
                             <history>2w</history>
                             <trends>1825d</trends>
