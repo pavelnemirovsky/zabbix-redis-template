@@ -32,22 +32,6 @@ else
     fi
 fi
 
-if [ -a /tmp/stdbuf ]; then
-    STDBUF=$(cat /tmp/stdbuf)
-else
-    STDBUF=$(locate stdbuf | head -n 1)
-    if [ "$STDBUF" = "" ]; then
-        if [ -e $STBDBUF_DEFAULT_PATH ]; then
-            STDBUF_FILE=$(echo $STBDBUF_DEFAULT_PATH > /tmp/stdbuf)
-        else
-            echo "STDBUF-CLI not found..."
-            exit 1
-        fi
-    else
-        STDBUF_FILE=$(echo $STDBUF > /tmp/stdbuf)
-    fi
-fi
-
 if [ "$DISCOVERY_TYPE" != "general" ] && [ "$DISCOVERY_TYPE" != "stats" ] && [ "$DISCOVERY_TYPE" != "replication" ]; then
     echo "USAGE: ./zbx_redis_discovery.sh where"
     echo "general - argument generate report with discovered instances"
@@ -97,7 +81,7 @@ discover_redis_rdb_database() {
     echo $INSTANCE_RDB_PATH/$INSTANCE_RDB_FILE
 }
 
-discover_redis_avalable_commands() {
+discover_redis_available_commands() {
     HOST=$1
     PORT=$2
     PASSWORD=$3
@@ -113,7 +97,7 @@ discover_redis_avalable_commands() {
     ( IFS=$'\n'; echo "${REDIS_COMMANDS[*]}" )
 }
 
-discover_redis_avalable_slaves() {
+discover_redis_available_slaves() {
     HOST=$1
     PORT=$2
     PASSWORD=$3
@@ -181,10 +165,58 @@ generate_redis_stats_report() {
     PORT=$2
     PASSWORD=$3
 
-    REDIS_REPORT=$(stdbuf -oL $REDIS_CLI -h $HOST -p $PORT -a "$PASSWORD" info all &> /tmp/redis-$HOST-$PORT)
-    REDIS_SLOWLOG_LEN=$(stdbuf -oL $REDIS_CLI -h $HOST -p $PORT -a "$PASSWORD" slowlog len | cut -d " " -f2 &> /tmp/redis-$HOST-$PORT-slowlog-len; $REDIS_CLI -h $HOST -p $PORT -a $PASSWORD slowlog reset > /dev/null  )
-    REDIS_SLOWLOG_RAW=$(stdbuf -oL $REDIS_CLI -h $HOST -p $PORT -a "$PASSWORD" slowlog get &> /tmp/redis-$HOST-$PORT-slowlog-raw)
-    REDIS_MAX_CLIENTS=$(stdbuf -oL $REDIS_CLI -h $HOST -p $PORT -a "$PASSWORD" config get *"maxclients"* | cut -d " " -f2 | sed -n 2p &> /tmp/redis-$HOST-$PORT-maxclients)
+    # REDIS MAIN REPORT - INFO ALL
+    local REDIS_REPORT_RESULT="/tmp/redis-$HOST-$PORT"
+    local REDIS_REPORT_RESULT_TMP="/tmp/redis-$HOST-$PORT.tmp"
+    REDIS_REPORT=$($REDIS_CLI -h $HOST -p $PORT -a "$PASSWORD" info all > $REDIS_REPORT_RESULT_TMP)
+    REDIS_REPORT_RC=$?
+
+    # REDIS SLOW LOG
+    local REDIS_SLOWLOG_LEN_RESULT="/tmp/redis-$HOST-$PORT-slowlog-len"
+    local REDIS_SLOWLOG_LEN_RESULT_TMP="/tmp/redis-$HOST-$PORT-slowlog-len.tmp"
+    REDIS_SLOWLOG_LEN=$($REDIS_CLI -h $HOST -p $PORT -a "$PASSWORD" slowlog len | cut -d " " -f2 > $REDIS_SLOWLOG_LEN_RESULT_TMP; $REDIS_CLI -h $HOST -p $PORT -a $PASSWORD slowlog reset > /dev/null )
+    REDIS_SLOWLOG_LEN_RC=$?
+
+    # REDIS SLOW LOG REPORT
+    local REDIS_SLOWLOG_RAW_RESULT="/tmp/redis-$HOST-$PORT-slowlog-raw"
+    local REDIS_SLOWLOG_RAW_RESULT_TMP="/tmp/redis-$HOST-$PORT-slowlog-raw.tmp"
+    REDIS_SLOWLOG_RAW=$($REDIS_CLI -h $HOST -p $PORT -a "$PASSWORD" slowlog get > $REDIS_SLOWLOG_RAW_RESULT_TMP)
+    REDIS_SLOWLOG_RAW_RC=$?
+
+    # REDIS MAX CLIENT REPORT
+    local REDIS_MAX_CLIENTS_RESULT="/tmp/redis-$HOST-$PORT-maxclients"
+    local REDIS_MAX_CLIENTS_RESULT_TMP="/tmp/redis-$HOST-$PORT-maxclients.tmp"
+    REDIS_MAX_CLIENTS=$($REDIS_CLI -h $HOST -p $PORT -a "$PASSWORD" config get *"maxclients"* | cut -d " " -f2 | sed -n 2p > $REDIS_MAX_CLIENTS_RESULT_TMP)
+    REDIS_MAX_CLIENTS_RC=$?
+
+    if [[ -e $REDIS_REPORT_RESULT_TMP ]] && [[ $REDIS_REPORT_RC -eq 0 ]];then
+        REDIS_REPORT_DUMP=$(mv $REDIS_REPORT_RESULT_TMP $REDIS_REPORT_RESULT)
+        if [[ $? -ne 0 ]]; then
+            return 1
+        fi
+    fi
+
+    if [[ -e $REDIS_SLOWLOG_LEN_RESULT_TMP ]] && [[ $REDIS_SLOWLOG_LEN -eq 0 ]];then
+        REDIS_REPORT_DUMP=$(mv $REDIS_SLOWLOG_LEN_RESULT_TMP $REDIS_SLOWLOG_LEN_RESULT)
+        if [[ $? -ne 0 ]]; then
+            return 2
+        fi
+    fi
+
+    if [[ -e $REDIS_MAX_CLIENTS_RESULT_TMP ]] && [[ $REDIS_SLOWLOG_RAW_RC -eq 0 ]];then
+        REDIS_REPORT_DUMP=$(mv $REDIS_SLOWLOG_RAW_RESULT_TMP $REDIS_SLOWLOG_RAW_RESULT)
+        if [[ $? -ne 0 ]]; then
+            return 2
+        fi
+    fi
+
+    if [[ -e $REDIS_MAX_CLIENTS_RESULT_TMP ]] && [[ $REDIS_MAX_CLIENTS_RC -eq 0 ]];then
+        REDIS_REPORT_DUMP=$(mv $REDIS_MAX_CLIENTS_RESULT_TMP $REDIS_MAX_CLIENTS_RESULT)
+        if [[ $? -ne 0 ]]; then
+            return 2
+        fi
+    fi
+
 }
 
 # MAIN LOOP #
@@ -201,8 +233,8 @@ for s in $LIST; do
             PASSWORD=${PASSWORDS[$i]}
             INSTANCE=$(discover_redis_instance $HOST $PORT $PASSWORD)
             RDB_PATH=$(discover_redis_rdb_database $HOST $PORT $PASSWORD)
-            COMMANDS=$(discover_redis_avalable_commands $HOST $PORT $PASSWORD)
-            SLAVES=$(discover_redis_avalable_slaves $HOST $PORT $PASSWORD)
+            COMMANDS=$(discover_redis_available_commands $HOST $PORT $PASSWORD)
+            SLAVES=$(discover_redis_available_slaves $HOST $PORT $PASSWORD)
 
             if [[ -n $INSTANCE ]]; then
 
@@ -224,8 +256,8 @@ for s in $LIST; do
     else
         INSTANCE=$(discover_redis_instance $HOST $PORT "")
         RDB_PATH=$(discover_redis_rdb_database $HOST $PORT "")
-        COMMANDS=$(discover_redis_avalable_commands $HOST $PORT "")
-        SLAVES=$(discover_redis_avalable_slaves $HOST $PORT "")
+        COMMANDS=$(discover_redis_available_commands $HOST $PORT "")
+        SLAVES=$(discover_redis_available_slaves $HOST $PORT "")
 
         if [[ -n $INSTANCE ]]; then
 
