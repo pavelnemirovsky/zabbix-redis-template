@@ -51,7 +51,7 @@ discover_redis_instance() {
     if [[ $ALIVE != "PONG" ]]; then
         return 1
     else
-        INSTANCE=$($REDIS_CLI -h $HOST -p $PORT -a "$PASSWORD" info | grep config_file | cut -d ":" -f2 | sed 's/.conf//g' | rev | cut -d "/" -f1 | rev | tr -d [:space:] | tr [:lower:] [:upper:])
+        INSTANCE=$($REDIS_CLI -h $HOST -p $PORT -a "$PASSWORD" info | grep config_file | cut -d ":" -f2 | sed 's/.conf//g' | rev | cut -d "/" -f1 | rev | tr -d [:space:] | tr '[:lower:]' '[:upper:]')
         # WHEN UNABLE TO IDENTIFY INSTANCE NAME BASED ON CONFIG
         if [ "$INSTANCE" = "" ]; then
             INSTANCE=$(echo "$HOST:$PORT")
