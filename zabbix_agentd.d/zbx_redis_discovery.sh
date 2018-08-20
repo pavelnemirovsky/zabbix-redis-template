@@ -46,18 +46,18 @@ discover_redis_instance() {
     PORT=$2
     PASSWORD=$3
 
-    ALIVE=$($REDIS_CLI -h $HOST -p $PORT -a "$PASSWORD" ping)
+    ALIVE=$($REDIS_CLI -h $HOST -p $PORT -a "$PASSWORD" ping 2>/dev/null)
 
     if [[ $ALIVE != "PONG" ]]; then
         return 1
     else
-        INSTANCE=$($REDIS_CLI -h $HOST -p $PORT -a "$PASSWORD" info | grep config_file | cut -d ":" -f2 | sed 's/.conf//g' | rev | cut -d "/" -f1 | rev | tr -d [:space:] | tr [:lower:] [:upper:])
+        INSTANCE=$($REDIS_CLI -h $HOST -p $PORT -a "$PASSWORD" info 2>/dev/null | grep config_file | cut -d ":" -f2 | sed 's/.conf//g' | rev | cut -d "/" -f1 | rev | tr -d [:space:] | tr [:lower:] [:upper:])
         # WHEN UNABLE TO IDENTIFY INSTANCE NAME BASED ON CONFIG
         if [ "$INSTANCE" = "" ]; then
             INSTANCE=$(echo "$HOST:$PORT")
         fi
-        INSTANCE_RDB_PATH=$($REDIS_CLI -h $HOST -p $PORT -a "$PASSWORD" config get "dir" | cut -d " " -f2 | sed -n 2p)
-        INSTANCE_RDB_FILE=$($REDIS_CLI -h $HOST -p $PORT -a "$PASSWORD" config get "dbfilename" | cut -d " " -f2 | sed -n 2p)
+        INSTANCE_RDB_PATH=$($REDIS_CLI -h $HOST -p $PORT -a "$PASSWORD" config get "dir" 2>/dev/null | cut -d " " -f2 | sed -n 2p)
+        INSTANCE_RDB_FILE=$($REDIS_CLI -h $HOST -p $PORT -a "$PASSWORD" config get "dbfilename" 2>/dev/null | cut -d " " -f2 | sed -n 2p)
     fi
 
     echo $INSTANCE
@@ -69,13 +69,13 @@ discover_redis_rdb_database() {
     PORT=$2
     PASSWORD=$3
 
-    ALIVE=$($REDIS_CLI -h $HOST -p $PORT -a "$PASSWORD" ping)
+    ALIVE=$($REDIS_CLI -h $HOST -p $PORT -a "$PASSWORD" ping 2>/dev/null)
 
     if [[ $ALIVE != "PONG" ]]; then
         return 1
     else
-        INSTANCE_RDB_PATH=$($REDIS_CLI -h $HOST -p $PORT -a "$PASSWORD" config get "dir" | cut -d " " -f2 | sed -n 2p)
-        INSTANCE_RDB_FILE=$($REDIS_CLI -h $HOST -p $PORT -a "$PASSWORD" config get "dbfilename" | cut -d " " -f2 | sed -n 2p)
+        INSTANCE_RDB_PATH=$($REDIS_CLI -h $HOST -p $PORT -a "$PASSWORD" config get "dir" 2>/dev/null | cut -d " " -f2 | sed -n 2p)
+        INSTANCE_RDB_FILE=$($REDIS_CLI -h $HOST -p $PORT -a "$PASSWORD" config get "dbfilename" 2>/dev/null | cut -d " " -f2 | sed -n 2p)
     fi
 
     echo $INSTANCE_RDB_PATH/$INSTANCE_RDB_FILE
@@ -86,12 +86,12 @@ discover_redis_available_commands() {
     PORT=$2
     PASSWORD=$3
 
-    ALIVE=$($REDIS_CLI -h $HOST -p $PORT -a "$PASSWORD" ping)
+    ALIVE=$($REDIS_CLI -h $HOST -p $PORT -a "$PASSWORD" ping 2>/dev/null)
 
     if [[ $ALIVE != "PONG" ]]; then
         return 1
     else
-        REDIS_COMMANDS=$($REDIS_CLI -h $HOST -p $PORT -a "$PASSWORD" info all | grep cmdstat | cut -d":" -f1)
+        REDIS_COMMANDS=$($REDIS_CLI -h $HOST -p $PORT -a "$PASSWORD" info all 2>/dev/null | grep cmdstat | cut -d":" -f1)
     fi
 
     ( IFS=$'\n'; echo "${REDIS_COMMANDS[*]}" )
@@ -102,12 +102,12 @@ discover_redis_available_slaves() {
     PORT=$2
     PASSWORD=$3
 
-    ALIVE=$($REDIS_CLI -h $HOST -p $PORT -a "$PASSWORD" ping)
+    ALIVE=$($REDIS_CLI -h $HOST -p $PORT -a "$PASSWORD" ping 2>/dev/null)
 
     if [[ $ALIVE != "PONG" ]]; then
         return 1
     else
-        REDIS_SLAVES=$($REDIS_CLI -h $HOST -p $PORT -a "$PASSWORD" info all | grep ^slave | cut -d ":" -f1 | grep [0-1024])
+        REDIS_SLAVES=$($REDIS_CLI -h $HOST -p $PORT -a "$PASSWORD" info all 2>/dev/null | grep ^slave | cut -d ":" -f1 | grep [0-1024])
     fi
 
     ( IFS=$'\n'; echo "${REDIS_SLAVES[*]}" )
@@ -168,25 +168,25 @@ generate_redis_stats_report() {
     # REDIS MAIN REPORT - INFO ALL
     local REDIS_REPORT_RESULT="/tmp/redis-$HOST-$PORT"
     local REDIS_REPORT_RESULT_TMP="/tmp/redis-$HOST-$PORT.tmp"
-    REDIS_REPORT=$($REDIS_CLI -h $HOST -p $PORT -a "$PASSWORD" info all > $REDIS_REPORT_RESULT_TMP)
+    REDIS_REPORT=$($REDIS_CLI -h $HOST -p $PORT -a "$PASSWORD" info all 2>/dev/null > $REDIS_REPORT_RESULT_TMP)
     REDIS_REPORT_RC=$?
 
     # REDIS SLOW LOG
     local REDIS_SLOWLOG_LEN_RESULT="/tmp/redis-$HOST-$PORT-slowlog-len"
     local REDIS_SLOWLOG_LEN_RESULT_TMP="/tmp/redis-$HOST-$PORT-slowlog-len.tmp"
-    REDIS_SLOWLOG_LEN=$($REDIS_CLI -h $HOST -p $PORT -a "$PASSWORD" slowlog len | cut -d " " -f2 > $REDIS_SLOWLOG_LEN_RESULT_TMP; $REDIS_CLI -h $HOST -p $PORT -a $PASSWORD slowlog reset > /dev/null )
+    REDIS_SLOWLOG_LEN=$($REDIS_CLI -h $HOST -p $PORT -a "$PASSWORD" slowlog len 2>/dev/null | cut -d " " -f2 > $REDIS_SLOWLOG_LEN_RESULT_TMP; $REDIS_CLI -h $HOST -p $PORT -a $PASSWORD slowlog reset 2>/dev/null > /dev/null )
     REDIS_SLOWLOG_LEN_RC=$?
 
     # REDIS SLOW LOG REPORT
     local REDIS_SLOWLOG_RAW_RESULT="/tmp/redis-$HOST-$PORT-slowlog-raw"
     local REDIS_SLOWLOG_RAW_RESULT_TMP="/tmp/redis-$HOST-$PORT-slowlog-raw.tmp"
-    REDIS_SLOWLOG_RAW=$($REDIS_CLI -h $HOST -p $PORT -a "$PASSWORD" slowlog get > $REDIS_SLOWLOG_RAW_RESULT_TMP)
+    REDIS_SLOWLOG_RAW=$($REDIS_CLI -h $HOST -p $PORT -a "$PASSWORD" slowlog get 2>/dev/null > $REDIS_SLOWLOG_RAW_RESULT_TMP)
     REDIS_SLOWLOG_RAW_RC=$?
 
     # REDIS MAX CLIENT REPORT
     local REDIS_MAX_CLIENTS_RESULT="/tmp/redis-$HOST-$PORT-maxclients"
     local REDIS_MAX_CLIENTS_RESULT_TMP="/tmp/redis-$HOST-$PORT-maxclients.tmp"
-    REDIS_MAX_CLIENTS=$($REDIS_CLI -h $HOST -p $PORT -a "$PASSWORD" config get *"maxclients"* | cut -d " " -f2 | sed -n 2p > $REDIS_MAX_CLIENTS_RESULT_TMP)
+    REDIS_MAX_CLIENTS=$($REDIS_CLI -h $HOST -p $PORT -a "$PASSWORD" config get *"maxclients"* 2>/dev/null | cut -d " " -f2 | sed -n 2p > $REDIS_MAX_CLIENTS_RESULT_TMP)
     REDIS_MAX_CLIENTS_RC=$?
 
     if [[ -e $REDIS_REPORT_RESULT_TMP ]] && [[ $REDIS_REPORT_RC -eq 0 ]];then
