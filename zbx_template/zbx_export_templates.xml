@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
     <version>3.4</version>
-    <date>2018-05-06T20:57:57Z</date>
+    <date>2018-08-31T22:42:12Z</date>
     <groups>
         <group>
             <name>Templates</name>
@@ -49,7 +49,7 @@
                         <formula/>
                         <conditions/>
                     </filter>
-                    <lifetime>31d</lifetime>
+                    <lifetime>30d</lifetime>
                     <description/>
                     <item_prototypes>
                         <item_prototype>
@@ -1732,6 +1732,22 @@
                         </item_prototype>
                     </item_prototypes>
                     <trigger_prototypes>
+                        <trigger_prototype>
+                            <expression>{Template_App_Redis:proc.cpu.util[,,,&quot;/usr/bin/redis-server {#HOST}:{#PORT}&quot;,].avg(3m)}&gt;90</expression>
+                            <recovery_mode>1</recovery_mode>
+                            <recovery_expression>{Template_App_Redis:proc.cpu.util[,,,&quot;/usr/bin/redis-server {#HOST}:{#PORT}&quot;,].avg(3m)}&lt;80</recovery_expression>
+                            <name>Redis &quot;{#INSTANCE}&quot; CPU usage is high, current utilization: {ITEM.VALUE1}</name>
+                            <correlation_mode>0</correlation_mode>
+                            <correlation_tag/>
+                            <url/>
+                            <status>0</status>
+                            <priority>1</priority>
+                            <description/>
+                            <type>0</type>
+                            <manual_close>1</manual_close>
+                            <dependencies/>
+                            <tags/>
+                        </trigger_prototype>
                         <trigger_prototype>
                             <expression>{Template_App_Redis:redis.stat.get[total_connections_received,{#HOST},{#PORT}].min(30m)}&gt;1000</expression>
                             <recovery_mode>1</recovery_mode>
