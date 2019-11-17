@@ -7,30 +7,27 @@ STBDBUF_DEFAULT_PATH="/usr/bin/stdbuf"
 shift
 IFS=$'\n'
 PASSWORDS=( "$@" )
-LIST=$(ps -eo user,args | grep -v grep | grep redis-server | tr -s [:blank:] ":")
+LIST=$(ps -eo user,args | grep -v grep | grep -E -i -w 'keydb-server|redis-server' | tr -s [:blank:] ":")
 
 # BASH CONFIGURATION
 setopt noglob &> /dev/null || true
 set -o noglob &> /dev/null || true
 set -o pipefail &> /dev/null || true
 
-
 if [[ " ${ARGS[@]} " =~ " debug " ]]; then
     set -x
-else
-    set -e  # RUDIMENTARY ERROR MECHANISM
 fi
 
 # REQUIRED UTILS TO BE ABLE TO RUN
-if [ -e /tmp/redis-cli ]; then
+if [[ -e /tmp/redis-cli ]]; then
     REDIS_CLI=$(cat /tmp/redis-cli)
 else
     REDIS_CLI=$(locate redis-cli | head -n 1)
-    if [ "$REDIS_CLI" = "" ]; then
-        if [ -e $REDIS_CLI_DEFAULT_PATH ]; then
+    if [[ "$REDIS_CLI" == "" ]]; then
+        if [[ -e $REDIS_CLI_DEFAULT_PATH ]]; then
             REDIS_CLI_FILE=$(echo $REDIS_CLI_DEFAULT_PATH > /tmp/redis-cli)
         else
-            echo "REDIS-CLI not found ...."
+            echo '{"data":[]}'
             exit 1
         fi
     else
@@ -46,7 +43,7 @@ if [ "$DISCOVERY_TYPE" != "general" ] && [ "$DISCOVERY_TYPE" != "stats" ] && [ "
     exit 1
 fi
 
-# PROBE DISCOVERED REDIS INSTACES - TO GET INSTANCE NAME#
+# PROBE DISCOVERED REDIS INSTACES - TO GET INSTANCE_META NAME#
 discover_redis_instance() {
     HOST=$1
     PORT=$2
@@ -57,16 +54,22 @@ discover_redis_instance() {
     if [[ $ALIVE != "PONG" ]]; then
         return 1
     else
+        INSTANCE_PROCESS_NAME="unknown"
+        INSTANCE_PROCESS_PATH="unknown"
         INSTANCE=$($REDIS_CLI -h $HOST -p $PORT -a "$PASSWORD" info 2>/dev/null | grep config_file | cut -d ":" -f2 | sed 's/.conf//g' | rev | cut -d "/" -f1 | rev | tr -d [:space:] | tr [:lower:] [:upper:])
-        # WHEN UNABLE TO IDENTIFY INSTANCE NAME BASED ON CONFIG
+        # WHEN UNABLE TO IDENTIFY INSTANCE_META NAME BASED ON CONFIG
         if [ "$INSTANCE" = "" ]; then
-            INSTANCE=$(echo "$HOST:$PORT")
+            INSTANCE_META=$(echo "$HOST:$PORT")
         fi
-        INSTANCE_RDB_PATH=$($REDIS_CLI -h $HOST -p $PORT -a "$PASSWORD" config get "dir" 2>/dev/null | cut -d " " -f2 | sed -n 2p)
-        INSTANCE_RDB_FILE=$($REDIS_CLI -h $HOST -p $PORT -a "$PASSWORD" config get "dbfilename" 2>/dev/null | cut -d " " -f2 | sed -n 2p)
+        FULL_PROCESS=$($REDIS_CLI -h $HOST -p $PORT -a "$PASSWORD" info 2>/dev/null | grep executable | cut -d ":" -f2 | tr -d [:space:] )
+        if [ "$FULL_PROCESS" != "" ]; then
+            INSTANCE_PROCESS_NAME=$(basename $FULL_PROCESS)
+            INSTANCE_PROCESS_PATH=$(dirname $FULL_PROCESS)
+        fi
+
     fi
 
-    echo $INSTANCE
+    echo "$INSTANCE;$INSTANCE_PROCESS_NAME;$INSTANCE_PROCESS_PATH"
 }
 
 # PROBE DISCOVERED REDIS INSTACES - TO GET RDB DATABASE#
@@ -125,12 +128,16 @@ generate_general_discovery_json() {
     PORT=$2
     INSTANCE=$3
     RDB_PATH=$4
+    PROCESS_NAME=$5
+    PROCESS_PATH=$6
 
     echo -n '{'
     echo -n '"{#HOST}":"'$HOST'",'
     echo -n '"{#PORT}":"'$PORT'",'
     echo -n '"{#INSTANCE}":"'$INSTANCE'",'
-    echo -n '"{#RDB_PATH}":"'$RDB_PATH'"'
+    echo -n '"{#RDB_PATH}":"'$RDB_PATH'",'
+    echo -n '"{#PROCESS_NAME}":"'$PROCESS_NAME'",'
+    echo -n '"{#PROCESS_PATH}":"'$PROCESS_PATH'"'
     echo -n '},'
 }
 
@@ -237,17 +244,21 @@ for s in $LIST; do
         for (( i=0; i<${#PASSWORDS[@]}; i++ ));
         do
             PASSWORD=${PASSWORDS[$i]}
-            INSTANCE=$(discover_redis_instance $HOST $PORT $PASSWORD)
+            INSTANCE_META=$(discover_redis_instance $HOST $PORT $PASSWORD)
             RDB_PATH=$(discover_redis_rdb_database $HOST $PORT $PASSWORD)
             COMMANDS=$(discover_redis_available_commands $HOST $PORT $PASSWORD)
             SLAVES=$(discover_redis_available_slaves $HOST $PORT $PASSWORD)
 
-            if [[ -n $INSTANCE ]]; then
+            if [[ -n $INSTANCE_META ]]; then
+
+                INSTANCE=$(echo $INSTANCE_META | cut -d ";" -f1)
+                INSTANCE_PROCESS_NAME=$(echo $INSTANCE_META | cut -d ";" -f2)
+                INSTANCE_PROCESS_PATH=$(echo $INSTANCE_META | cut -d ";" -f3)
 
                 # DECIDE WHICH REPORT TO GENERATE FOR DISCOVERY
                 if [[ $DISCOVERY_TYPE == "general" ]]; then
                     generate_redis_stats_report $HOST $PORT $PASSWORD
-                    generate_general_discovery_json $HOST $PORT $INSTANCE $RDB_PATH
+                    generate_general_discovery_json $HOST $PORT $INSTANCE $RDB_PATH $INSTANCE_PROCESS_NAME $INSTANCE_PROCESS_PATH
                 elif [[ $DISCOVERY_TYPE == "stats" ]]; then
                     for COMMAND in ${COMMANDS}; do
                         generate_commands_discovery_json $HOST $PORT $COMMAND $INSTANCE
@@ -260,17 +271,21 @@ for s in $LIST; do
             fi
         done
     else
-        INSTANCE=$(discover_redis_instance $HOST $PORT "")
+        INSTANCE_META=$(discover_redis_instance $HOST $PORT "")
         RDB_PATH=$(discover_redis_rdb_database $HOST $PORT "")
         COMMANDS=$(discover_redis_available_commands $HOST $PORT "")
         SLAVES=$(discover_redis_available_slaves $HOST $PORT "")
 
-        if [[ -n $INSTANCE ]]; then
+        if [[ -n $INSTANCE_META ]]; then
+
+            INSTANCE=$(echo $INSTANCE_META | cut -d ";" -f1)
+            INSTANCE_PROCESS_NAME=$(echo $INSTANCE_META | cut -d ";" -f2)
+            INSTANCE_PROCESS_PATH=$(echo $INSTANCE_META | cut -d ";" -f3)
 
             # DECIDE WHICH REPORT TO GENERATE FOR DISCOVERY
             if [[ $DISCOVERY_TYPE == "general" ]]; then
                 generate_redis_stats_report $HOST $PORT ""
-                generate_general_discovery_json $HOST $PORT $INSTANCE $RDB_PATH
+                generate_general_discovery_json $HOST $PORT $INSTANCE $RDB_PATH $INSTANCE_PROCESS_NAME $INSTANCE_PROCESS_PATH
             elif [[ $DISCOVERY_TYPE == "stats" ]]; then
                 for COMMAND in ${COMMANDS}; do
                     generate_commands_discovery_json $HOST $PORT $COMMAND $INSTANCE
