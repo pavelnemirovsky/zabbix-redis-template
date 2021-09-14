@@ -57,7 +57,7 @@
                             <type>7</type>
                             <snmp_community/>
                             <snmp_oid/>
-                            <key>proc.cpu.util[,,,&quot;/usr/bin/redis-server {#HOST}:{#PORT}&quot;,]</key>
+                            <key>proc.cpu.util[,,,{#PROCESS_PATH}/{#PROCESS_NAME},]</key>
                             <delay>1m</delay>
                             <history>2w</history>
                             <trends>1825d</trends>
@@ -99,7 +99,7 @@
                             <type>7</type>
                             <snmp_community/>
                             <snmp_oid/>
-                            <key>proc.num[redis-server,,,{#HOST}:{#PORT}]</key>
+                            <key>proc.num[{#PROCESS_NAME}]</key>
                             <delay>1m</delay>
                             <history>2w</history>
                             <trends>1825d</trends>
@@ -1733,9 +1733,9 @@
                     </item_prototypes>
                     <trigger_prototypes>
                         <trigger_prototype>
-                            <expression>{Template_App_Redis:proc.cpu.util[,,,&quot;/usr/bin/redis-server {#HOST}:{#PORT}&quot;,].avg(3m)}&gt;90</expression>
+                            <expression>{Template_App_Redis:proc.cpu.util[,,,{#PROCESS_PATH}/{#PROCESS_NAME},].avg(3m)}&gt;90</expression>
                             <recovery_mode>1</recovery_mode>
-                            <recovery_expression>{Template_App_Redis:proc.cpu.util[,,,&quot;/usr/bin/redis-server {#HOST}:{#PORT}&quot;,].avg(3m)}&lt;80</recovery_expression>
+                            <recovery_expression>{Template_App_Redis:proc.cpu.util[,,,{#PROCESS_PATH}/{#PROCESS_NAME},].avg(3m)}&lt;80</recovery_expression>
                             <name>Redis &quot;{#INSTANCE}&quot; CPU usage is high, current utilization: {ITEM.VALUE1}</name>
                             <correlation_mode>0</correlation_mode>
                             <correlation_tag/>
@@ -1797,7 +1797,7 @@
                             <tags/>
                         </trigger_prototype>
                         <trigger_prototype>
-                            <expression>{Template_App_Redis:proc.num[redis-server,,,{#HOST}:{#PORT}].last(#1)}=0 and {Template_App_Redis:proc.num[redis-server,,,{#HOST}:{#PORT}].last(#2)}=0 and {Template_App_Redis:proc.num[redis-server,,,{#HOST}:{#PORT}].last(#3)}=0</expression>
+                            <expression>{Template_App_Redis:proc.num[{#PROCESS_NAME}].last(#1)}=0 and {Template_App_Redis:proc.num[{#PROCESS_NAME}].last(#2)}=0 and {Template_App_Redis:proc.num[{#PROCESS_NAME}].last(#3)}=0</expression>
                             <recovery_mode>0</recovery_mode>
                             <recovery_expression/>
                             <name>Redis {#INSTANCE} is down on {HOST.HOST}</name>
@@ -1969,7 +1969,7 @@
                                     <type>0</type>
                                     <item>
                                         <host>Template_App_Redis</host>
-                                        <key>proc.cpu.util[,,,&quot;/usr/bin/redis-server {#HOST}:{#PORT}&quot;,]</key>
+                                        <key>proc.cpu.util[,,,{#PROCESS_PATH}/{#PROCESS_NAME},]</key>
                                     </item>
                                 </graph_item>
                             </graph_items>
