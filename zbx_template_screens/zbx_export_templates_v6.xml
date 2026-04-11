@@ -1,0 +1,1480 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zabbix_export>
+    <version>6.4</version>
+    <template_groups>
+        <template_group>
+            <uuid>7df96b18c230490a9a0a9e2307226338</uuid>
+            <name>Templates</name>
+        </template_group>
+    </template_groups>
+    <templates>
+        <template>
+            <uuid>b5bded223c6f4f52b0fb4480f023aad7</uuid>
+            <template>Template_App_Redis</template>
+            <name>Template_App_Redis</name>
+            <groups>
+                <group>
+                    <name>Templates</name>
+                </group>
+            </groups>
+            <discovery_rules>
+                <discovery_rule>
+                    <uuid>be4e0e33a64d46759e8c1d25552baf2f</uuid>
+                    <name>Discover Redis Instances</name>
+                    <key>redis.discovery[general,{$REDIS_PASSWORDS}]</key>
+                    <delay>5s</delay>
+                    <filter>
+                        <conditions>
+                            <condition>
+                                <macro>{#PROCESS_NAME}</macro>
+                                <value>unknown</value>
+                                <operator>NOT_MATCHES_REGEX</operator>
+                                <formulaid>A</formulaid>
+                            </condition>
+                        </conditions>
+                    </filter>
+                    <item_prototypes>
+                        <item_prototype>
+                            <uuid>4759676ce5eb48b686b1708e75603b75</uuid>
+                            <name>Redis: &quot;{#INSTANCE}&quot; - CPU Utilization</name>
+                            <type>ZABBIX_ACTIVE</type>
+                            <key>proc.cpu.util[,,,&quot;{#PROCESS_PATH}/{#PROCESS_NAME} {#HOST}:{#PORT}&quot;,]</key>
+                            <history>2w</history>
+                            <value_type>FLOAT</value_type>
+                            <trends>1825d</trends>
+                            <units>%</units>
+                            <tags>
+                                <tag>
+                                    <tag>Application</tag>
+                                    <value>Redis: {#INSTANCE} - General</value>
+                                </tag>
+                            </tags>
+                            <trigger_prototypes>
+                                <trigger_prototype>
+                                    <uuid>ceafbc6680fa4360957c9412435b3879</uuid>
+                                    <expression>avg(/Template_App_Redis/proc.cpu.util[,,,&quot;{#PROCESS_PATH}/{#PROCESS_NAME} {#HOST}:{#PORT}&quot;,],10m)&gt;90</expression>
+                                    <recovery_mode>RECOVERY_EXPRESSION</recovery_mode>
+                                    <recovery_expression>avg(/Template_App_Redis/proc.cpu.util[,,,&quot;{#PROCESS_PATH}/{#PROCESS_NAME} {#HOST}:{#PORT}&quot;,],10m)&lt;80</recovery_expression>
+                                    <name>Redis &quot;{#INSTANCE}:{#PORT}&quot; CPU usage is high, current utilization: {ITEM.VALUE1}</name>
+                                    <priority>INFO</priority>
+                                    <manual_close>YES</manual_close>
+                                    <tags>
+                                        <tag>
+                                            <tag>redis</tag>
+                                        </tag>
+                                    </tags>
+                                </trigger_prototype>
+                            </trigger_prototypes>
+                        </item_prototype>
+                        <item_prototype>
+                            <uuid>fb4c5c12b5bf4a068cf00baddbf59a11</uuid>
+                            <name>Redis: &quot;{#INSTANCE}&quot; - General: Redis is running</name>
+                            <type>ZABBIX_ACTIVE</type>
+                            <key>proc.num[{#PROCESS_NAME},,,{#HOST}:{#PORT}]</key>
+                            <history>2w</history>
+                            <value_type>FLOAT</value_type>
+                            <trends>1825d</trends>
+                            <valuemap>
+                                <name>Service state</name>
+                            </valuemap>
+                            <tags>
+                                <tag>
+                                    <tag>Application</tag>
+                                    <value>Redis: {#INSTANCE} - General</value>
+                                </tag>
+                            </tags>
+                            <trigger_prototypes>
+                                <trigger_prototype>
+                                    <uuid>68bb646083f34e40a409b0cb9bd1db5d</uuid>
+                                    <expression>last(/Template_App_Redis/proc.num[{#PROCESS_NAME},,,{#HOST}:{#PORT}],#1)=0 and last(/Template_App_Redis/proc.num[{#PROCESS_NAME},,,{#HOST}:{#PORT}],#2)=0 and last(/Template_App_Redis/proc.num[{#PROCESS_NAME},,,{#HOST}:{#PORT}],#3)=0</expression>
+                                    <name>Redis &quot;{#INSTANCE}:{#PORT}&quot; is down on {HOST.HOST}</name>
+                                    <priority>HIGH</priority>
+                                    <manual_close>YES</manual_close>
+                                    <tags>
+                                        <tag>
+                                            <tag>redis</tag>
+                                        </tag>
+                                    </tags>
+                                </trigger_prototype>
+                            </trigger_prototypes>
+                        </item_prototype>
+                        <item_prototype>
+                            <uuid>479869dcd8cf4e8fac0af7ae9035f245</uuid>
+                            <name>Redis: &quot;{#INSTANCE}&quot; - Clients: Max Allowed Clients</name>
+                            <type>ZABBIX_ACTIVE</type>
+                            <key>redis.maxclients[{#HOST},{#PORT}]</key>
+                            <delay>5m</delay>
+                            <value_type>FLOAT</value_type>
+                            <tags>
+                                <tag>
+                                    <tag>Application</tag>
+                                    <value>Redis: {#INSTANCE} - General</value>
+                                </tag>
+                            </tags>
+                        </item_prototype>
+                        <item_prototype>
+                            <uuid>afec85569de64526ad3e5c27d4e0522e</uuid>
+                            <name>Redis: &quot;{#INSTANCE}&quot; - Slow Logs Events Count</name>
+                            <type>ZABBIX_ACTIVE</type>
+                            <key>redis.slowlog.count[{#HOST}, {#PORT}]</key>
+                            <value_type>FLOAT</value_type>
+                            <tags>
+                                <tag>
+                                    <tag>Application</tag>
+                                    <value>Redis: {#INSTANCE} - Slow Logs</value>
+                                </tag>
+                            </tags>
+                        </item_prototype>
+                        <item_prototype>
+                            <uuid>b6fc5e6fd4bb43fba39ad116e7ea1936</uuid>
+                            <name>Redis: &quot;{#INSTANCE}&quot; - Slow Logs Events Details</name>
+                            <type>ZABBIX_ACTIVE</type>
+                            <key>redis.slowlog.get[{#HOST}, {#PORT}, {$REDIS_PASSWORDS}]</key>
+                            <history>300d</history>
+                            <value_type>LOG</value_type>
+                            <tags>
+                                <tag>
+                                    <tag>Application</tag>
+                                    <value>Redis: {#INSTANCE} - Slow Logs</value>
+                                </tag>
+                            </tags>
+                        </item_prototype>
+                        <item_prototype>
+                            <uuid>8fb7d6450d9643e8bb786a92e0fe9c31</uuid>
+                            <name>Redis: &quot;{#INSTANCE}&quot; - Clients: Blocked Clients</name>
+                            <type>ZABBIX_ACTIVE</type>
+                            <key>redis.stat.get[blocked_clients,{#HOST},{#PORT}]</key>
+                            <delay>5m</delay>
+                            <history>2w</history>
+                            <trends>1825d</trends>
+                            <preprocessing>
+                                <step>
+                                    <type>SIMPLE_CHANGE</type>
+                                </step>
+                            </preprocessing>
+                            <tags>
+                                <tag>
+                                    <tag>Application</tag>
+                                    <value>Redis: {#INSTANCE} - General</value>
+                                </tag>
+                            </tags>
+                        </item_prototype>
+                        <item_prototype>
+                            <uuid>244098b1fb594d999ae828e52683173a</uuid>
+                            <name>Redis: &quot;{#INSTANCE}&quot; - Clients: Client Biggest Input Buffer</name>
+                            <type>ZABBIX_ACTIVE</type>
+                            <key>redis.stat.get[client_biggest_input_buf,{#HOST},{#PORT}]</key>
+                            <delay>5m</delay>
+                            <history>2w</history>
+                            <trends>1825d</trends>
+                            <preprocessing>
+                                <step>
+                                    <type>CHANGE_PER_SECOND</type>
+                                </step>
+                            </preprocessing>
+                            <tags>
+                                <tag>
+                                    <tag>Application</tag>
+                                    <value>Redis: {#INSTANCE} - General</value>
+                                </tag>
+                            </tags>
+                        </item_prototype>
+                        <item_prototype>
+                            <uuid>f398a729d9a24df88eb3c11012a0d1a8</uuid>
+                            <name>Redis: &quot;{#INSTANCE}&quot; - Clients: Client Longest Output List</name>
+                            <type>ZABBIX_ACTIVE</type>
+                            <key>redis.stat.get[client_longest_output_list,{#HOST},{#PORT}]</key>
+                            <delay>5m</delay>
+                            <history>2w</history>
+                            <trends>1825d</trends>
+                            <preprocessing>
+                                <step>
+                                    <type>CHANGE_PER_SECOND</type>
+                                </step>
+                            </preprocessing>
+                            <tags>
+                                <tag>
+                                    <tag>Application</tag>
+                                    <value>Redis: {#INSTANCE} - General</value>
+                                </tag>
+                            </tags>
+                        </item_prototype>
+                        <item_prototype>
+                            <uuid>bec5904a43ee4ad598cb3ac25446bb0d</uuid>
+                            <name>Redis: &quot;{#INSTANCE}&quot; - Clients: Connected Clients</name>
+                            <type>ZABBIX_ACTIVE</type>
+                            <key>redis.stat.get[connected_clients,{#HOST},{#PORT}]</key>
+                            <delay>5m</delay>
+                            <history>2w</history>
+                            <trends>1825d</trends>
+                            <tags>
+                                <tag>
+                                    <tag>Application</tag>
+                                    <value>Redis: {#INSTANCE} - General</value>
+                                </tag>
+                            </tags>
+                        </item_prototype>
+                        <item_prototype>
+                            <uuid>2f1065e4ea8d43689c090073f69d0cb9</uuid>
+                            <name>Redis: &quot;{#INSTANCE}&quot; - Clients: Connected Slaves</name>
+                            <type>ZABBIX_ACTIVE</type>
+                            <key>redis.stat.get[connected_slaves,{#HOST},{#PORT}]</key>
+                            <delay>5m</delay>
+                            <history>2w</history>
+                            <trends>1825d</trends>
+                            <tags>
+                                <tag>
+                                    <tag>Application</tag>
+                                    <value>Redis: {#INSTANCE} - General</value>
+                                </tag>
+                            </tags>
+                        </item_prototype>
+                        <item_prototype>
+                            <uuid>bc8d9a0bf081423b9020f82ff7b24d6f</uuid>
+                            <name>Redis: &quot;{#INSTANCE}&quot; - Keys: Evicted Keys</name>
+                            <type>ZABBIX_ACTIVE</type>
+                            <key>redis.stat.get[evicted_keys,{#HOST},{#PORT}]</key>
+                            <delay>5m</delay>
+                            <history>2w</history>
+                            <trends>1825d</trends>
+                            <preprocessing>
+                                <step>
+                                    <type>CHANGE_PER_SECOND</type>
+                                </step>
+                            </preprocessing>
+                            <tags>
+                                <tag>
+                                    <tag>Application</tag>
+                                    <value>Redis: {#INSTANCE} - General</value>
+                                </tag>
+                            </tags>
+                        </item_prototype>
+                        <item_prototype>
+                            <uuid>ac437a92ea104f6383fd460666229a6f</uuid>
+                            <name>Redis: &quot;{#INSTANCE}&quot; - Keys: Expired Keys</name>
+                            <type>ZABBIX_ACTIVE</type>
+                            <key>redis.stat.get[expired_keys,{#HOST},{#PORT}]</key>
+                            <delay>5m</delay>
+                            <history>2w</history>
+                            <trends>1825d</trends>
+                            <preprocessing>
+                                <step>
+                                    <type>CHANGE_PER_SECOND</type>
+                                </step>
+                            </preprocessing>
+                            <tags>
+                                <tag>
+                                    <tag>Application</tag>
+                                    <value>Redis: {#INSTANCE} - General</value>
+                                </tag>
+                            </tags>
+                        </item_prototype>
+                        <item_prototype>
+                            <uuid>dabd8ce7bbe640f6b348536eb0508cbf</uuid>
+                            <name>Redis: &quot;{#INSTANCE}&quot; - Keys: Keyspace Hits</name>
+                            <type>ZABBIX_ACTIVE</type>
+                            <key>redis.stat.get[keyspace_hits,{#HOST},{#PORT}]</key>
+                            <delay>5m</delay>
+                            <history>2w</history>
+                            <trends>1825d</trends>
+                            <preprocessing>
+                                <step>
+                                    <type>CHANGE_PER_SECOND</type>
+                                </step>
+                            </preprocessing>
+                            <tags>
+                                <tag>
+                                    <tag>Application</tag>
+                                    <value>Redis: {#INSTANCE} - General</value>
+                                </tag>
+                            </tags>
+                        </item_prototype>
+                        <item_prototype>
+                            <uuid>487f23f8414145fa909b79577988ca94</uuid>
+                            <name>Redis: &quot;{#INSTANCE}&quot; - Keys: Keyspace Misses</name>
+                            <type>ZABBIX_ACTIVE</type>
+                            <key>redis.stat.get[keyspace_misses,{#HOST},{#PORT}]</key>
+                            <delay>5m</delay>
+                            <history>2w</history>
+                            <trends>1825d</trends>
+                            <preprocessing>
+                                <step>
+                                    <type>CHANGE_PER_SECOND</type>
+                                </step>
+                            </preprocessing>
+                            <tags>
+                                <tag>
+                                    <tag>Application</tag>
+                                    <value>Redis: {#INSTANCE} - General</value>
+                                </tag>
+                            </tags>
+                        </item_prototype>
+                        <item_prototype>
+                            <uuid>08409cf917af40e5b95c95729491c9ce</uuid>
+                            <name>Redis: &quot;{#INSTANCE}&quot; - Slave: Redis Server Master host</name>
+                            <type>ZABBIX_ACTIVE</type>
+                            <key>redis.stat.get[master_host,{#HOST},{#PORT}]</key>
+                            <delay>5m</delay>
+                            <history>2w</history>
+                            <value_type>TEXT</value_type>
+                            <tags>
+                                <tag>
+                                    <tag>Application</tag>
+                                    <value>Redis: {#INSTANCE} - General</value>
+                                </tag>
+                            </tags>
+                        </item_prototype>
+                        <item_prototype>
+                            <uuid>d41aa5bf58914a7994b3db58e516a909</uuid>
+                            <name>Redis: &quot;{#INSTANCE}&quot; - Slave: Redis Server Master last io seconds ago</name>
+                            <type>ZABBIX_ACTIVE</type>
+                            <key>redis.stat.get[master_last_io_seconds_ago,{#HOST},{#PORT}]</key>
+                            <delay>5m</delay>
+                            <history>2w</history>
+                            <value_type>FLOAT</value_type>
+                            <trends>1825d</trends>
+                            <units>s</units>
+                            <tags>
+                                <tag>
+                                    <tag>Application</tag>
+                                    <value>Redis: {#INSTANCE} - General</value>
+                                </tag>
+                            </tags>
+                        </item_prototype>
+                        <item_prototype>
+                            <uuid>fca0df76917244d9b95c4412e66b62f9</uuid>
+                            <name>Redis: &quot;{#INSTANCE}&quot; - Master Link: Down Time</name>
+                            <type>ZABBIX_ACTIVE</type>
+                            <key>redis.stat.get[master_link_down_since_seconds,{#HOST},{#PORT}]</key>
+                            <history>2w</history>
+                            <trends>1825d</trends>
+                            <preprocessing>
+                                <step>
+                                    <type>CHANGE_PER_SECOND</type>
+                                </step>
+                            </preprocessing>
+                            <tags>
+                                <tag>
+                                    <tag>Application</tag>
+                                    <value>Redis: {#INSTANCE} - General</value>
+                                </tag>
+                            </tags>
+                            <trigger_prototypes>
+                                <trigger_prototype>
+                                    <uuid>3804e0cfe7124c7d83e771fd4d2d7b51</uuid>
+                                    <expression>last(/Template_App_Redis/redis.stat.get[master_link_down_since_seconds,{#HOST},{#PORT}])&gt;{$REDIS_DOWN_LINK_MAX}</expression>
+                                    <name>Redis: &quot;{#INSTANCE}:{#PORT}&quot; - Master Link: Down Time more than {$REDIS_DOWN_LINK_MAX} sec (actual = {ITEM.VALUE1}) on {HOST.HOST}</name>
+                                    <priority>INFO</priority>
+                                    <tags>
+                                        <tag>
+                                            <tag>redis</tag>
+                                        </tag>
+                                    </tags>
+                                </trigger_prototype>
+                            </trigger_prototypes>
+                        </item_prototype>
+                        <item_prototype>
+                            <uuid>b5ef380f78ed457691b5d1e9caeb9742</uuid>
+                            <name>Redis: &quot;{#INSTANCE}&quot; - Slave: Redis Server Master status</name>
+                            <type>ZABBIX_ACTIVE</type>
+                            <key>redis.stat.get[master_link_status,{#HOST},{#PORT}]</key>
+                            <history>2w</history>
+                            <value_type>TEXT</value_type>
+                            <tags>
+                                <tag>
+                                    <tag>Application</tag>
+                                    <value>Redis: {#INSTANCE} - General</value>
+                                </tag>
+                            </tags>
+                            <trigger_prototypes>
+                                <trigger_prototype>
+                                    <uuid>bfa99845f4ab4f67b37cbce435078667</uuid>
+                                    <expression>find(/Template_App_Redis/redis.stat.get[master_link_status,{#HOST},{#PORT}],5m,&quot;like&quot;,&quot;down&quot;)=1</expression>
+                                    <recovery_mode>RECOVERY_EXPRESSION</recovery_mode>
+                                    <recovery_expression>find(/Template_App_Redis/redis.stat.get[master_link_status,{#HOST},{#PORT}],5m,&quot;like&quot;,&quot;up&quot;)=1 or find(/Template_App_Redis/redis.stat.get[master_link_status,{#HOST},{#PORT}],5m,&quot;like&quot;,&quot;0&quot;)=1</recovery_expression>
+                                    <name>Redis: &quot;{#INSTANCE}:{#PORT}&quot; - Slave: Redis Server Master Status DOWN on {HOST.HOST}</name>
+                                    <manual_close>YES</manual_close>
+                                    <tags>
+                                        <tag>
+                                            <tag>redis</tag>
+                                        </tag>
+                                    </tags>
+                                </trigger_prototype>
+                            </trigger_prototypes>
+                        </item_prototype>
+                        <item_prototype>
+                            <uuid>443670f8865e4f1bbc41220c1b253de3</uuid>
+                            <name>Redis: &quot;{#INSTANCE}&quot; - Slave: Redis Server Master status (Int)</name>
+                            <type>DEPENDENT</type>
+                            <key>redis.stat.get[master_link_status_int,{#HOST},{#PORT}]</key>
+                            <valuemap>
+                                <name>Redis Status Mapping</name>
+                            </valuemap>
+                            <preprocessing>
+                                <step>
+                                    <type>JAVASCRIPT</type>
+                                    <parameters>
+                                        <parameter>return value === &quot;up&quot; ? 1 : 0;</parameter>
+                                    </parameters>
+                                </step>
+                            </preprocessing>
+                            <master_item>
+                                <key>redis.stat.get[master_link_status,{#HOST},{#PORT}]</key>
+                            </master_item>
+                            <tags>
+                                <tag>
+                                    <tag>Application</tag>
+                                    <value>Redis: {#INSTANCE} - General</value>
+                                </tag>
+                            </tags>
+                        </item_prototype>
+                        <item_prototype>
+                            <uuid>ec48be31ed3d473aaf187d271c3b8d7e</uuid>
+                            <name>Redis: &quot;{#INSTANCE}&quot; - Slave: Redis Server Master port</name>
+                            <type>ZABBIX_ACTIVE</type>
+                            <key>redis.stat.get[master_port,{#HOST},{#PORT}]</key>
+                            <delay>5m</delay>
+                            <history>2w</history>
+                            <value_type>TEXT</value_type>
+                            <tags>
+                                <tag>
+                                    <tag>Application</tag>
+                                    <value>Redis: {#INSTANCE} - General</value>
+                                </tag>
+                            </tags>
+                        </item_prototype>
+                        <item_prototype>
+                            <uuid>8f610bf5b139474585aa749a24a62a75</uuid>
+                            <name>Redis: &quot;{#INSTANCE}&quot; - Replication: master_repl_offset</name>
+                            <type>ZABBIX_ACTIVE</type>
+                            <key>redis.stat.get[master_repl_offset,{#HOST},{#PORT}]</key>
+                            <delay>5m</delay>
+                            <history>2w</history>
+                            <trends>1825d</trends>
+                            <preprocessing>
+                                <step>
+                                    <type>CHANGE_PER_SECOND</type>
+                                </step>
+                            </preprocessing>
+                            <tags>
+                                <tag>
+                                    <tag>Application</tag>
+                                    <value>Redis: {#INSTANCE} - General</value>
+                                </tag>
+                            </tags>
+                        </item_prototype>
+                        <item_prototype>
+                            <uuid>9236654548a0481996ed43e2d9bf02e0</uuid>
+                            <name>Redis: &quot;{#INSTANCE}&quot; - Memory: $1</name>
+                            <type>ZABBIX_ACTIVE</type>
+                            <key>redis.stat.get[mem_fragmentation_ratio,{#HOST},{#PORT}]</key>
+                            <delay>5m</delay>
+                            <history>2w</history>
+                            <value_type>FLOAT</value_type>
+                            <trends>1825d</trends>
+                            <tags>
+                                <tag>
+                                    <tag>Application</tag>
+                                    <value>Redis: {#INSTANCE} - General</value>
+                                </tag>
+                            </tags>
+                        </item_prototype>
+                        <item_prototype>
+                            <uuid>08df452edb724d1fa2d5c68037c48065</uuid>
+                            <name>Redis: &quot;{#INSTANCE}&quot; - Disk Flush: RDB BGSAVE In Progress</name>
+                            <type>ZABBIX_ACTIVE</type>
+                            <key>redis.stat.get[rdb_bgsave_in_progress,{#HOST},{#PORT}]</key>
+                            <history>2w</history>
+                            <trends>1825d</trends>
+                            <tags>
+                                <tag>
+                                    <tag>Application</tag>
+                                    <value>Redis: {#INSTANCE} - General</value>
+                                </tag>
+                            </tags>
+                        </item_prototype>
+                        <item_prototype>
+                            <uuid>08ba3adfa1084363bb3f645e2a3aebf1</uuid>
+                            <name>Redis: &quot;{#INSTANCE}&quot; - RDB Changes Since Last Save</name>
+                            <type>ZABBIX_ACTIVE</type>
+                            <key>redis.stat.get[rdb_changes_since_last_save,{#HOST},{#PORT}]</key>
+                            <history>2w</history>
+                            <value_type>FLOAT</value_type>
+                            <trends>1825d</trends>
+                            <tags>
+                                <tag>
+                                    <tag>Application</tag>
+                                    <value>Redis: {#INSTANCE} - General</value>
+                                </tag>
+                            </tags>
+                        </item_prototype>
+                        <item_prototype>
+                            <uuid>4776668fc08a40b38cc7b1adfa3789c0</uuid>
+                            <name>Redis: &quot;{#INSTANCE}&quot; - RDB Last Save Time</name>
+                            <type>ZABBIX_ACTIVE</type>
+                            <key>redis.stat.get[rdb_last_save_time,{#HOST},{#PORT}]</key>
+                            <history>2w</history>
+                            <value_type>FLOAT</value_type>
+                            <trends>1825d</trends>
+                            <units>unixtime</units>
+                            <tags>
+                                <tag>
+                                    <tag>Application</tag>
+                                    <value>Redis: {#INSTANCE} - General</value>
+                                </tag>
+                            </tags>
+                        </item_prototype>
+                        <item_prototype>
+                            <uuid>377ca71d05854a97a5c2e32198e59451</uuid>
+                            <name>Redis: &quot;{#INSTANCE}&quot; - Keys: redis_version</name>
+                            <type>ZABBIX_ACTIVE</type>
+                            <key>redis.stat.get[redis_version,{#HOST},{#PORT}]</key>
+                            <delay>5m</delay>
+                            <history>2w</history>
+                            <value_type>TEXT</value_type>
+                            <tags>
+                                <tag>
+                                    <tag>Application</tag>
+                                    <value>Redis: {#INSTANCE} - General</value>
+                                </tag>
+                            </tags>
+                        </item_prototype>
+                        <item_prototype>
+                            <uuid>3138af9d6b2643f9bcd3fbf227d7d785</uuid>
+                            <name>Redis: &quot;{#INSTANCE}&quot; - Clients: Rejected Connections/sec</name>
+                            <type>ZABBIX_ACTIVE</type>
+                            <key>redis.stat.get[rejected_connections,{#HOST},{#PORT}]</key>
+                            <delay>5m</delay>
+                            <history>2w</history>
+                            <trends>1825d</trends>
+                            <preprocessing>
+                                <step>
+                                    <type>CHANGE_PER_SECOND</type>
+                                </step>
+                            </preprocessing>
+                            <tags>
+                                <tag>
+                                    <tag>Application</tag>
+                                    <value>Redis: {#INSTANCE} - General</value>
+                                </tag>
+                            </tags>
+                        </item_prototype>
+                        <item_prototype>
+                            <uuid>bafcd83933b448e5bb2548de1a159abb</uuid>
+                            <name>Redis: &quot;{#INSTANCE}&quot; - General: Redis Server Role</name>
+                            <type>ZABBIX_ACTIVE</type>
+                            <key>redis.stat.get[role,{#HOST},{#PORT}]</key>
+                            <delay>5m</delay>
+                            <history>2w</history>
+                            <value_type>TEXT</value_type>
+                            <tags>
+                                <tag>
+                                    <tag>Application</tag>
+                                    <value>Redis: {#INSTANCE} - General</value>
+                                </tag>
+                            </tags>
+                        </item_prototype>
+                        <item_prototype>
+                            <uuid>1d55d4f6b1964d7682cdedafc67dc85e</uuid>
+                            <name>Redis: &quot;{#INSTANCE}&quot; - General: Commands/sec</name>
+                            <type>ZABBIX_ACTIVE</type>
+                            <key>redis.stat.get[total_commands_processed,{#HOST},{#PORT}]</key>
+                            <history>2w</history>
+                            <trends>1825d</trends>
+                            <preprocessing>
+                                <step>
+                                    <type>CHANGE_PER_SECOND</type>
+                                </step>
+                            </preprocessing>
+                            <tags>
+                                <tag>
+                                    <tag>Application</tag>
+                                    <value>Redis: {#INSTANCE} - General</value>
+                                </tag>
+                            </tags>
+                        </item_prototype>
+                        <item_prototype>
+                            <uuid>108aa7736d3349a69b0a29c425ff1408</uuid>
+                            <name>Redis: &quot;{#INSTANCE}&quot; - Clients: Connections/sec</name>
+                            <type>ZABBIX_ACTIVE</type>
+                            <key>redis.stat.get[total_connections_received,{#HOST},{#PORT}]</key>
+                            <delay>5m</delay>
+                            <history>2w</history>
+                            <trends>1825d</trends>
+                            <preprocessing>
+                                <step>
+                                    <type>CHANGE_PER_SECOND</type>
+                                </step>
+                            </preprocessing>
+                            <tags>
+                                <tag>
+                                    <tag>Application</tag>
+                                    <value>Redis: {#INSTANCE} - General</value>
+                                </tag>
+                            </tags>
+                            <trigger_prototypes>
+                                <trigger_prototype>
+                                    <uuid>0b9b1f92cd4b456e8d586008be48b5e9</uuid>
+                                    <expression>min(/Template_App_Redis/redis.stat.get[total_connections_received,{#HOST},{#PORT}],30m)&gt;1000</expression>
+                                    <recovery_mode>RECOVERY_EXPRESSION</recovery_mode>
+                                    <recovery_expression>max(/Template_App_Redis/redis.stat.get[total_connections_received,{#HOST},{#PORT}],60m)&lt;300</recovery_expression>
+                                    <name>Redis: &quot;{#INSTANCE}:{#PORT}&quot; -  Clients: Connections/sec &gt; 2000 for 30m (actual = {ITEM.VALUE1}) on {HOST.HOST}</name>
+                                    <manual_close>YES</manual_close>
+                                    <tags>
+                                        <tag>
+                                            <tag>redis</tag>
+                                        </tag>
+                                    </tags>
+                                </trigger_prototype>
+                            </trigger_prototypes>
+                        </item_prototype>
+                        <item_prototype>
+                            <uuid>8fd47de15ba849bdb9e41345800b8ba2</uuid>
+                            <name>Redis: &quot;{#INSTANCE}&quot; - CPU: Used CPU Sys</name>
+                            <type>ZABBIX_ACTIVE</type>
+                            <key>redis.stat.get[used_cpu_sys,{#HOST},{#PORT}]</key>
+                            <delay>5m</delay>
+                            <history>2w</history>
+                            <value_type>FLOAT</value_type>
+                            <trends>1825d</trends>
+                            <preprocessing>
+                                <step>
+                                    <type>CHANGE_PER_SECOND</type>
+                                </step>
+                            </preprocessing>
+                            <tags>
+                                <tag>
+                                    <tag>Application</tag>
+                                    <value>Redis: {#INSTANCE} - General</value>
+                                </tag>
+                            </tags>
+                        </item_prototype>
+                        <item_prototype>
+                            <uuid>ea8d3b6cb18241719229a98e27031484</uuid>
+                            <name>Redis: &quot;{#INSTANCE}&quot; - Clients: Used CPU Sys Childrens</name>
+                            <type>ZABBIX_ACTIVE</type>
+                            <key>redis.stat.get[used_cpu_sys_children,{#HOST},{#PORT}]</key>
+                            <delay>5m</delay>
+                            <history>2w</history>
+                            <value_type>FLOAT</value_type>
+                            <trends>1825d</trends>
+                            <preprocessing>
+                                <step>
+                                    <type>CHANGE_PER_SECOND</type>
+                                </step>
+                            </preprocessing>
+                            <tags>
+                                <tag>
+                                    <tag>Application</tag>
+                                    <value>Redis: {#INSTANCE} - General</value>
+                                </tag>
+                            </tags>
+                        </item_prototype>
+                        <item_prototype>
+                            <uuid>824b5db916434be1bfc7d53122dc906a</uuid>
+                            <name>Redis: &quot;{#INSTANCE}&quot; - CPU: Used CPU User</name>
+                            <type>ZABBIX_ACTIVE</type>
+                            <key>redis.stat.get[used_cpu_user,{#HOST},{#PORT}]</key>
+                            <delay>5m</delay>
+                            <history>2w</history>
+                            <value_type>FLOAT</value_type>
+                            <trends>1825d</trends>
+                            <preprocessing>
+                                <step>
+                                    <type>CHANGE_PER_SECOND</type>
+                                </step>
+                            </preprocessing>
+                            <tags>
+                                <tag>
+                                    <tag>Application</tag>
+                                    <value>Redis: {#INSTANCE} - General</value>
+                                </tag>
+                            </tags>
+                        </item_prototype>
+                        <item_prototype>
+                            <uuid>438ba7e532b14f5e922bfe094560f71c</uuid>
+                            <name>Redis: &quot;{#INSTANCE}&quot; - Clients: Used CPU User Childrens</name>
+                            <type>ZABBIX_ACTIVE</type>
+                            <key>redis.stat.get[used_cpu_user_children,{#HOST},{#PORT}]</key>
+                            <delay>5m</delay>
+                            <history>2w</history>
+                            <value_type>FLOAT</value_type>
+                            <trends>1825d</trends>
+                            <preprocessing>
+                                <step>
+                                    <type>CHANGE_PER_SECOND</type>
+                                </step>
+                            </preprocessing>
+                            <tags>
+                                <tag>
+                                    <tag>Application</tag>
+                                    <value>Redis: {#INSTANCE} - General</value>
+                                </tag>
+                            </tags>
+                        </item_prototype>
+                        <item_prototype>
+                            <uuid>d83fbf540fdb4b45949c842223f06d4c</uuid>
+                            <name>Redis: &quot;{#INSTANCE}&quot; - Memory: $1</name>
+                            <type>ZABBIX_ACTIVE</type>
+                            <key>redis.stat.get[used_memory,{#HOST},{#PORT}]</key>
+                            <delay>5m</delay>
+                            <history>2w</history>
+                            <trends>1825d</trends>
+                            <units>B</units>
+                            <tags>
+                                <tag>
+                                    <tag>Application</tag>
+                                    <value>Redis: {#INSTANCE} - General</value>
+                                </tag>
+                            </tags>
+                        </item_prototype>
+                        <item_prototype>
+                            <uuid>32d45643f7ec473cb31488d14468ab11</uuid>
+                            <name>Redis: &quot;{#INSTANCE}&quot; - Memory: $1</name>
+                            <type>ZABBIX_ACTIVE</type>
+                            <key>redis.stat.get[used_memory_rss,{#HOST},{#PORT}]</key>
+                            <delay>5m</delay>
+                            <history>2w</history>
+                            <trends>1825d</trends>
+                            <units>B</units>
+                            <tags>
+                                <tag>
+                                    <tag>Application</tag>
+                                    <value>Redis: {#INSTANCE} - General</value>
+                                </tag>
+                            </tags>
+                        </item_prototype>
+                        <item_prototype>
+                            <uuid>0bc33399441b450e917752dc63775d39</uuid>
+                            <name>Redis: &quot;{#INSTANCE}&quot; - Keys: Avg TTL</name>
+                            <type>ZABBIX_ACTIVE</type>
+                            <key>redis.stat.mget[db0,avg_ttl,{#HOST},{#PORT}]</key>
+                            <delay>5m</delay>
+                            <history>2w</history>
+                            <trends>1825d</trends>
+                            <tags>
+                                <tag>
+                                    <tag>Application</tag>
+                                    <value>Redis: {#INSTANCE} - General</value>
+                                </tag>
+                            </tags>
+                        </item_prototype>
+                        <item_prototype>
+                            <uuid>4702b17f227a4ce8a02f21d795beb253</uuid>
+                            <name>Redis: &quot;{#INSTANCE}&quot; - Keys: Total Keys With Expiry</name>
+                            <type>ZABBIX_ACTIVE</type>
+                            <key>redis.stat.mget[db0,expires,{#HOST},{#PORT}]</key>
+                            <delay>5m</delay>
+                            <history>2w</history>
+                            <trends>1825d</trends>
+                            <tags>
+                                <tag>
+                                    <tag>Application</tag>
+                                    <value>Redis: {#INSTANCE} - General</value>
+                                </tag>
+                            </tags>
+                        </item_prototype>
+                        <item_prototype>
+                            <uuid>aa8df90b50834c0ba1a656e234e9da4f</uuid>
+                            <name>Redis: &quot;{#INSTANCE}&quot; - Keys: Total</name>
+                            <type>ZABBIX_ACTIVE</type>
+                            <key>redis.stat.mget[db0,keys,{#HOST},{#PORT}]</key>
+                            <delay>5m</delay>
+                            <history>2w</history>
+                            <trends>1825d</trends>
+                            <tags>
+                                <tag>
+                                    <tag>Application</tag>
+                                    <value>Redis: {#INSTANCE} - General</value>
+                                </tag>
+                            </tags>
+                        </item_prototype>
+                        <item_prototype>
+                            <uuid>fe3eb642da534f09a61b5f03f179437f</uuid>
+                            <name>Redis: &quot;{#INSTANCE}&quot; - DB Size on DISK</name>
+                            <type>ZABBIX_ACTIVE</type>
+                            <key>vfs.file.size[{#RDB_PATH}]</key>
+                            <delay>5m</delay>
+                            <history>2w</history>
+                            <value_type>FLOAT</value_type>
+                            <trends>1825d</trends>
+                            <units>b</units>
+                            <tags>
+                                <tag>
+                                    <tag>Application</tag>
+                                    <value>Redis: {#INSTANCE} - General</value>
+                                </tag>
+                            </tags>
+                        </item_prototype>
+                    </item_prototypes>
+                    <graph_prototypes>
+                        <graph_prototype>
+                            <uuid>d397984a9b724f37bd2c1ed806624dbb</uuid>
+                            <name>Redis: &quot;{#INSTANCE}:{#PORT}&quot; - Commands Overview</name>
+                            <show_work_period>NO</show_work_period>
+                            <show_triggers>NO</show_triggers>
+                            <graph_items>
+                                <graph_item>
+                                    <drawtype>BOLD_LINE</drawtype>
+                                    <color>6666FF</color>
+                                    <item>
+                                        <host>Template_App_Redis</host>
+                                        <key>redis.stat.get[total_commands_processed,{#HOST},{#PORT}]</key>
+                                    </item>
+                                </graph_item>
+                            </graph_items>
+                        </graph_prototype>
+                        <graph_prototype>
+                            <uuid>18db6afa732b4c089bf4624187e915d5</uuid>
+                            <name>Redis: &quot;{#INSTANCE}:{#PORT}&quot; - Connected Clients</name>
+                            <show_work_period>NO</show_work_period>
+                            <show_triggers>NO</show_triggers>
+                            <graph_items>
+                                <graph_item>
+                                    <drawtype>BOLD_LINE</drawtype>
+                                    <color>00BB00</color>
+                                    <item>
+                                        <host>Template_App_Redis</host>
+                                        <key>redis.stat.get[connected_clients,{#HOST},{#PORT}]</key>
+                                    </item>
+                                </graph_item>
+                            </graph_items>
+                        </graph_prototype>
+                        <graph_prototype>
+                            <uuid>5d7605c766ef45db8644d8aa3480e816</uuid>
+                            <name>Redis: &quot;{#INSTANCE}:{#PORT}&quot; - Connected Slaves</name>
+                            <graph_items>
+                                <graph_item>
+                                    <color>333333</color>
+                                    <item>
+                                        <host>Template_App_Redis</host>
+                                        <key>redis.stat.get[connected_slaves,{#HOST},{#PORT}]</key>
+                                    </item>
+                                </graph_item>
+                            </graph_items>
+                        </graph_prototype>
+                        <graph_prototype>
+                            <uuid>62a8e4bf26e8455d8eef7e436c643cc7</uuid>
+                            <name>Redis: &quot;{#INSTANCE}:{#PORT}&quot; - Connections</name>
+                            <show_work_period>NO</show_work_period>
+                            <show_triggers>NO</show_triggers>
+                            <graph_items>
+                                <graph_item>
+                                    <drawtype>BOLD_LINE</drawtype>
+                                    <color>EE0000</color>
+                                    <item>
+                                        <host>Template_App_Redis</host>
+                                        <key>redis.stat.get[total_connections_received,{#HOST},{#PORT}]</key>
+                                    </item>
+                                </graph_item>
+                            </graph_items>
+                        </graph_prototype>
+                        <graph_prototype>
+                            <uuid>29ef676b9cfe46f3b88dd56df9f2442d</uuid>
+                            <name>Redis: &quot;{#INSTANCE}:{#PORT}&quot; - CPU Utilization</name>
+                            <graph_items>
+                                <graph_item>
+                                    <drawtype>BOLD_LINE</drawtype>
+                                    <color>0000CC</color>
+                                    <calc_fnc>ALL</calc_fnc>
+                                    <item>
+                                        <host>Template_App_Redis</host>
+                                        <key>proc.cpu.util[,,,&quot;{#PROCESS_PATH}/{#PROCESS_NAME} {#HOST}:{#PORT}&quot;,]</key>
+                                    </item>
+                                </graph_item>
+                            </graph_items>
+                        </graph_prototype>
+                        <graph_prototype>
+                            <uuid>d9f97378cf1f444b9029becdef4ac374</uuid>
+                            <name>Redis: &quot;{#INSTANCE}:{#PORT}&quot; - DB Size in Memory vs Disk</name>
+                            <graph_items>
+                                <graph_item>
+                                    <drawtype>BOLD_LINE</drawtype>
+                                    <color>0000DD</color>
+                                    <calc_fnc>ALL</calc_fnc>
+                                    <item>
+                                        <host>Template_App_Redis</host>
+                                        <key>vfs.file.size[{#RDB_PATH}]</key>
+                                    </item>
+                                </graph_item>
+                                <graph_item>
+                                    <sortorder>1</sortorder>
+                                    <drawtype>BOLD_LINE</drawtype>
+                                    <color>DD0000</color>
+                                    <yaxisside>RIGHT</yaxisside>
+                                    <calc_fnc>ALL</calc_fnc>
+                                    <item>
+                                        <host>Template_App_Redis</host>
+                                        <key>redis.stat.get[used_memory_rss,{#HOST},{#PORT}]</key>
+                                    </item>
+                                </graph_item>
+                            </graph_items>
+                        </graph_prototype>
+                        <graph_prototype>
+                            <uuid>bcf774fc9cb6498d9759da152658b759</uuid>
+                            <name>Redis: &quot;{#INSTANCE}:{#PORT}&quot; - Keys: Expired Keys</name>
+                            <graph_items>
+                                <graph_item>
+                                    <drawtype>BOLD_LINE</drawtype>
+                                    <color>990000</color>
+                                    <item>
+                                        <host>Template_App_Redis</host>
+                                        <key>redis.stat.get[expired_keys,{#HOST},{#PORT}]</key>
+                                    </item>
+                                </graph_item>
+                            </graph_items>
+                        </graph_prototype>
+                        <graph_prototype>
+                            <uuid>0731274ab1804ee1a57794ce03960054</uuid>
+                            <name>Redis: &quot;{#INSTANCE}:{#PORT}&quot; - Total Keys vs Keys with Expr. vs Evicted</name>
+                            <graph_items>
+                                <graph_item>
+                                    <drawtype>BOLD_LINE</drawtype>
+                                    <color>990000</color>
+                                    <calc_fnc>ALL</calc_fnc>
+                                    <item>
+                                        <host>Template_App_Redis</host>
+                                        <key>redis.stat.mget[db0,expires,{#HOST},{#PORT}]</key>
+                                    </item>
+                                </graph_item>
+                                <graph_item>
+                                    <sortorder>1</sortorder>
+                                    <drawtype>BOLD_LINE</drawtype>
+                                    <color>FF7043</color>
+                                    <yaxisside>RIGHT</yaxisside>
+                                    <calc_fnc>ALL</calc_fnc>
+                                    <item>
+                                        <host>Template_App_Redis</host>
+                                        <key>redis.stat.mget[db0,keys,{#HOST},{#PORT}]</key>
+                                    </item>
+                                </graph_item>
+                                <graph_item>
+                                    <sortorder>2</sortorder>
+                                    <drawtype>BOLD_LINE</drawtype>
+                                    <color>FF0000</color>
+                                    <yaxisside>RIGHT</yaxisside>
+                                    <calc_fnc>ALL</calc_fnc>
+                                    <item>
+                                        <host>Template_App_Redis</host>
+                                        <key>redis.stat.get[evicted_keys,{#HOST},{#PORT}]</key>
+                                    </item>
+                                </graph_item>
+                            </graph_items>
+                        </graph_prototype>
+                    </graph_prototypes>
+                    <request_method>POST</request_method>
+                </discovery_rule>
+                <discovery_rule>
+                    <uuid>7541f8a31900476182335e18631827a1</uuid>
+                    <name>Discover Redis Slaves</name>
+                    <key>redis.discovery[replication,{$REDIS_PASSWORDS}]</key>
+                    <delay>1s</delay>
+                    <item_prototypes>
+                        <item_prototype>
+                            <uuid>c422773e5ae945449782f50b2015f303</uuid>
+                            <name>Redis: &quot;{#INSTANCE}&quot; - Slave: {#SLAVE} - IP</name>
+                            <key>redis.stat.mget[ {#SLAVE},ip,{#HOST},{#PORT}]</key>
+                            <delay>600s</delay>
+                            <value_type>TEXT</value_type>
+                            <tags>
+                                <tag>
+                                    <tag>Application</tag>
+                                    <value>Redis: {#INSTANCE} - Slave Info</value>
+                                </tag>
+                            </tags>
+                        </item_prototype>
+                        <item_prototype>
+                            <uuid>d0c787f4e8dd4ac78ca58a6dc5b1f7cc</uuid>
+                            <name>Redis: &quot;{#INSTANCE}&quot; - Slave: {#SLAVE} - Lag</name>
+                            <key>redis.stat.mget[ {#SLAVE},lag,{#HOST},{#PORT}]</key>
+                            <delay>600s</delay>
+                            <value_type>FLOAT</value_type>
+                            <tags>
+                                <tag>
+                                    <tag>Application</tag>
+                                    <value>Redis: {#INSTANCE} - Slave Info</value>
+                                </tag>
+                            </tags>
+                            <trigger_prototypes>
+                                <trigger_prototype>
+                                    <uuid>99dc9e3540e54bc1924c4b01ba66b4b8</uuid>
+                                    <expression>last(/Template_App_Redis/redis.stat.mget[ {#SLAVE},lag,{#HOST},{#PORT}])&gt;300</expression>
+                                    <name>Slave &quot;{#SLAVE}&quot; is lagging towards Redis {#INSTANCE} for more than 5 min... {HOST.HOST}</name>
+                                    <priority>WARNING</priority>
+                                </trigger_prototype>
+                            </trigger_prototypes>
+                        </item_prototype>
+                        <item_prototype>
+                            <uuid>16db36b63da14e39ab638191a2e33fad</uuid>
+                            <name>Redis: &quot;{#INSTANCE}&quot; - Slave: {#SLAVE} - Rep offset</name>
+                            <key>redis.stat.mget[ {#SLAVE},offset,{#HOST},{#PORT}]</key>
+                            <delay>600s</delay>
+                            <tags>
+                                <tag>
+                                    <tag>Application</tag>
+                                    <value>Redis: {#INSTANCE} - Slave Info</value>
+                                </tag>
+                            </tags>
+                        </item_prototype>
+                        <item_prototype>
+                            <uuid>788de4d30ea6473fb421291be3e96f8d</uuid>
+                            <name>Redis: &quot;{#INSTANCE}&quot; - Slave: {#SLAVE} - Port</name>
+                            <key>redis.stat.mget[ {#SLAVE},port,{#HOST},{#PORT}]</key>
+                            <delay>600s</delay>
+                            <value_type>FLOAT</value_type>
+                            <tags>
+                                <tag>
+                                    <tag>Application</tag>
+                                    <value>Redis: {#INSTANCE} - Slave Info</value>
+                                </tag>
+                            </tags>
+                        </item_prototype>
+                        <item_prototype>
+                            <uuid>a216f2a72d9b40d1b9642923642584c7</uuid>
+                            <name>Redis: &quot;{#INSTANCE}&quot; - Slave: {#SLAVE} - State</name>
+                            <key>redis.stat.mget[ {#SLAVE},state,{#HOST},{#PORT}]</key>
+                            <delay>600s</delay>
+                            <value_type>TEXT</value_type>
+                            <tags>
+                                <tag>
+                                    <tag>Application</tag>
+                                    <value>Redis: {#INSTANCE} - Slave Info</value>
+                                </tag>
+                            </tags>
+                        </item_prototype>
+                    </item_prototypes>
+                    <graph_prototypes>
+                        <graph_prototype>
+                            <uuid>4aec9e17c5c94372a85804808c49dd69</uuid>
+                            <name>Redis: &quot;{#INSTANCE}:{#PORT}&quot; - &quot;{#SLAVE}&quot; Lag Overview</name>
+                            <graph_items>
+                                <graph_item>
+                                    <drawtype>BOLD_LINE</drawtype>
+                                    <color>DD0000</color>
+                                    <item>
+                                        <host>Template_App_Redis</host>
+                                        <key>redis.stat.mget[ {#SLAVE},lag,{#HOST},{#PORT}]</key>
+                                    </item>
+                                </graph_item>
+                            </graph_items>
+                        </graph_prototype>
+                        <graph_prototype>
+                            <uuid>2e0a4373afe047aabb6cfadac569851f</uuid>
+                            <name>Redis: &quot;{#INSTANCE}:{#PORT}&quot; - &quot;{#SLAVE}&quot; Offset Overview</name>
+                            <graph_items>
+                                <graph_item>
+                                    <drawtype>BOLD_LINE</drawtype>
+                                    <color>0000CC</color>
+                                    <item>
+                                        <host>Template_App_Redis</host>
+                                        <key>redis.stat.mget[ {#SLAVE},offset,{#HOST},{#PORT}]</key>
+                                    </item>
+                                </graph_item>
+                            </graph_items>
+                        </graph_prototype>
+                    </graph_prototypes>
+                    <request_method>POST</request_method>
+                </discovery_rule>
+                <discovery_rule>
+                    <uuid>b2c13b5aa42047a6924e6fbb62d10182</uuid>
+                    <name>Discover Redis Commands</name>
+                    <key>redis.discovery[stats,{$REDIS_PASSWORDS}]</key>
+                    <delay>1s</delay>
+                    <item_prototypes>
+                        <item_prototype>
+                            <uuid>99642280c4614854a66e32c6c09d8577</uuid>
+                            <name>Redis: &quot;{#INSTANCE}&quot; - {#COMMAND} Calls</name>
+                            <type>ZABBIX_ACTIVE</type>
+                            <key>redis.stat.mget[{#COMMAND},calls,{#HOST},{#PORT}]</key>
+                            <delay>300s</delay>
+                            <value_type>FLOAT</value_type>
+                            <units>calls</units>
+                            <preprocessing>
+                                <step>
+                                    <type>CHANGE_PER_SECOND</type>
+                                </step>
+                            </preprocessing>
+                            <tags>
+                                <tag>
+                                    <tag>Application</tag>
+                                    <value>Redis: {#INSTANCE} - Command Statistics</value>
+                                </tag>
+                            </tags>
+                        </item_prototype>
+                        <item_prototype>
+                            <uuid>4eee0f79d2824a2ba37cf1dc2e0c4c30</uuid>
+                            <name>Redis: &quot;{#INSTANCE}&quot; - {#COMMAND} Latency</name>
+                            <type>ZABBIX_ACTIVE</type>
+                            <key>redis.stat.mget[{#COMMAND}, usec_per_call,{#HOST},{#PORT}]</key>
+                            <delay>300s</delay>
+                            <value_type>FLOAT</value_type>
+                            <units>usec</units>
+                            <tags>
+                                <tag>
+                                    <tag>Application</tag>
+                                    <value>Redis: {#INSTANCE} - Command Statistics</value>
+                                </tag>
+                            </tags>
+                        </item_prototype>
+                    </item_prototypes>
+                    <graph_prototypes>
+                        <graph_prototype>
+                            <uuid>18dfd2af5aac4ed49fa9856c54e5f615</uuid>
+                            <name>Redis: &quot;{#INSTANCE}&quot; - {#COMMAND} Calls Overview</name>
+                            <type>STACKED</type>
+                            <graph_items>
+                                <graph_item>
+                                    <color>1A7C11</color>
+                                    <item>
+                                        <host>Template_App_Redis</host>
+                                        <key>redis.stat.mget[{#COMMAND},calls,{#HOST},{#PORT}]</key>
+                                    </item>
+                                </graph_item>
+                            </graph_items>
+                        </graph_prototype>
+                        <graph_prototype>
+                            <uuid>225c28b176f74c9ab6dd7b66d19e3536</uuid>
+                            <name>Redis: &quot;{#INSTANCE}&quot; - {#COMMAND} Latency Overview</name>
+                            <type>STACKED</type>
+                            <graph_items>
+                                <graph_item>
+                                    <color>F63100</color>
+                                    <item>
+                                        <host>Template_App_Redis</host>
+                                        <key>redis.stat.mget[{#COMMAND}, usec_per_call,{#HOST},{#PORT}]</key>
+                                    </item>
+                                </graph_item>
+                            </graph_items>
+                        </graph_prototype>
+                    </graph_prototypes>
+                    <request_method>POST</request_method>
+                </discovery_rule>
+            </discovery_rules>
+            <macros>
+                <macro>
+                    <macro>{$REDIS_DOWN_LINK_MAX}</macro>
+                    <value>3600</value>
+                </macro>
+                <macro>
+                    <macro>{$REDIS_PASSWORDS}</macro>
+                </macro>
+            </macros>
+            <dashboards>
+                <dashboard>
+                    <uuid>cce5cd0dc1ac43218d3648774c616a29</uuid>
+                    <name>Redis Commands Overview</name>
+                    <pages>
+                        <page>
+                            <widgets>
+                                <widget>
+                                    <type>graphprototype</type>
+                                    <width>12</width>
+                                    <height>5</height>
+                                    <fields>
+                                        <field>
+                                            <type>INTEGER</type>
+                                            <name>columns</name>
+                                            <value>1</value>
+                                        </field>
+                                        <field>
+                                            <type>GRAPH_PROTOTYPE</type>
+                                            <name>graphid</name>
+                                            <value>
+                                                <host>Template_App_Redis</host>
+                                                <name>Redis: &quot;{#INSTANCE}&quot; - {#COMMAND} Calls Overview</name>
+                                            </value>
+                                        </field>
+                                        <field>
+                                            <type>INTEGER</type>
+                                            <name>rows</name>
+                                            <value>1</value>
+                                        </field>
+                                        <field>
+                                            <type>INTEGER</type>
+                                            <name>source_type</name>
+                                            <value>2</value>
+                                        </field>
+                                    </fields>
+                                </widget>
+                                <widget>
+                                    <type>graphprototype</type>
+                                    <x>12</x>
+                                    <width>12</width>
+                                    <height>5</height>
+                                    <fields>
+                                        <field>
+                                            <type>INTEGER</type>
+                                            <name>columns</name>
+                                            <value>1</value>
+                                        </field>
+                                        <field>
+                                            <type>GRAPH_PROTOTYPE</type>
+                                            <name>graphid</name>
+                                            <value>
+                                                <host>Template_App_Redis</host>
+                                                <name>Redis: &quot;{#INSTANCE}&quot; - {#COMMAND} Latency Overview</name>
+                                            </value>
+                                        </field>
+                                        <field>
+                                            <type>INTEGER</type>
+                                            <name>rows</name>
+                                            <value>1</value>
+                                        </field>
+                                        <field>
+                                            <type>INTEGER</type>
+                                            <name>source_type</name>
+                                            <value>2</value>
+                                        </field>
+                                    </fields>
+                                </widget>
+                            </widgets>
+                        </page>
+                    </pages>
+                </dashboard>
+                <dashboard>
+                    <uuid>4e11a39e9b1e4b1889e10828fb7a33e7</uuid>
+                    <name>Redis Instances Overview</name>
+                    <pages>
+                        <page>
+                            <widgets>
+                                <widget>
+                                    <type>graphprototype</type>
+                                    <width>8</width>
+                                    <height>5</height>
+                                    <fields>
+                                        <field>
+                                            <type>INTEGER</type>
+                                            <name>columns</name>
+                                            <value>1</value>
+                                        </field>
+                                        <field>
+                                            <type>GRAPH_PROTOTYPE</type>
+                                            <name>graphid</name>
+                                            <value>
+                                                <host>Template_App_Redis</host>
+                                                <name>Redis: &quot;{#INSTANCE}:{#PORT}&quot; - Commands Overview</name>
+                                            </value>
+                                        </field>
+                                        <field>
+                                            <type>INTEGER</type>
+                                            <name>rows</name>
+                                            <value>1</value>
+                                        </field>
+                                        <field>
+                                            <type>INTEGER</type>
+                                            <name>source_type</name>
+                                            <value>2</value>
+                                        </field>
+                                    </fields>
+                                </widget>
+                                <widget>
+                                    <type>graphprototype</type>
+                                    <x>8</x>
+                                    <width>8</width>
+                                    <height>5</height>
+                                    <fields>
+                                        <field>
+                                            <type>INTEGER</type>
+                                            <name>columns</name>
+                                            <value>1</value>
+                                        </field>
+                                        <field>
+                                            <type>GRAPH_PROTOTYPE</type>
+                                            <name>graphid</name>
+                                            <value>
+                                                <host>Template_App_Redis</host>
+                                                <name>Redis: &quot;{#INSTANCE}:{#PORT}&quot; - Connected Clients</name>
+                                            </value>
+                                        </field>
+                                        <field>
+                                            <type>INTEGER</type>
+                                            <name>rows</name>
+                                            <value>1</value>
+                                        </field>
+                                        <field>
+                                            <type>INTEGER</type>
+                                            <name>source_type</name>
+                                            <value>2</value>
+                                        </field>
+                                    </fields>
+                                </widget>
+                                <widget>
+                                    <type>graphprototype</type>
+                                    <x>16</x>
+                                    <width>8</width>
+                                    <height>5</height>
+                                    <fields>
+                                        <field>
+                                            <type>INTEGER</type>
+                                            <name>columns</name>
+                                            <value>1</value>
+                                        </field>
+                                        <field>
+                                            <type>GRAPH_PROTOTYPE</type>
+                                            <name>graphid</name>
+                                            <value>
+                                                <host>Template_App_Redis</host>
+                                                <name>Redis: &quot;{#INSTANCE}:{#PORT}&quot; - Connections</name>
+                                            </value>
+                                        </field>
+                                        <field>
+                                            <type>INTEGER</type>
+                                            <name>rows</name>
+                                            <value>1</value>
+                                        </field>
+                                        <field>
+                                            <type>INTEGER</type>
+                                            <name>source_type</name>
+                                            <value>2</value>
+                                        </field>
+                                    </fields>
+                                </widget>
+                            </widgets>
+                        </page>
+                    </pages>
+                </dashboard>
+                <dashboard>
+                    <uuid>ec28441e5d1349c8a20c5b1d1aae7d91</uuid>
+                    <name>Redis Replication Offset Overview</name>
+                    <pages>
+                        <page>
+                            <widgets>
+                                <widget>
+                                    <type>graphprototype</type>
+                                    <width>24</width>
+                                    <height>5</height>
+                                    <fields>
+                                        <field>
+                                            <type>INTEGER</type>
+                                            <name>columns</name>
+                                            <value>1</value>
+                                        </field>
+                                        <field>
+                                            <type>ITEM_PROTOTYPE</type>
+                                            <name>itemid</name>
+                                            <value>
+                                                <host>Template_App_Redis</host>
+                                                <key>redis.stat.get[master_repl_offset,{#HOST},{#PORT}]</key>
+                                            </value>
+                                        </field>
+                                        <field>
+                                            <type>INTEGER</type>
+                                            <name>rows</name>
+                                            <value>1</value>
+                                        </field>
+                                        <field>
+                                            <type>INTEGER</type>
+                                            <name>source_type</name>
+                                            <value>3</value>
+                                        </field>
+                                    </fields>
+                                </widget>
+                            </widgets>
+                        </page>
+                    </pages>
+                </dashboard>
+                <dashboard>
+                    <uuid>20859e944d2443ab9d9176297b96ac10</uuid>
+                    <name>Redis Slaves Overview</name>
+                    <pages>
+                        <page>
+                            <widgets>
+                                <widget>
+                                    <type>graphprototype</type>
+                                    <width>12</width>
+                                    <height>5</height>
+                                    <fields>
+                                        <field>
+                                            <type>INTEGER</type>
+                                            <name>columns</name>
+                                            <value>1</value>
+                                        </field>
+                                        <field>
+                                            <type>GRAPH_PROTOTYPE</type>
+                                            <name>graphid</name>
+                                            <value>
+                                                <host>Template_App_Redis</host>
+                                                <name>Redis: &quot;{#INSTANCE}:{#PORT}&quot; - &quot;{#SLAVE}&quot; Lag Overview</name>
+                                            </value>
+                                        </field>
+                                        <field>
+                                            <type>INTEGER</type>
+                                            <name>rows</name>
+                                            <value>1</value>
+                                        </field>
+                                        <field>
+                                            <type>INTEGER</type>
+                                            <name>source_type</name>
+                                            <value>2</value>
+                                        </field>
+                                    </fields>
+                                </widget>
+                                <widget>
+                                    <type>graphprototype</type>
+                                    <x>12</x>
+                                    <width>12</width>
+                                    <height>5</height>
+                                    <fields>
+                                        <field>
+                                            <type>INTEGER</type>
+                                            <name>columns</name>
+                                            <value>1</value>
+                                        </field>
+                                        <field>
+                                            <type>GRAPH_PROTOTYPE</type>
+                                            <name>graphid</name>
+                                            <value>
+                                                <host>Template_App_Redis</host>
+                                                <name>Redis: &quot;{#INSTANCE}:{#PORT}&quot; - &quot;{#SLAVE}&quot; Offset Overview</name>
+                                            </value>
+                                        </field>
+                                        <field>
+                                            <type>INTEGER</type>
+                                            <name>rows</name>
+                                            <value>1</value>
+                                        </field>
+                                        <field>
+                                            <type>INTEGER</type>
+                                            <name>source_type</name>
+                                            <value>2</value>
+                                        </field>
+                                    </fields>
+                                </widget>
+                            </widgets>
+                        </page>
+                    </pages>
+                </dashboard>
+            </dashboards>
+            <valuemaps>
+                <valuemap>
+                    <uuid>cc21b70b239a453cb39df6b979e65a4e</uuid>
+                    <name>Redis Status Mapping</name>
+                    <mappings>
+                        <mapping>
+                            <value>0</value>
+                            <newvalue>Down</newvalue>
+                        </mapping>
+                        <mapping>
+                            <value>1</value>
+                            <newvalue>Up</newvalue>
+                        </mapping>
+                    </mappings>
+                </valuemap>
+                <valuemap>
+                    <uuid>0c168abfeb274b65915ea84e07747ce0</uuid>
+                    <name>Service state</name>
+                    <mappings>
+                        <mapping>
+                            <value>0</value>
+                            <newvalue>Down</newvalue>
+                        </mapping>
+                        <mapping>
+                            <value>1</value>
+                            <newvalue>Up</newvalue>
+                        </mapping>
+                    </mappings>
+                </valuemap>
+            </valuemaps>
+        </template>
+    </templates>
+</zabbix_export>

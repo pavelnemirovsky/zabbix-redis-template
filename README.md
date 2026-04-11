@@ -7,37 +7,55 @@
 
 ## Table of Contents
 - [Features](#features)
+- [Compatibility](#compatibility)
 - [Installation](#installation)
 - [Installation (Optional)](#installation-optional)
 - [Important](#important)
+- [Debugging / Issue reporting](#debugging--issue-reporting)
 - [Plans](#plans)
 - [Discovery Flow ](#example-instance-discovery)
 - [Discovery Examples ](#example-commands-stats-discovery)
 
 ## Features
-  - Ability to discovery multiple Redis instances running on same host
-  - Generate automatically a zabbix screen for general statistics, commands and replication overview on host! level.
+  - Discover multiple Redis instances on the same host
+  - Optional Zabbix screens (import **zbx_template_screens/zbx_export_screens_v3.xml**) for general statistics, command stats, and replication overviews at host level
   - Triggers identify command anomaly (not done yet) and instance crash
 
+## Compatibility
+
+This project targets **Zabbix server and proxies from 3.0 through 7.x**. Use a **Zabbix agent** whose major version matches your server (classic **zabbix_agentd** with `UserParameter` definitions matches the shipped **zabbix_agentd.d** snippets).
+
+**Which template to import** (**Configuration → Templates → Import**; XML and JSON are equivalent):
+
+| Your Zabbix version | Files in `zbx_template_screens/` |
+| --- | --- |
+| **5.x, 6.x, 7.x** | **`zbx_export_templates_v6.xml`** or **`zbx_export_templates_v6.json`** — same template, **6.4** export schema (UUIDs, `template_groups`), maintained for **5.4+ through 7.x** |
+| **4.x** | **`zbx_export_templates_v4.xml`** (4.2 export) |
+| **3.x** | **`zbx_export_templates_v3.xml`** |
+
+If a **5.x** server refuses a **6.4**-format import, use **`zbx_export_templates_v4.xml`** instead (older schema that 5.x importers accept), or import **v6** on a **6.x / 7.x** instance and re-export from there after upgrade.
+
+Further detail: **`docs/ZABBIX_TEMPLATE.md`**.
+
 ## Installation
-  - Import **zbx_template/zbx_export_templates.xml** via **Zabbix -> Configuration -> Templates -> Import**
-  - Place **zbx_template/zbx_redis_discovery.sh** under **/usr/bin/zbx_redis_discovery.sh**
-  - Place template userparameters under **/etc/zabbix/zabbix_agentd.d/** or other place according your installation
-  - Restart your zabbix agent where all above were placed
+  - Import the template that matches your Zabbix version (see [Compatibility](#compatibility)) via **Zabbix → Configuration → Templates → Import**
+  - Copy **zabbix_agentd.d/zbx_redis_discovery.sh** to **/usr/bin/zbx_redis_discovery.sh** (or keep the path aligned with your **UserParameter** definitions)
+  - Copy **zabbix_agentd.d/zbx_userparameters_redis.conf** into **/etc/zabbix/zabbix_agentd.d/** (or the directory your agent uses for includes)
+  - Restart the Zabbix agent on hosts where you installed the script and user parameters
 
 ## Installation (OPTIONAL)
-  - Replace following line **<host>your.first.redis.host.local</host>** under **zbx_screens/zbx_export_screens.xml** with your first redis host
-  - Import saved file zbx_export_screens.xml via **Zabbix -> Monitoring -> Screens**
+  - Replace every `<host>your.first.redis.host.local</host>` in **zbx_template_screens/zbx_export_screens_v3.xml** with the hostname of the first Redis host you monitor in Zabbix (as shown under **Configuration -> Hosts**)
+  - Import **zbx_export_screens_v3.xml** via **Zabbix -> Monitoring -> Screens**
 
 ## Important
   - Make sure your redis-server configuration file ends with **.conf** otherwise INSTANCE name won't be discovered
   - Discovery produce stats files from where template gathers stats per 1 min basis, so important to leave discovery rules to run with short interval only. (current template do that each 1 min)
   - You don't have to worry about discovery process to update all items per 1 min basic, actually Zabbix Server use its own cache and perform DB update only when there is a new item appears.
 
-## Debuging / Issue reporting
-  - if Discovery: "Discover Redis Instances" doesn't work: execute following command **zbx_template/zbx_redis_discovery.sh general debug**  and output attach to the issue ticket
-  - if Discovery: "Discover Redis Commands" doesn't work: execute following command **zbx_template/zbx_redis_discovery.sh stats debug**  and output attach to the issue ticket
-  - if Discovery: "Discover Redis Slaves" doesn't work: execute following command **zbx_template/zbx_redis_discovery.sh replications debug**  and output attach to the issue ticket
+## Debugging / Issue reporting
+  - If **Discover Redis Instances** fails, run **`/usr/bin/zbx_redis_discovery.sh general debug`** (or the same path you configured on the agent) and attach the output to the issue
+  - If **Discover Redis Commands** fails: **`/usr/bin/zbx_redis_discovery.sh stats debug`**
+  - If **Discover Redis Slaves** fails: **`/usr/bin/zbx_redis_discovery.sh replication debug`**
 
 ## Plans
   - Keep pushing on Zabbix R&D to let create graphs with multiple prototype items, meanwhile use [Zabbix Grafana](https://github.com/alexanderzobnin/grafana-zabbix)
@@ -46,6 +64,8 @@ Discovery with Statistics Report Flow
 ===========================
 
 <img width="800" alt="Discovery Flow" src="https://github.com/pavelnemirovsky/zabbix-redis-template/blob/master/images/redis_discovery_flow.png?raw=true">
+
+**`zabbix_get` is normally run on your Zabbix server or on a Zabbix proxy** (the component that reaches the agent over TCP 10050), not on the monitored Redis host. The `-s` argument is the **agent host** as configured in Zabbix (DNS or IP). To test directly on the machine where Redis runs, call the discovery script or use `zabbix_agentd -t` there instead.
 
 Example Instance Discovery:
 ===========================
