@@ -1,30 +1,31 @@
-# Redis Template for Zabbix
+# Redis Template for Zabbix (Redis OSS, KeyDB, Valkey)
 
 <img width="800" alt="Redis General View" src="https://github.com/pavelnemirovsky/zabbix-redis-template/blob/master/images/redis_general.png?raw=true">
 
 <img width="800" alt="Dashboard" src="https://github.com/pavelnemirovsky/zabbix-redis-template/blob/master/images/redis_command.png?raw=true">
 
 
-## Table of Contents
+## Table of contents
 - [Features](#features)
 - [Compatibility](#compatibility)
 - [Installation](#installation)
-- [Installation (Optional)](#installation-optional)
+- [Installation (optional)](#installation-optional)
 - [Important](#important)
-- [Debugging / Issue reporting](#debugging--issue-reporting)
+- [Debugging / issue reporting](#debugging-issue-reporting)
 - [Plans](#plans)
-- [Discovery Flow ](#example-instance-discovery)
-- [Discovery examples (stats)](#example-commands-stats-discovery)
-- [Discovery example (replication)](#example-replication-discovery)
+- [Discovery flow and LLD examples](#discovery-flow-and-lld-examples)
+  - [Example: instance discovery](#example-instance-discovery)
+  - [Example: command stats discovery](#example-command-stats-discovery)
+  - [Example: replication discovery](#example-replication-discovery)
 
 ## Features
-  - Discover multiple Redis instances on the same host
-  - Optional Zabbix screens (import **zbx_templates_and_screens/zbx_export_screens_v3.xml**) for general statistics, command stats, and replication overviews at host level
+  - Discover multiple instances on one host: **`redis-server`**, **`keydb-server`**, **`valkey-server`**. The discovery script picks **`redis-cli`**, **`keydb-cli`**, or **`valkey-cli`** by process when that binary is installed; otherwise it uses **`redis-cli`** (RESP-compatible fallback)
+  - **Screens:** **v3** and **v4** template imports include screens in the same file; **v6** is template-only—add **`zbx_templates_and_screens/zbx_export_screens_v3.xml`** if you want those screen layouts ([Compatibility](#compatibility))
   - Triggers identify command anomaly (not done yet) and instance crash
 
 ## Compatibility
 
-This project targets **Zabbix server and proxies from 3.0 through 7.x**. Use a **Zabbix agent** whose major version matches your server (classic **zabbix_agentd** with `UserParameter` definitions matches the shipped **zabbix_agentd.d** snippets).
+This project targets **Zabbix server and proxies from 3.0 through 7.x** and any **Redis-compatible** server that speaks the Redis wire protocol and exposes the usual **`INFO` / `CONFIG` / `SLOWLOG`** commands (**Redis OSS**, **KeyDB**, **Valkey**). Discovery uses each vendor’s CLI when present: **`redis-cli`** for **`redis-server`**, **`keydb-cli`** (else baseline) for **`keydb-server`**, **`valkey-cli`** (else baseline) for **`valkey-server`**. The agent needs **at least one** of **`redis-cli`**, **`keydb-cli`**, or **`valkey-cli`** (baseline prefers Redis, then KeyDB, then Valkey). Use a **Zabbix agent** whose major version matches your server (classic **zabbix_agentd** with `UserParameter` definitions matches the shipped **zabbix_agentd.d** snippets).
 
 **Which template to import** (**Configuration → Templates → Import**; XML and JSON are equivalent):
 
@@ -34,13 +35,15 @@ This project targets **Zabbix server and proxies from 3.0 through 7.x**. Use a *
 | **4.x** | **`zbx_export_templates_v4.xml`** (4.2 export) |
 | **3.x** | **`zbx_export_templates_v3.xml`** |
 
+**Screens:** The **v3** and **v4** template archives above include **screens** in the same file—one import adds both the template and its dashboard screens. The **v6** export (**`zbx_export_templates_v6.xml`** / **`.json`**) is **template only**; use the separate **`zbx_export_screens_v3.xml`** (see [Installation (optional)](#installation-optional)) if you want those screen layouts.
+
 If a **5.x** server refuses a **6.4**-format import, use **`zbx_export_templates_v4.xml`** instead (older schema that 5.x importers accept), or import **v6** on a **6.x / 7.x** instance and re-export from there after upgrade.
 
 Further detail: **`docs/ZABBIX_TEMPLATE.md`**.
 
 ## Installation
   - Import the template that matches your Zabbix version (see [Compatibility](#compatibility)) via **Zabbix → Configuration → Templates → Import**
-  - Copy **zabbix_agentd.d/zbx_redis_discovery.sh** to **/usr/bin/zbx_redis_discovery.sh** (or keep the path aligned with your **UserParameter** definitions)
+  - Copy **zabbix_agentd.d/zbx_redis_discovery.sh** to **/usr/bin/zbx_redis_discovery.sh** (or keep the path aligned with your **UserParameter** definitions). On the agent, install **at least one** of **`redis-cli`**, **`keydb-cli`**, or **`valkey-cli`** (discovery resolves baseline in that preference order). Prefer vendor CLIs for **`keydb-server`** / **`valkey-server`** when installed. **User parameters** in **`zbx_userparameters_redis.conf`** still call **`redis-cli`** for some items—install **`redis-cli`** too if you rely on those checks on a KeyDB/Valkey-only host, or adjust the config.
   - Copy **zabbix_agentd.d/zbx_userparameters_redis.conf** into **/etc/zabbix/zabbix_agentd.d/** (or the directory your agent uses for includes)
   - Restart the Zabbix agent on hosts where you installed the script and user parameters
 
@@ -59,17 +62,16 @@ Further detail: **`docs/ZABBIX_TEMPLATE.md`**.
   - If **Discover Redis Slaves** fails: **`/usr/bin/zbx_redis_discovery.sh replication debug`**
 
 ## Plans
-  - Keep pushing on Zabbix R&D to let create graphs with multiple prototype items, meanwhile use [Zabbix Grafana](https://github.com/alexanderzobnin/grafana-zabbix)
 
-Discovery with Statistics Report Flow
-===========================
+- Encourage upstream Zabbix support for **graphs that combine multiple LLD prototype metrics** in a single view (today’s UI is awkward for that). Until it lands, **[Grafana with the Zabbix plugin](https://github.com/alexanderzobnin/grafana-zabbix)** remains the most practical way to build those multi-series dashboards.
+
+## Discovery flow and LLD examples
 
 <img width="800" alt="Discovery Flow" src="https://github.com/pavelnemirovsky/zabbix-redis-template/blob/master/images/redis_discovery_flow.png?raw=true">
 
 **`zabbix_get` is normally run on your Zabbix server or on a Zabbix proxy** (the component that reaches the agent over TCP 10050), not on the monitored Redis host. The `-s` argument is the **agent host** as configured in Zabbix (DNS or IP). To test directly on the machine where Redis runs, call the discovery script or use `zabbix_agentd -t` there instead.
 
-Example Instance Discovery:
-===========================
+### Example: instance discovery
 
 ```json
 zabbix_get -s redis.host.me -k redis.discovery[general,"123456 123456"] | jq .
@@ -101,10 +103,9 @@ zabbix_get -s redis.host.me -k redis.discovery[general,"123456 123456"] | jq .
     }
   ]
 }
- ```
+```
 
-Example Commands Stats Discovery:
-=================================
+### Example: command stats discovery
 ```json
 zabbix_get -s redis.host.me -k redis.discovery[stats,"123456 123456"] | jq .
 {
@@ -245,8 +246,7 @@ zabbix_get -s redis.host.me -k redis.discovery[stats,"123456 123456"] | jq .
 }
 ```
 
-Example Replication Discovery:
-==============================
+### Example: replication discovery
 ```json
 zabbix_get -s redis.host.me -k redis.discovery[replication] | jq .
 {
