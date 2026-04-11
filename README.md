@@ -14,11 +14,12 @@
 - [Debugging / Issue reporting](#debugging--issue-reporting)
 - [Plans](#plans)
 - [Discovery Flow ](#example-instance-discovery)
-- [Discovery Examples ](#example-commands-stats-discovery)
+- [Discovery examples (stats)](#example-commands-stats-discovery)
+- [Discovery example (replication)](#example-replication-discovery)
 
 ## Features
   - Discover multiple Redis instances on the same host
-  - Optional Zabbix screens (import **zbx_template_screens/zbx_export_screens_v3.xml**) for general statistics, command stats, and replication overviews at host level
+  - Optional Zabbix screens (import **zbx_templates_and_screens/zbx_export_screens_v3.xml**) for general statistics, command stats, and replication overviews at host level
   - Triggers identify command anomaly (not done yet) and instance crash
 
 ## Compatibility
@@ -27,7 +28,7 @@ This project targets **Zabbix server and proxies from 3.0 through 7.x**. Use a *
 
 **Which template to import** (**Configuration → Templates → Import**; XML and JSON are equivalent):
 
-| Your Zabbix version | Files in `zbx_template_screens/` |
+| Your Zabbix version | Files in `zbx_templates_and_screens/` |
 | --- | --- |
 | **5.x, 6.x, 7.x** | **`zbx_export_templates_v6.xml`** or **`zbx_export_templates_v6.json`** — same template, **6.4** export schema (UUIDs, `template_groups`), maintained for **5.4+ through 7.x** |
 | **4.x** | **`zbx_export_templates_v4.xml`** (4.2 export) |
@@ -44,7 +45,7 @@ Further detail: **`docs/ZABBIX_TEMPLATE.md`**.
   - Restart the Zabbix agent on hosts where you installed the script and user parameters
 
 ## Installation (OPTIONAL)
-  - Replace every `<host>your.first.redis.host.local</host>` in **zbx_template_screens/zbx_export_screens_v3.xml** with the hostname of the first Redis host you monitor in Zabbix (as shown under **Configuration -> Hosts**)
+  - Replace every `<host>your.first.redis.host.local</host>` in **zbx_templates_and_screens/zbx_export_screens_v3.xml** with the hostname of the first Redis host you monitor in Zabbix (as shown under **Configuration -> Hosts**)
   - Import **zbx_export_screens_v3.xml** via **Zabbix -> Monitoring -> Screens**
 
 ## Important
@@ -242,11 +243,12 @@ zabbix_get -s redis.host.me -k redis.discovery[stats,"123456 123456"] | jq .
     }
   ]
 }
- ```
- Example Commands Stats Discovery:
- =================================
- ```json
- zabbix_get -s redis.host.me -k redis.discovery[replication] | jq .
+```
+
+Example Replication Discovery:
+==============================
+```json
+zabbix_get -s redis.host.me -k redis.discovery[replication] | jq .
 {
   "data": [
     {
@@ -280,5 +282,5 @@ zabbix_get -s redis.host.me -k redis.discovery[stats,"123456 123456"] | jq .
       "{#INSTANCE}": "INSTANCE1"
     }
   ]
-}    
- ```    
+}
+```
