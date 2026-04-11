@@ -345,13 +345,29 @@ fi
 # Active client binary for the current ps(1) line (set in main loop).
 ACTIVE_CLI="$REDIS_CLI"
 
+# Non-root (e.g. zabbix) often gets EPERM from kill -0 on another user's process; use fallbacks.
+process_pid_exists() {
+    local pid="$1"
+    [[ -z "$pid" || ! "$pid" =~ ^[0-9]+$ ]] && return 1
+    if kill -0 "$pid" 2>/dev/null; then
+        return 0
+    fi
+    if [[ -d "/proc/$pid" ]]; then
+        return 0
+    fi
+    if command -v ps &>/dev/null && ps -p "$pid" -o pid= &>/dev/null; then
+        return 0
+    fi
+    return 1
+}
+
 # Verify OS process is alive; on Linux prefer /proc/PID/exe; otherwise require INFO path on disk.
 verify_process_and_binary() {
     local pid="$1"
     local info_executable="$2"
 
     if [[ -n "$pid" ]] && [[ "$pid" =~ ^[0-9]+$ ]]; then
-        if ! kill -0 "$pid" 2>/dev/null; then
+        if ! process_pid_exists "$pid"; then
             return 1
         fi
     fi
@@ -501,6 +517,7 @@ generate_replication_discovery_json() {
 }
 
 # GENERATE ALL REPORTS REQUIRED FOR REDIS MONITORING #
+# Cache basenames must stay in sync with zabbix_agentd.d/zbx_userparameters_redis.conf (redis.stat.*, slowlog.*, maxclients).
 generate_redis_stats_report() {
     local HOST="$1"
     local PORT="$2"
